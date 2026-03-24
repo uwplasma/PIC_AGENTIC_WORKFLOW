@@ -112,7 +112,7 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 - `optimize-dispatch.yml`: manual run with trial count, seed, range override, and optional state-branch push
 - `optimize-scheduled.yml`: scheduled bounded optimization with concurrency control
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
-- `codex-maintenance.yml`: weekly/manual maintenance checks, with a safe no-op path when Codex secrets are absent
+- `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
 
 ## Promoting to a Trusted Self-Hosted Lane
 
@@ -130,7 +130,7 @@ No public PRs or arbitrary comments should ever land on self-hosted infrastructu
 - The initial campaign is one-dimensional and only tunes `electron_drift_speed_x`.
 - The repo assumes `diagnostics(output)` continues to expose `electric_field_energy`; if that changes, the fallback recomputes from `electric_field` and `dx`.
 - The issue-command workflow ships fail-closed with an empty actor allowlist until maintainers populate [agent/policies/actors.yaml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/actors.yaml).
-- The maintenance workflow includes a safe hook for Codex-enabled PR preparation, but secret and policy setup is still repository-specific.
+- The maintenance workflow includes a safe placeholder hook for GitHub-native Copilot PR preparation, but the exact org-approved integration is still repository-specific.
 
 ## Manual GitHub Steps If Permissions Differ
 
@@ -139,5 +139,5 @@ If local `gh` credentials or org permissions prevent automation, the remaining m
 1. Create the remote repository from this local folder.
 2. Push `main` and create `agent-state`.
 3. Populate the actor allowlist.
-4. Add any maintenance secrets needed for a PR-first Codex workflow.
+4. Add any organization-approved GitHub Copilot automation wiring if you later want PR-first maintenance automation.
 5. Protect `main` and restrict direct pushes.

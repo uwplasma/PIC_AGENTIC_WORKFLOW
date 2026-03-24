@@ -1,4 +1,4 @@
-name: Codex Maintenance
+name: GitHub Copilot Maintenance
 
 on:
   schedule:
@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MPLBACKEND: Agg
-      CODEX_API_KEY: ${{ secrets.CODEX_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,13 +39,8 @@ jobs:
           name: maintenance-prompt
           path: agent/prompts/maintenance.md
 
-      - name: Exit safely when Codex secret is absent
-        if: env.CODEX_API_KEY == ''
+      - name: GitHub Copilot integration placeholder
         run: |
-          echo "No CODEX_API_KEY configured. Maintenance workflow completed checks and will not attempt any code-editing step."
-
-      - name: Reserved PR-first Codex hook
-        if: env.CODEX_API_KEY != ''
-        run: |
-          echo "CODEX_API_KEY is configured. Add the repo-approved Codex invocation here to prepare a draft PR only."
-          echo "This placeholder is intentionally non-destructive until the org chooses its exact Codex action wiring."
+          echo "Maintenance checks completed."
+          echo "If your organization enables GitHub-native Copilot coding automation, wire that PR-first step here."
+          echo "Keep the behavior draft-PR-only and never merge directly to main."

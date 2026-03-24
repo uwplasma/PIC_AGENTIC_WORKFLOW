@@ -1,4 +1,5 @@
-allowed_actors: []
+allowed_actors:
+  - rogeriojorge
 
 # Add exact GitHub usernames below to permit issue-comment commands.
 # Examples:
