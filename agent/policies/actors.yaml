@@ -1,1 +1,8 @@
 allowed_actors: []
+
+# Add exact GitHub usernames below to permit issue-comment commands.
+# Examples:
+# allowed_actors:
+#   - rogeriojorge
+#   - uwplasma-maintainer
+#   - another-trusted-user
