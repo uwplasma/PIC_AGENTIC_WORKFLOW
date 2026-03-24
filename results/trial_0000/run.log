@@ -1,0 +1,5 @@
+trial_id=trial_0000
+drift_multiplier=1.0
+candidate_drift=60000000.0
+optimizer_score=-2.6066811395305978
+wall_time_seconds=0.9695217080879956

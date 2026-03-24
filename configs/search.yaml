@@ -1,0 +1,14 @@
+base_input: configs/base_input.toml
+drift_key: electron_drift_speed_x
+drift_multiplier_min: 0.25
+drift_multiplier_max: 2.5
+include_baseline: true
+baseline_multiplier: 1.0
+optimizer_random_state: 1701
+n_initial_points: 4
+acq_func: EI
+base_estimator: GP
+state_branch: agent-state
+trials_per_run_default: 2
+trusted_runner_label: ubuntu-latest
+self_hosted_runner_label: [self-hosted, trusted-uwplasma]

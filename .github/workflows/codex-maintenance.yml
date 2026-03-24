@@ -1,0 +1,52 @@
+name: Codex Maintenance
+
+on:
+  schedule:
+    - cron: "0 15 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    env:
+      MPLBACKEND: Agg
+      CODEX_API_KEY: ${{ secrets.CODEX_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run bounded maintenance checks
+        run: |
+          pytest -q tests/test_mutate_input.py tests/test_scoring.py tests/test_optimizer_state.py tests/test_optimizer_loop.py
+
+      - name: Upload maintenance prompt
+        uses: actions/upload-artifact@v4
+        with:
+          name: maintenance-prompt
+          path: agent/prompts/maintenance.md
+
+      - name: Exit safely when Codex secret is absent
+        if: env.CODEX_API_KEY == ''
+        run: |
+          echo "No CODEX_API_KEY configured. Maintenance workflow completed checks and will not attempt any code-editing step."
+
+      - name: Reserved PR-first Codex hook
+        if: env.CODEX_API_KEY != ''
+        run: |
+          echo "CODEX_API_KEY is configured. Add the repo-approved Codex invocation here to prepare a draft PR only."
+          echo "This placeholder is intentionally non-destructive until the org chooses its exact Codex action wiring."

@@ -1,0 +1,23 @@
+{
+  "base_drift": 60000000.0,
+  "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+  "candidate_drift": 85029779.19262639,
+  "drift_key": "electron_drift_speed_x",
+  "drift_multiplier": 1.4171629865437732,
+  "failed": false,
+  "failure_reason": null,
+  "final_E": 0.0002998001732268863,
+  "optimizer_objective": 2.9956023046034703,
+  "optimizer_score": -2.9956023046034703,
+  "plot_path": "results/trial_0001/electric_field_energy.png",
+  "score_version": "tail_mean_electric_field_energy_v1",
+  "seed": 1702,
+  "started_at": "2026-03-24T20:25:23+00:00",
+  "tail_max_E": 0.0019753096507250396,
+  "tail_mean_E": 0.0010101775099775933,
+  "time_of_peak_E": 9.922476249565283e-11,
+  "timeseries_path": "results/trial_0001/timeseries.npz",
+  "trial_dir": "results/trial_0001",
+  "trial_id": "trial_0001",
+  "wall_time_seconds": 0.012476666015572846
+}

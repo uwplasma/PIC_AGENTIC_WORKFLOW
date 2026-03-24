@@ -1,0 +1,94 @@
+name: Optimize Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      num_trials:
+        description: Number of new trials to run
+        required: true
+        default: "2"
+      seed:
+        description: Optional integer seed override
+        required: false
+        default: "1701"
+      drift_range:
+        description: Optional lower,upper override for drift multiplier range
+        required: false
+        default: ""
+      push_state_branch:
+        description: Copy generated state to the agent-state branch
+        required: true
+        default: "true"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run campaign
+        run: >-
+          python scripts/run_campaign.py
+          --num-trials ${{ inputs.num_trials }}
+          --seed ${{ inputs.seed }}
+          ${{ inputs.drift_range != '' && format('--drift-range {0}', inputs.drift_range) || '' }}
+
+      - name: Upload optimization artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: optimize-dispatch-artifacts
+          path: |
+            reports/
+            results/
+            state/
+
+      - name: Prepare state branch worktree
+        if: inputs.push_state_branch == 'true'
+        run: |
+          set -euo pipefail
+          git fetch origin agent-state:agent-state || true
+          rm -rf .agent-state
+          if git show-ref --verify --quiet refs/heads/agent-state; then
+            git worktree add .agent-state agent-state
+          else
+            git worktree add --detach .agent-state
+            cd .agent-state
+            git checkout --orphan agent-state
+            git rm -rf . >/dev/null 2>&1 || true
+            cd ..
+          fi
+          python scripts/push_state_branch.py --source-root "$PWD" --target-root "$PWD/.agent-state"
+
+      - name: Commit and push state branch
+        if: inputs.push_state_branch == 'true'
+        run: |
+          set -euo pipefail
+          cd .agent-state
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add state reports results README.md
+          if git diff --cached --quiet; then
+            echo "No state changes to push."
+            exit 0
+          fi
+          git commit -m "Update campaign state from run ${GITHUB_RUN_ID}"
+          git push origin agent-state

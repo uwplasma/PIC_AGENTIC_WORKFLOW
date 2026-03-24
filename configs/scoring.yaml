@@ -1,0 +1,4 @@
+tail_fraction: 0.2
+eps: 1.0e-30
+failure_penalty: -1000000.0
+score_version: tail_mean_electric_field_energy_v1

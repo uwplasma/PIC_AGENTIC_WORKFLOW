@@ -1,0 +1,7 @@
+jaxincell @ git+https://github.com/uwplasma/JAX-in-Cell.git
+matplotlib>=3.8
+numpy>=1.26
+PyYAML>=6.0
+pytest>=8.0
+scikit-optimize>=0.10.2
+scipy>=1.12

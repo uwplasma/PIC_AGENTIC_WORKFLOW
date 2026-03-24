@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pic-agentic-workflow"
+version = "0.1.0"
+description = "Agentic drift optimization workflows around JAX-in-Cell"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "UW Plasma / PIC Agentic Workflow" }
+]
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "PyYAML>=6.0",
+  "scikit-optimize>=0.10.2",
+  "scipy>=1.12",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+pic-agent-run-campaign = "jaxincell_drift_opt.cli:run_campaign_main"
+pic-agent-run-trial = "jaxincell_drift_opt.cli:run_one_trial_main"
+pic-agent-suggest-next = "jaxincell_drift_opt.cli:suggest_next_main"
+pic-agent-summarize = "jaxincell_drift_opt.cli:summarize_results_main"
+pic-agent-bootstrap-state = "jaxincell_drift_opt.cli:bootstrap_state_main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

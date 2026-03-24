@@ -1,0 +1,131 @@
+name: Optimize Issue Command
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  gate:
+    if: github.event.issue.pull_request == null
+    runs-on: ubuntu-latest
+    outputs:
+      action: ${{ steps.parse.outputs.action }}
+      num_trials: ${{ steps.parse.outputs.num_trials }}
+      allowed: ${{ steps.parse.outputs.allowed }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser dependency
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyYAML
+
+      - name: Parse command and validate actor
+        id: parse
+        env:
+          ACTOR: ${{ github.actor }}
+          BODY: ${{ github.event.comment.body }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          import yaml
+          from pathlib import Path
+
+          policy = yaml.safe_load(Path('agent/policies/actors.yaml').read_text(encoding='utf-8')) or {}
+          allowed_actors = set(policy.get('allowed_actors', []))
+          actor = os.environ['ACTOR'].strip()
+          body = os.environ['BODY'].strip()
+
+          action = 'deny'
+          num_trials = '0'
+          allowed = 'true' if actor in allowed_actors else 'false'
+
+          if actor in allowed_actors:
+              match = re.fullmatch(r'/optimize\s+(\d+)', body)
+              if match:
+                  action = 'optimize'
+                  num_trials = match.group(1)
+              elif body == '/summarize':
+                  action = 'summarize'
+
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as handle:
+              handle.write(f'action={action}\n')
+              handle.write(f'num_trials={num_trials}\n')
+              handle.write(f'allowed={allowed}\n')
+          PY
+
+      - name: Comment on denied request
+        if: steps.parse.outputs.action == 'deny'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'Command denied. Populate agent/policies/actors.yaml with an allowlisted actor and use one of: /optimize N or /summarize.'
+            })
+
+  execute:
+    needs: gate
+    if: needs.gate.outputs.action == 'optimize' || needs.gate.outputs.action == 'summarize'
+    runs-on: ubuntu-latest
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Run command
+        run: |
+          set -euo pipefail
+          if [ "${{ needs.gate.outputs.action }}" = "optimize" ]; then
+            python scripts/run_campaign.py --num-trials "${{ needs.gate.outputs.num_trials }}"
+          else
+            python scripts/summarize_results.py
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-command-artifacts
+          path: |
+            reports/
+            results/
+            state/
+
+      - name: Comment on completion
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const action = '${{ needs.gate.outputs.action }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Completed ${action}. Review the workflow artifacts for reports, state, and plots.`
+            })
