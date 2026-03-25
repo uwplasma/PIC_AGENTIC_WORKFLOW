@@ -1,0 +1,1 @@
+Temporary smoke file for verifying the Copilot Auto Merge workflow trigger path.
