@@ -145,11 +145,22 @@ def ensure_issue_assignees(api_root: str, repo: str, token: str, issue_number: i
             token,
             {"assignees": [assignee]},
         )
-        if status_code == 200:
+        actual_assignees: set[str] = set()
+        if isinstance(payload, dict):
+            actual_assignees = {
+                entry.get("login", "")
+                for entry in payload.get("assignees", [])
+                if isinstance(entry, dict)
+            }
+
+        if status_code == 200 and assignee in actual_assignees:
             continue
+
         message = ""
         if isinstance(payload, dict):
             message = payload.get("message", "")
+        if not message and status_code == 200:
+            message = "API call succeeded, but the assignee was not actually attached to the issue"
         print(f"Warning: could not assign '{assignee}' to issue #{issue_number}: {message}")
 
 
