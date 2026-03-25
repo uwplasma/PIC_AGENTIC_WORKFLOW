@@ -20,6 +20,8 @@ def _parse_range(value: str | None) -> tuple[float, float] | None:
 def run_one_trial_main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--drift-multiplier", type=float, required=True)
+    parser.add_argument("--ion-temperature-ratio", type=float, default=None)
+    parser.add_argument("--ion-mass-over-proton-mass", type=float, default=None)
     parser.add_argument("--seed", type=int, default=None)
     parser.add_argument("--root", type=Path, default=Path.cwd())
     args = parser.parse_args()
@@ -32,6 +34,8 @@ def run_one_trial_main() -> None:
         search_config=search_config,
         scoring_config=scoring_config,
         drift_multiplier=args.drift_multiplier,
+        ion_temperature_ratio=args.ion_temperature_ratio,
+        ion_mass_over_proton_mass=args.ion_mass_over_proton_mass,
         trial_index=0,
         output_root=paths.results_dir,
         seed=args.seed,

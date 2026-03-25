@@ -1,0 +1,4 @@
+trusted_authors = ["Copilot", "github-copilot[bot]"]
+required_pr_body_phrase = "Next recommended milestone"
+required_base_branch = "main"
+approver = "rogeriojorge"

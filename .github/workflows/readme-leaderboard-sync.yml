@@ -1,0 +1,91 @@
+name: README Leaderboard Sync
+
+on:
+  push:
+    branches:
+      - agent-state
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-readme:
+    if: github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync public optimization assets from agent-state
+        id: sync
+        run: |
+          set -euo pipefail
+          git fetch origin agent-state
+          git show origin/agent-state:README.md > /tmp/agent-state-README.md
+          cp /tmp/agent-state-README.md README.md
+          mkdir -p reports/readme_assets
+          if git cat-file -e origin/agent-state:reports/agent_reasoning.md 2>/dev/null; then
+            git show origin/agent-state:reports/agent_reasoning.md > reports/agent_reasoning.md
+          fi
+          if git cat-file -e origin/agent-state:reports/latest_summary.md 2>/dev/null; then
+            git show origin/agent-state:reports/latest_summary.md > reports/latest_summary.md
+          fi
+          rm -rf reports/readme_assets/*
+          git checkout origin/agent-state -- reports/readme_assets 2>/dev/null || true
+          if git diff --quiet -- README.md reports/latest_summary.md reports/agent_reasoning.md reports/readme_assets; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit sync branch
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          git checkout -B automation/readme-leaderboard-sync
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add README.md reports/latest_summary.md reports/agent_reasoning.md reports/readme_assets
+          git commit -m "Sync optimization leaderboard and movies from agent-state"
+          git push --force origin automation/readme-leaderboard-sync
+
+      - name: Create or reuse PR
+        if: steps.sync.outputs.changed == 'true'
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          existing_number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head automation/readme-leaderboard-sync --base main --json number --jq '.[0].number // ""')
+          if [ -n "$existing_number" ]; then
+            echo "number=$existing_number" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          new_number=$(gh pr create \
+            --repo "$GITHUB_REPOSITORY" \
+            --base main \
+            --head automation/readme-leaderboard-sync \
+            --title "Sync optimization leaderboard and movies from agent-state" \
+            --body "Automated public sync from the latest optimization state on the agent-state branch, including leaderboard GIFs and optimizer reasoning." \
+            --json number \
+            --jq '.number')
+          echo "number=$new_number" >> "$GITHUB_OUTPUT"
+
+      - name: Approve and auto-merge README sync PR
+        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && secrets.AUTOMERGE_GITHUB_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          gh pr review "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --approve
+          gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --auto --squash --delete-branch
+
+      - name: Report missing auto-merge token
+        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && secrets.AUTOMERGE_GITHUB_TOKEN == ''
+        run: |
+          echo "AUTOMERGE_GITHUB_TOKEN is not configured, so the README sync PR cannot auto-merge yet."

@@ -12,8 +12,10 @@ def test_optimizer_state_round_trip(tmp_path: Path):
         {
             "trial_id": "trial_0000",
             "drift_multiplier": 1.0,
-            "optimizer_score": 1.0,
-            "optimizer_objective": -1.0,
+            "ion_temperature_ratio": 0.01,
+            "ion_mass_over_proton_mass": 1.0,
+            "optimizer_score": -1.0,
+            "optimizer_objective": 1.0,
             "failed": False,
         },
     )
@@ -22,5 +24,5 @@ def test_optimizer_state_round_trip(tmp_path: Path):
 
     loaded = load_state(state_path, search_config)
     assert loaded["trials"][0]["trial_id"] == "trial_0000"
-    assert loaded["observations"]["x"] == [[1.0]]
-    assert loaded["observations"]["y"] == [-1.0]
+    assert loaded["observations"]["x"] == [[1.0, 0.01, 1.0]]
+    assert loaded["observations"]["y"] == [1.0]
