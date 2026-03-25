@@ -32,10 +32,10 @@ It is not a hidden chain-of-thought dump. It is a structured summary of what the
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 2.492328
-- Ion temperature ratio: 9.917124e-03
-- Ion mass over proton mass: 2.372967e+00
-- Observations available to the optimizer: 20
+- Drift multiplier: 1.791485
+- Ion temperature ratio: 9.894254e-03
+- Ion mass over proton mass: 3.562157e+00
+- Observations available to the optimizer: 22
 
 ## Public Copilot Research Trail
 
