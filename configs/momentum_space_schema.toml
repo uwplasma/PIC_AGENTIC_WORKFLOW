@@ -1,0 +1,111 @@
+# Momentum-space input schema for relativistic PIC particle initialization
+#
+# This file extends the base_input.toml schema with a [relativistic_species]
+# section that expresses particle state in normalized momentum space rather
+# than velocity space.
+#
+# Normalization conventions (consistent with relativistic_benchmarks.yaml):
+#   - momentum : p / (m_e c)          dimensionless, p̃ = gamma * beta
+#   - temperature : k_B T / (m_e c²)  dimensionless, Theta
+#   - velocity : v / c                 beta = v/c (retained for compatibility)
+#
+# Backward compatibility mapping:
+#   Theta = (vth_electrons_over_c_x)²  (exact in the NR limit)
+#
+# Scientific reference:
+#   Jüttner, F. (1911). Ann. Phys., 34, 856.
+#   Zenitani, S. (2015). Phys. Plasmas, 22, 042116.
+#
+# --- Inherited scalar parameters (unchanged from base_input.toml) ----------
+
+[input_parameters]
+length = 0.01
+amplitude_perturbation_x = 5e-7
+wavenumber_electrons_x = 1
+grid_points_per_Debye_length = 0.6
+# vth_electrons_over_c_x is retained for backward compatibility.
+# When [relativistic_species] is present, it takes precedence.
+vth_electrons_over_c_x = 0.05
+ion_temperature_over_electron_temperature_x = 0.01
+timestep_over_spatialstep_times_c = 2.0
+electron_drift_speed_x = 6e7
+velocity_plus_minus_electrons_x = true
+print_info = false
+seed = 1701
+external_electric_field_amplitude = 0
+external_electric_field_wavenumber = 0
+electron_charge_over_elementary_charge = -1
+ion_charge_over_elementary_charge = 1
+ion_mass_over_proton_mass = 1
+relativistic = true               # must be true when using momentum-space init
+tolerance_Picard_iterations_implicit_CN = 1e-10
+filter_passes = 3
+filter_alpha = 0.5
+filter_strides = [1, 2, 4]
+
+[solver_parameters]
+field_solver = 0
+time_evolution_algorithm = 0
+number_grid_points = 100
+number_pseudoelectrons = 5000
+total_steps = 1500
+max_number_of_Picard_iterations_implicit_CN = 12
+number_of_particle_substeps_implicit_CN = 2
+
+# --- Relativistic species specification (momentum space) -------------------
+#
+# Each [[relativistic_species]] entry describes one particle species.
+# The initialization sampler (maxwell_juttner.py) uses these parameters to
+# draw initial 3-momenta p̃ = (p̃_x, p̃_y, p̃_z) from the Maxwell–Jüttner
+# distribution and then applies a relativistic Lorentz boost.
+#
+# Required fields:
+#   name            : human-readable species label
+#   charge_sign     : +1 (ions) or -1 (electrons)
+#   mass_ratio      : m / m_e (electron = 1.0, proton ≈ 1836.15)
+#   theta           : dimensionless temperature k_B T / (m_e c²)
+#   beta_drift_x    : drift velocity along x in units of c (−1 < β < 1)
+#   number_fraction : fraction of total macroparticles assigned to this species
+#
+# Optional fields:
+#   beta_drift_y, beta_drift_z : transverse drift components (default 0.0)
+#   seed_offset     : integer offset added to the global RNG seed for this
+#                     species so different species have independent randomness
+#
+# Derived quantities (computed by the sampler, not set here):
+#   gamma_drift     : Lorentz factor = 1/sqrt(1 - beta_drift_x^2)
+#   p_drift         : normalized drift momentum = gamma_drift * beta_drift_x
+#   vth/c           : ≈ sqrt(theta) in the NR limit (informational only)
+
+[[relativistic_species]]
+name = "background_electrons"
+charge_sign = -1
+mass_ratio = 1.0
+theta = 0.0025          # Theta = (vth/c)^2 = 0.05^2 → vth/c ≈ 0.05 (NR)
+beta_drift_x = 0.0
+beta_drift_y = 0.0
+beta_drift_z = 0.0
+number_fraction = 0.9
+seed_offset = 0
+
+[[relativistic_species]]
+name = "beam_electrons"
+charge_sign = -1
+mass_ratio = 1.0
+theta = 0.0001          # cold beam: Theta = 0.01^2 → vth/c ≈ 0.01
+beta_drift_x = 0.9428090   # gamma=3: sqrt(1 - 1/9) ≈ 0.9428
+beta_drift_y = 0.0
+beta_drift_z = 0.0
+number_fraction = 0.1
+seed_offset = 1
+
+[[relativistic_species]]
+name = "ions"
+charge_sign = 1
+mass_ratio = 1836.15267
+theta = 0.000001        # cold ions: Theta = 0.001^2 → vth/c ≈ 0.001
+beta_drift_x = 0.0
+beta_drift_y = 0.0
+beta_drift_z = 0.0
+number_fraction = 1.0
+seed_offset = 2
