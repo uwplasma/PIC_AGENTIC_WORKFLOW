@@ -1,0 +1,223 @@
+# Relativistic 1D3V electrostatic PIC benchmark case definitions
+#
+# Each case provides:
+#   - physical parameters in normalized units (c = 1, omega_pe = 1)
+#   - literature-grounded reproduction targets
+#   - numerical guidance for PIC runs
+#
+# Normalization conventions (applied uniformly across all cases):
+#   - time        : t * omega_pe   (inverse electron plasma frequency)
+#   - velocity    : v / c          (beta = v/c)
+#   - momentum    : p / (m_e * c)  (normalized 4-momentum spatial component)
+#   - length      : x * omega_pe / c  (electron inertial lengths)
+#   - electric field : eE / (m_e * c * omega_pe)
+#
+# References are cited inline.  See reports/relativistic_benchmark_plan.md
+# for the full research summary.
+version: "1.0"
+
+cases:
+
+  # ── Case 1: Relativistic two-stream instability ─────────────────────────────
+  # Reference: Califano, F., Pegoraro, F., Bulanov, S. V., & Mangeney, A.
+  #   (1998). Kinetic saturation of the Weibel instability in a collisionless
+  #   plasma I. Phys. Rev. E, 57(6), 7048.
+  # Reference: Bret, A., Firpo, M.-C., & Deutsch, C. (2005). Characterization
+  #   of the initial filamentation of a relativistic electron beam passing
+  #   through a plasma. Phys. Rev. Lett., 94, 115002.
+  # Reference: Birdsall, C. K. & Langdon, A. B. (1991). Plasma Physics via
+  #   Computer Simulation. IOP Publishing. (Chapter 15, relativistic PIC).
+  #
+  # Two symmetric cold beams counter-streaming at relativistic speed in a
+  # fixed ion background.  The electrostatic mode is the fastest-growing
+  # instability when beam thermal spread is small.
+  - id: rel_two_stream
+    label: "Relativistic two-stream instability"
+    description: >
+      Two symmetric electron beams with equal and opposite relativistic drift
+      momenta in a stationary ion background.  The electrostatic Buneman-like
+      instability drives exponential growth of longitudinal electric field
+      fluctuations.  The maximum linear growth rate from cold-fluid relativistic
+      kinetic theory provides the primary reproduction target.
+    geometry: "1D3V"
+    physics: "electrostatic"
+    species:
+      - name: electrons_left
+        charge_sign: -1
+        mass_ratio: 1.0          # m / m_e
+        gamma_drift: 2.0         # Lorentz factor of bulk drift
+        beta_drift: 0.8660254    # v/c = sqrt(1 - 1/gamma^2)
+        beta_thermal: 0.01       # vth/c  (cold-beam approximation)
+        number_fraction: 0.5     # fraction of total electron density
+      - name: electrons_right
+        charge_sign: -1
+        mass_ratio: 1.0
+        gamma_drift: 2.0
+        beta_drift: -0.8660254   # opposite direction
+        beta_thermal: 0.01
+        number_fraction: 0.5
+      - name: ions
+        charge_sign: 1
+        mass_ratio: 1836.15267   # proton-to-electron mass ratio
+        gamma_drift: 1.0
+        beta_drift: 0.0
+        beta_thermal: 0.001
+        number_fraction: 1.0
+    normalization:
+      length_scale: "electron_inertial_length"   # c / omega_pe
+      time_scale: "inverse_plasma_frequency"     # 1 / omega_pe
+    domain:
+      n_wavelengths: 1           # minimal domain: one fastest-growing wavelength
+      # Fastest-growing mode for cold symmetric beams is near k*c/omega_pe ~ 0.5
+      k_peak_c_over_omega_pe: 0.5
+    numerical:
+      grid_points_per_debye_length: 0.6
+      particles_per_cell: 128
+      total_plasma_periods: 20
+      cfl_number: 0.5            # dt * c / dx
+    reproduction_targets:
+      # Cold-fluid relativistic two-stream growth rate (symmetric beams):
+      #   For each beam at fraction f=0.5, the exact NR growth rate is:
+      #     Im(omega) = sqrt(f)/2 * omega_pe = 1/(2*sqrt(2)) ~ 0.3536 * omega_pe
+      #   The relativistic suppression factor comes from the cold-fluid
+      #   equations: effective beam plasma frequency is omega_pe_beam/gamma^(3/2),
+      #   so the growth rate scales as gamma^(-3/2).
+      #   At gamma=2: 1/(2*sqrt(2)) * 2^(-3/2) = 0.3536 * 0.3536 ~ 0.125 * omega_pe
+      #   See the derivation in relativistic_benchmarks.py::two_stream_growth_rate_cold.
+      growth_rate_over_omega_pe:
+        expected: 0.125
+        tolerance_relative: 0.15    # 15 % tolerance: captures numerical noise
+        derivation: "cold_relativistic_two_stream"
+      # Total energy (kinetic + field) must be conserved at the < 1 % level
+      # over the full simulation duration.
+      energy_conservation_relative_error:
+        max_allowed: 0.01
+
+  # ── Case 2: Relativistic bump-on-tail instability ───────────────────────────
+  # Reference: Evstatiev, E. G., & Shadwick, B. A. (2013). Variational
+  #   formulation of particle algorithms for kinetic plasma simulations.
+  #   J. Comput. Phys., 245, 376–398.  (Section 5.3 relativistic beam tests).
+  # Reference: Hockney, R. W. & Eastwood, J. W. (1988). Computer Simulation
+  #   Using Particles. Taylor & Francis. (Section 9.3, streaming instabilities).
+  #
+  # Background warm plasma plus a low-density relativistic electron beam
+  # (beam density nb / n0 = 0.1).
+  - id: rel_bump_on_tail
+    label: "Relativistic bump-on-tail instability"
+    description: >
+      Cold background electron plasma plus a low-density (10 %) relativistic
+      electron beam (gamma_b = 3, beta_b ~ 0.943).  Tests beam-plasma resonance
+      and wave growth under relativistic kinematics.  The bump-on-tail weak-beam
+      approximation gives the reproduction target growth rate.
+    geometry: "1D3V"
+    physics: "electrostatic"
+    species:
+      - name: background_electrons
+        charge_sign: -1
+        mass_ratio: 1.0
+        gamma_drift: 1.0
+        beta_drift: 0.0
+        beta_thermal: 0.05       # warm background (mildly relativistic tails)
+        number_fraction: 0.9
+      - name: beam_electrons
+        charge_sign: -1
+        mass_ratio: 1.0
+        gamma_drift: 3.0
+        beta_drift: 0.9428090    # sqrt(1 - 1/9)
+        beta_thermal: 0.01       # cold beam
+        number_fraction: 0.1
+      - name: ions
+        charge_sign: 1
+        mass_ratio: 1836.15267
+        gamma_drift: 1.0
+        beta_drift: 0.0
+        beta_thermal: 0.001
+        number_fraction: 1.0
+    normalization:
+      length_scale: "electron_inertial_length"
+      time_scale: "inverse_plasma_frequency"
+    domain:
+      n_wavelengths: 1
+      # Resonance condition: k * vb ~ omega_pe  →  k*c/omega_pe ~ 1/beta_b ~ 1.06
+      k_peak_c_over_omega_pe: 1.06
+    numerical:
+      grid_points_per_debye_length: 0.6
+      particles_per_cell: 128
+      total_plasma_periods: 30
+      cfl_number: 0.5
+    reproduction_targets:
+      # Weak-beam bump-on-tail growth rate (relativistic, cubic resonance):
+      #   Near Langmuir resonance k*vb = omega_pe, the cubic dispersion gives:
+      #     Im(omega) = sqrt(3)/2 * (nb/(2*n0))^(1/3) * gamma_b^(-1) * omega_pe
+      #   Note: the factor gamma_b^(-1) (not gamma_b^(-1/3)) enters because
+      #   the effective beam plasma frequency is omega_pe_b/gamma_b^(3/2),
+      #   and the cubic root gives (1/gamma_b^3)^(1/3) = 1/gamma_b.
+      #   With nb/n0=0.1, gamma_b=3:
+      #     sqrt(3)/2 * (0.05)^(1/3) * (1/3) ~ 0.106 * omega_pe
+      #   See relativistic_benchmarks.py::bump_on_tail_growth_rate for derivation.
+      growth_rate_over_omega_pe:
+        expected: 0.106
+        tolerance_relative: 0.30    # 30 % tolerance: warm-background corrections
+        derivation: "weak_beam_bump_on_tail_relativistic"
+      energy_conservation_relative_error:
+        max_allowed: 0.01
+
+  # ── Case 3: Relativistic energy-conservation stress test ────────────────────
+  # Reference: Vay, J.-L. (2008). Simulation of beams or plasmas crossing at
+  #   relativistic velocity. Phys. Plasmas, 15, 056701.
+  #   (Section III, energy-conservation properties of relativistic pushers)
+  # Reference: Boris, J. P. (1970). Relativistic plasma simulation —
+  #   optimization of a hybrid code. Proc. 4th Conf. Numer. Simul. Plasmas,
+  #   Naval Res. Lab., Washington DC, pp. 3–67.
+  #
+  # Thermalized relativistic plasma, no net drift, no external fields.
+  # Total energy must not drift over many plasma periods.
+  - id: energy_conservation
+    label: "Relativistic energy-conservation benchmark"
+    description: >
+      Thermalized relativistic electron plasma (beta_th = 0.3) with no net
+      drift in a periodic box and no external fields.  Total energy (kinetic +
+      electrostatic field) should be conserved.  This case isolates integrator
+      quality from instability physics and directly tests the Boris/Vay push
+      implementation for relativistic electrons.
+    geometry: "1D3V"
+    physics: "electrostatic"
+    species:
+      - name: electrons
+        charge_sign: -1
+        mass_ratio: 1.0
+        gamma_drift: 1.0
+        beta_drift: 0.0
+        beta_thermal: 0.3        # moderately relativistic thermal spread
+        number_fraction: 1.0
+      - name: ions
+        charge_sign: 1
+        mass_ratio: 1836.15267
+        gamma_drift: 1.0
+        beta_drift: 0.0
+        beta_thermal: 0.001
+        number_fraction: 1.0
+    normalization:
+      length_scale: "electron_inertial_length"
+      time_scale: "inverse_plasma_frequency"
+    domain:
+      n_wavelengths: 4           # several wavelengths to average over noise
+      k_peak_c_over_omega_pe: null   # no specific unstable mode
+    numerical:
+      grid_points_per_debye_length: 0.5
+      particles_per_cell: 256
+      total_plasma_periods: 10
+      cfl_number: 0.5
+    reproduction_targets:
+      # Implicit or energy-conserving schemes: < 0.1 % total energy drift.
+      # Explicit leapfrog (Boris push): secular energy growth ~ O((dt*omega_pe)^2).
+      energy_conservation_relative_error:
+        max_allowed: 0.001       # 0.1 % for implicit / energy-conserving schemes
+        max_allowed_explicit: 0.01  # 1 % for standard explicit Boris push
+        notes: >
+          The tighter 0.1 % target is for implicit or Hamiltonian-preserving
+          schemes (e.g. Crank-Nicolson, variational integrators).  The looser
+          1 % target applies to the explicit Boris push at the recommended CFL.
+      # Total canonical momentum must be zero to < 0.1 % throughout:
+      mean_momentum_conservation_relative_error:
+        max_allowed: 0.001

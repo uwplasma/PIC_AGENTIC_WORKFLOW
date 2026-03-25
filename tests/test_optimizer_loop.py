@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from jaxincell_drift_opt.config import campaign_paths
+from jaxincell_drift_opt.config import campaign_paths, load_base_input
 from jaxincell_drift_opt.optimizer_loop import run_campaign
 
 
@@ -53,3 +53,8 @@ def test_run_campaign_with_mock_runner(tmp_path: Path):
     assert state["best_result"] is not None
     assert (root / "state" / "optimizer_state.json").exists()
     assert (root / "reports" / "latest_summary.md").exists()
+
+
+def test_base_input_meets_hourly_leaderboard_particle_floor():
+    base_input = load_base_input(Path(__file__).resolve().parents[1] / "configs" / "base_input.toml")
+    assert int(base_input["solver_parameters"]["number_pseudoelectrons"]) >= 3500
