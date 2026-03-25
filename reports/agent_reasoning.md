@@ -12,30 +12,30 @@ It is not a hidden chain-of-thought dump. It is a structured summary of what the
 
 ## Current Best Hypothesis
 
-- Best trial: trial_0005
-- Objective: -3.024196
-- Tail mean electrostatic energy: 9.458102e-04
-- Drift multiplier: 2.116681
-- Ion temperature ratio: 1.543591e-02
-- Ion mass over proton mass: 3.108284e+00
+- Best trial: trial_0008
+- Objective: -3.154492
+- Tail mean electrostatic energy: 7.006616e-04
+- Drift multiplier: 2.499582
+- Ion temperature ratio: 8.241718e-03
+- Ion mass over proton mass: 1.434882e+00
 
 ## What The Optimizer Has Learned
 
-- Rank 1: trial_0005 reached objective=-3.024196 with drift=2.116681, temp_ratio=1.543591e-02, mass_ratio=3.108284e+00.
-- Rank 2: trial_0002 reached objective=-3.010257 with drift=2.065030, temp_ratio=1.000000e-02, mass_ratio=1.000000e+00.
-- Rank 3: trial_0001 reached objective=-2.995602 with drift=1.417163, temp_ratio=1.000000e-02, mass_ratio=1.000000e+00.
+- Rank 1: trial_0008 reached objective=-3.154492 with drift=2.499582, temp_ratio=8.241718e-03, mass_ratio=1.434882e+00.
+- Rank 2: trial_0011 reached objective=-3.047744 with drift=2.490286, temp_ratio=1.059422e-02, mass_ratio=1.043739e+00.
+- Rank 3: trial_0007 reached objective=-3.042637 with drift=2.499613, temp_ratio=3.853876e-02, mass_ratio=1.467770e+00.
 
 ## Relative Comparison
 
-- The current best trial improves the objective over the runner-up by 0.013939.
-- Compared with the initial condition, the best trial changes drift by a factor of 2.116681 and moves the ion temperature ratio to 1.543591e-02.
+- The current best trial improves the objective over the runner-up by 0.106748.
+- Compared with the initial condition, the best trial changes drift by a factor of 2.499582 and moves the ion temperature ratio to 8.241718e-03.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 2.244455
-- Ion temperature ratio: 7.675182e-03
-- Ion mass over proton mass: 3.047594e+00
-- Observations available to the optimizer: 6
+- Drift multiplier: 2.492328
+- Ion temperature ratio: 9.917124e-03
+- Ion mass over proton mass: 2.372967e+00
+- Observations available to the optimizer: 20
 
 ## Public Copilot Research Trail
 
