@@ -4,6 +4,12 @@ PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell]
 
 The repo exists as a reviewable pilot for safe agentic scientific workflows. Public CI stays on GitHub-hosted runners, trusted manual and scheduled optimization run on a maintainer-controlled self-hosted macOS runner, periodic optimization writes only to a dedicated `agent-state` branch, and code-editing automation is PR-first.
 
+## Public Reasoning Log
+
+The first file to inspect for the current competition state is [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md).
+
+That report is the public decision log for the optimization loop: active solver parameters, the per-trial public analysis record, what the optimizer currently believes, and the planned next experiment. It is intentionally a structured public rationale rather than a hidden private chain-of-thought dump.
+
 ## Relationship to JAX-in-Cell
 
 This repo does not fork or patch JAX-in-Cell internals. It imports the public package and uses the current supported flow:
@@ -50,34 +56,11 @@ Hourly self-hosted search minimizes the log10 of the tail-mean electrostatic ene
 
 Search ranges: drift=[0.25, 2.5], ion temperature ratio=[0.001, 1.0], ion mass over proton mass=[0.25, 4.0]
 
-| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Objective |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | trial_0008 | 2.499582 | 8.241718e-03 | 1.434882e+00 | 7.006616e-04 | -3.154492 |
-| 2 | trial_0011 | 2.490286 | 1.059422e-02 | 1.043739e+00 | 8.958936e-04 | -3.047744 |
-| 3 | trial_0007 | 2.499613 | 3.853876e-02 | 1.467770e+00 | 9.064891e-04 | -3.042637 |
-| 4 | trial_0002 | 2.065030 | 1.000000e-02 | 1.000000e+00 | 9.766588e-04 | -3.010257 |
-| 5 | trial_0001 | 1.417163 | 1.000000e-02 | 1.000000e+00 | 1.010178e-03 | -2.995602 |
-| 6 | trial_0019 | 2.113674 | 1.136719e-02 | 1.873329e+00 | 1.045518e-03 | -2.980668 |
-| 7 | trial_0016 | 2.499457 | 4.244457e-03 | 1.035684e+00 | 1.153987e-03 | -2.937799 |
-| 8 | trial_0004 | 2.172311 | 1.229421e-02 | 1.167692e+00 | 1.251461e-03 | -2.902583 |
-| 9 | trial_0005 | 2.350411 | 1.455699e-03 | 2.640412e-01 | 1.354111e-03 | -2.868346 |
-| 10 | trial_0006 | 2.015285 | 5.549261e-01 | 4.873775e-01 | 1.472179e-03 | -2.832039 |
+No successful optimization trials have been recorded yet.
 
 ### Movies
 
 The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
-
-#### Initial condition
-
-![Initial condition](reports/readme_assets/initial-condition.gif)
-
-#### Leaderboard rank 1
-
-![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
-
-#### Leaderboard rank 2
-
-![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
 
 See [reports/agent_reasoning.md](reports/agent_reasoning.md) for the public optimizer reasoning and next suggested experiment.
 

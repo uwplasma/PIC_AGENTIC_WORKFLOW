@@ -1,13 +1,15 @@
 from __future__ import annotations
 
 import argparse
+import shutil
 from pathlib import Path
 
 from .config import campaign_paths, load_scoring_config, load_search_config
 from .optimizer_loop import run_campaign, suggest_next
 from .optimizer_state import default_state, save_state
-from .reporting import write_best_result, write_summary_markdown, write_trials_csv
+from .reporting import write_agent_reasoning, write_best_result, write_readme_leaderboard, write_summary_markdown, write_trials_csv
 from .run_trial import run_trial
+from .utils import ensure_directory
 
 
 def _parse_range(value: str | None) -> tuple[float, float] | None:
@@ -92,8 +94,21 @@ def bootstrap_state_main() -> None:
     args = parser.parse_args()
     paths = campaign_paths(args.root)
     search_config = load_search_config(paths.search_config_path)
-    save_state(paths.optimizer_state_path, default_state(search_config))
+    scoring_config = load_scoring_config(paths.scoring_config_path)
+
+    for generated_dir in [paths.results_dir, paths.report_plots_dir, paths.readme_assets_dir]:
+        if generated_dir.exists():
+            shutil.rmtree(generated_dir)
+
+    ensure_directory(paths.results_dir)
+    ensure_directory(paths.report_plots_dir)
+    ensure_directory(paths.readme_assets_dir)
+
+    state = default_state(search_config)
+    save_state(paths.optimizer_state_path, state)
     write_trials_csv(paths.trials_csv_path, [])
     write_best_result(paths.best_result_path, None)
-    write_summary_markdown(paths.latest_summary_path, [], None, search_config, load_scoring_config(paths.scoring_config_path))
+    write_summary_markdown(paths.latest_summary_path, [], None, search_config, scoring_config)
+    write_agent_reasoning(paths.agent_reasoning_path, [], None, search_config, suggest_next(paths))
+    write_readme_leaderboard(paths.root / "README.md", [], search_config)
     print(paths.optimizer_state_path)

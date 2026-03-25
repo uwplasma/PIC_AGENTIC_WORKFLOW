@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .config import ScoringConfig, SearchConfig
+from .config import ScoringConfig, SearchConfig, load_base_input
 from .utils import atomic_write_json, atomic_write_text, replace_marked_section, write_csv
 
 
@@ -118,11 +118,22 @@ def write_agent_reasoning(
     next_suggestion: dict | None,
 ) -> None:
     sorted_trials = _sorted_successful_trials(trials)
+    base_input = load_base_input(search_config.base_input)
+    solver_parameters = base_input.get("solver_parameters", {})
     lines = [
         "# Agent Reasoning",
         "",
         "This report exposes the public-facing reasoning of the automated optimization loop.",
-        "It is not a hidden chain-of-thought dump. It is a structured summary of what the optimizer currently believes, what has improved, and what it plans to try next.",
+        "It is not a hidden chain-of-thought dump. It is a structured decision log covering the active run configuration, per-trial outcomes, current optimizer beliefs, and the planned next experiment.",
+        "",
+        "## Active Competition Configuration",
+        "",
+        f"- Base input: {search_config.base_input}",
+        f"- Number of grid points: {int(solver_parameters.get('number_grid_points', 0))}",
+        f"- Number of pseudoelectrons: {int(solver_parameters.get('number_pseudoelectrons', 0))}",
+        f"- Total steps: {int(solver_parameters.get('total_steps', 0))}",
+        f"- Baseline included: {search_config.include_baseline}",
+        f"- Baseline drift multiplier: {search_config.baseline_multiplier:.6f}",
         "",
         "## Objective",
         "",
@@ -144,6 +155,16 @@ def write_agent_reasoning(
                 f"- Drift multiplier: {best_result['drift_multiplier']:.6f}",
                 f"- Ion temperature ratio: {best_result['candidate_ion_temperature_ratio']:.6e}",
                 f"- Ion mass over proton mass: {best_result['candidate_ion_mass_over_proton_mass']:.6e}",
+                "",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "## Current Best Hypothesis",
+                "",
+                "- No completed successful trials are recorded yet for this competition reset.",
+                "- The next run will establish the fresh baseline and first posterior update under the current solver parameters.",
                 "",
             ]
         )
@@ -169,6 +190,21 @@ def write_agent_reasoning(
             ]
         )
 
+    lines.extend(["## Trial-By-Trial Public Decision Log", ""])
+    if trials:
+        for trial in trials:
+            lines.append(
+                "- "
+                f"{trial['trial_id']}: objective={trial['optimizer_objective']:.6f}, "
+                f"tail_mean_E={trial['tail_mean_E']:.6e}, drift={trial['drift_multiplier']:.6f}, "
+                f"temp_ratio={trial['candidate_ion_temperature_ratio']:.6e}, "
+                f"mass_ratio={trial['candidate_ion_mass_over_proton_mass']:.6e}, "
+                f"failed={trial['failed']}."
+            )
+    else:
+        lines.append("- No trials have been run since the fresh-start reset.")
+    lines.append("")
+
     if next_suggestion is not None:
         lines.extend(
             [
@@ -187,7 +223,7 @@ def write_agent_reasoning(
             "## Public Copilot Research Trail",
             "",
             "- Repository issue and pull request threads are the public review trail for the relativistic porting agent.",
-            "- This markdown report is the public reasoning trail for the unattended optimization loop.",
+            "- This markdown report is the public reasoning and decision trail for the unattended optimization loop.",
             "",
         ]
     )
