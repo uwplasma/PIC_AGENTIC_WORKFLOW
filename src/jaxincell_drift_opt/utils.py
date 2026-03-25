@@ -45,6 +45,16 @@ def atomic_write_json(path: Path, payload: Any) -> None:
     atomic_write_text(path, json.dumps(to_serializable(payload), indent=2, sort_keys=True) + "\n")
 
 
+def replace_marked_section(text: str, marker_start: str, marker_end: str, section_lines: list[str]) -> str:
+    start_index = text.find(marker_start)
+    end_index = text.find(marker_end)
+    if start_index == -1 or end_index == -1 or end_index < start_index:
+        raise ValueError(f"Could not locate README markers '{marker_start}' and '{marker_end}'")
+    start_index += len(marker_start)
+    replacement = "\n\n" + "\n".join(section_lines).rstrip() + "\n\n"
+    return text[:start_index] + replacement + text[end_index:]
+
+
 def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, Any]]) -> None:
     ensure_directory(path.parent)
     with NamedTemporaryFile("w", encoding="utf-8", newline="", dir=path.parent, delete=False) as handle:

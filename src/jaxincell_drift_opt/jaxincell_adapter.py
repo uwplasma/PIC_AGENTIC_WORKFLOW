@@ -4,7 +4,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from .mutate_input import apply_drift_multiplier
+from .mutate_input import apply_search_parameters
 
 
 def _load_jaxincell_symbols() -> dict[str, Any]:
@@ -38,7 +38,11 @@ def validate_drift_key(base_input_path: Path, drift_key: str) -> None:
 def run_jaxincell_case(
     base_input_path: Path,
     drift_multiplier: float,
+    ion_temperature_ratio: float | None,
+    ion_mass_over_proton_mass: float | None,
     drift_key: str,
+    ion_temperature_ratio_key: str,
+    ion_mass_key: str,
     seed: int | None = None,
     print_info: bool = False,
 ) -> dict[str, Any]:
@@ -50,7 +54,15 @@ def run_jaxincell_case(
             raise KeyError(f"Drift key '{drift_key}' is missing from the current JAX-in-Cell parameter schema")
         input_parameters[drift_key] = initialized_parameters[drift_key]
 
-    mutated_input, mutation = apply_drift_multiplier(input_parameters, drift_multiplier, drift_key)
+    mutated_input, mutation = apply_search_parameters(
+        input_parameters,
+        drift_multiplier=drift_multiplier,
+        ion_temperature_ratio=ion_temperature_ratio,
+        ion_mass_over_proton_mass=ion_mass_over_proton_mass,
+        drift_key=drift_key,
+        ion_temperature_ratio_key=ion_temperature_ratio_key,
+        ion_mass_key=ion_mass_key,
+    )
     mutated_input["print_info"] = bool(print_info)
     if seed is not None:
         mutated_input["seed"] = int(seed)

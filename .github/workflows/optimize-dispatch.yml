@@ -90,6 +90,18 @@ jobs:
           python3 -m venv .venv
           .venv/bin/python -m pip install --upgrade pip
 
+      - name: Restore latest optimizer state from agent-state
+        run: |
+          set -euo pipefail
+          git fetch origin agent-state:agent-state || true
+          rm -rf .agent-state-restore
+          if git show-ref --verify --quiet refs/heads/agent-state; then
+            git worktree add .agent-state-restore agent-state
+            .venv/bin/python scripts/restore_state_branch.py --source-root "$PWD/.agent-state-restore" --target-root "$PWD"
+          else
+            echo "No agent-state branch available yet; starting from repository state."
+          fi
+
       - name: Install dependencies
         run: |
           .venv/bin/python -m pip install -r requirements.txt

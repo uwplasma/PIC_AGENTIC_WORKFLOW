@@ -25,6 +25,8 @@ def score_trial_output(
     output: dict,
     *,
     drift_multiplier: float,
+    ion_temperature_ratio: float,
+    ion_mass_over_proton_mass: float,
     seed: int | None,
     wall_time_seconds: float,
     tail_fraction: float,
@@ -37,6 +39,8 @@ def score_trial_output(
     if failed:
         return {
             "drift_multiplier": float(drift_multiplier),
+            "ion_temperature_ratio": float(ion_temperature_ratio),
+            "ion_mass_over_proton_mass": float(ion_mass_over_proton_mass),
             "seed": seed,
             "failed": True,
             "failure_reason": failure_reason or "unknown_failure",
@@ -45,8 +49,8 @@ def score_trial_output(
             "tail_max_E": 0.0,
             "final_E": 0.0,
             "time_of_peak_E": None,
-            "optimizer_score": float(failure_penalty),
-            "optimizer_objective": float(-failure_penalty),
+            "optimizer_score": float(-failure_penalty),
+            "optimizer_objective": float(failure_penalty),
             "score_version": score_version,
         }
 
@@ -56,10 +60,13 @@ def score_trial_output(
     tail = energy[-tail_count:]
     peak_index = int(np.argmax(energy))
     tail_mean = float(np.mean(tail))
-    optimizer_score = float(log10(tail_mean + eps))
+    optimizer_objective = float(log10(tail_mean + eps))
+    optimizer_score = float(-optimizer_objective)
 
     return {
         "drift_multiplier": float(drift_multiplier),
+        "ion_temperature_ratio": float(ion_temperature_ratio),
+        "ion_mass_over_proton_mass": float(ion_mass_over_proton_mass),
         "seed": seed,
         "failed": False,
         "failure_reason": None,
@@ -69,6 +76,6 @@ def score_trial_output(
         "final_E": float(energy[-1]),
         "time_of_peak_E": float(time_array[peak_index]),
         "optimizer_score": optimizer_score,
-        "optimizer_objective": float(-optimizer_score),
+        "optimizer_objective": optimizer_objective,
         "score_version": score_version,
     }

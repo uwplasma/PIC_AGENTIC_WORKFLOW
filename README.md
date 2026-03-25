@@ -1,6 +1,6 @@
 # PIC Agentic Workflow
 
-PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It mutates the electron drift speed in a base JAX-in-Cell input, runs a bounded simulation, scores the final nonlinear saturation of electric-field energy, and uses a persistent Bayesian optimization loop to choose the next trial.
+PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It now runs a persistent global Bayesian minimization loop over the two-stream-instability setup, exploring drift multiplier, ion-to-electron temperature ratio, and ion mass proxy to drive the final nonlinear electrostatic energy as low as possible.
 
 The repo exists as a reviewable pilot for safe agentic scientific workflows. Public CI stays on GitHub-hosted runners, trusted manual and scheduled optimization run on a maintainer-controlled self-hosted macOS runner, periodic optimization writes only to a dedicated `agent-state` branch, and code-editing automation is PR-first.
 
@@ -12,23 +12,25 @@ This repo does not fork or patch JAX-in-Cell internals. It imports the public pa
 2. `simulation(...)` runs the case.
 3. `diagnostics(output)` computes `electric_field_energy` and related metrics.
 
-The adapter validates the real drift parameter name against the installed package before each run. With the current code path, the optimized parameter is `electron_drift_speed_x`.
+The adapter validates the real drift parameter name against the installed package before each run. With the current code path, the global search space includes `electron_drift_speed_x`, `ion_temperature_over_electron_temperature_x`, and `ion_mass_over_proton_mass`.
 
 ## Objective and Score
 
-The optimization variable is `drift_multiplier`, with candidate drift defined as:
+The default search variables are:
 
-`candidate_drift = base_drift * drift_multiplier`
+- `drift_multiplier`, applied as `candidate_drift = base_drift * drift_multiplier`
+- `ion_temperature_over_electron_temperature_x`
+- `ion_mass_over_proton_mass`
 
 The default search range is configured in [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml).
 
-The physical target is the final nonlinear saturation of electric-field energy. The default score is:
+The physical target is the final nonlinear saturation of electric-field energy. The optimization objective is:
 
 `tail_mean_E = mean(electric_field_energy over final 20% of steps)`
 
-`optimizer_score = log10(tail_mean_E + eps)`
+`optimizer_objective = log10(tail_mean_E + eps)`
 
-Since `scikit-optimize` minimizes by default, the stored optimizer objective is `-optimizer_score`.
+The search minimizes `optimizer_objective`, which is equivalent to minimizing `tail_mean_E`. For human-readable plots and summaries, the repo also stores `optimizer_score = -optimizer_objective`, so higher score still means better suppression of electrostatic energy.
 
 Secondary metrics include:
 
@@ -39,6 +41,43 @@ Secondary metrics include:
 - `wall_time_seconds`
 - `seed`
 - `failed`
+
+<!-- leaderboard:start -->
+
+## Optimization Leaderboard
+
+Hourly self-hosted search minimizes the log10 of the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.
+
+Search ranges: drift=[0.25, 2.5], ion temperature ratio=[0.001, 1.0], ion mass over proton mass=[0.25, 4.0]
+
+| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Objective |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | trial_0005 | 2.116681 | 1.543591e-02 | 3.108284e+00 | 9.458102e-04 | -3.024196 |
+| 2 | trial_0002 | 2.065030 | 1.000000e-02 | 1.000000e+00 | 9.766588e-04 | -3.010257 |
+| 3 | trial_0001 | 1.417163 | 1.000000e-02 | 1.000000e+00 | 1.010178e-03 | -2.995602 |
+| 4 | trial_0004 | 2.050522 | 8.852368e-03 | 6.039016e-01 | 1.119452e-03 | -2.950994 |
+| 5 | trial_0000 | 1.000000 | 1.000000e-02 | 1.000000e+00 | 2.473540e-03 | -2.606681 |
+| 6 | trial_0003 | 1.417163 | 2.630512e-01 | 1.092385e+00 | 3.588426e-03 | -2.445096 |
+
+### Movies
+
+The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
+
+#### Initial condition
+
+![Initial condition](reports/readme_assets/initial-condition.gif)
+
+#### Leaderboard rank 1
+
+![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
+
+#### Leaderboard rank 2
+
+![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
+
+See [reports/agent_reasoning.md](reports/agent_reasoning.md) for the public optimizer reasoning and next suggested experiment.
+
+<!-- leaderboard:end -->
 
 ## Repository Layout
 
@@ -71,7 +110,7 @@ python -m pip install -e .
 ## Run One Trial Locally
 
 ```bash
-python scripts/run_one_trial.py --drift-multiplier 1.0
+python scripts/run_one_trial.py --drift-multiplier 1.0 --ion-temperature-ratio 0.01 --ion-mass-over-proton-mass 1.0
 ```
 
 This writes:
@@ -113,6 +152,8 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 - `optimize-scheduled.yml`: hourly bounded optimization with concurrency control on the self-hosted runner
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
 - `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
+- `copilot-automerge.yml`: trusted auto-approval and auto-merge for Copilot-authored PRs when a maintainer token is configured
+- `readme-leaderboard-sync.yml`: GitHub-hosted sync that lifts the generated leaderboard README from `agent-state` back onto `main`
 - `relativistic-agent-loop.yml`: hourly GitHub-hosted watchdog that ensures exactly one open Copilot-assigned relativistic milestone issue exists for the PR-first research loop
 
 ## Relativistic Research Agent
@@ -128,6 +169,10 @@ This repository can also host PR-first research-agent work aimed at a future rel
 This is the safe way to pursue a momentum-space relativistic design in this repository: benchmark first, define validation criteria, prototype interfaces and diagnostics here, and only then carry the validated upstream changes into JAX-in-Cell itself.
 
 The loop is now partially self-maintaining inside GitHub: when there is no open relativistic milestone issue, the watchdog workflow creates one and assigns it to the configured maintainers, and it attempts to attach `Copilot` as well. In testing, the standard GitHub Issues API created the issue successfully but did not attach the `Copilot` assignee even when called with a maintainer token, which indicates a current platform limitation rather than a repository bug. The repository can keep the queue populated automatically, but it cannot force the closed-source Copilot service to run continuously or attach itself through the public API if GitHub does not expose that capability.
+
+Trusted Copilot PRs can, however, be auto-approved and auto-merged after CI if you configure a repository secret named `AUTOMERGE_GITHUB_TOKEN` containing a maintainer token with repository access. The workflow policy for that path lives in [agent/policies/automerge.toml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/automerge.toml).
+
+The same maintainer token is also used by the README sync workflow to auto-merge the public leaderboard updates that are generated from the hourly optimization state.
 
 ## Trusted Self-Hosted Optimization
 
@@ -153,7 +198,7 @@ If by "agent tab" you mean a GitHub Copilot coding-agent surface, that is not th
 
 ## Current Limitations
 
-- The initial campaign is one-dimensional and only tunes `electron_drift_speed_x`.
+- The current global campaign still operates within the non-relativistic JAX-in-Cell wrapper interface and does not yet change the upstream particle pusher.
 - This repository does not itself contain the JAX-in-Cell particle pusher or particle state internals, so a true momentum-space relativistic implementation requires a later upstream change in JAX-in-Cell.
 - The repo assumes `diagnostics(output)` continues to expose `electric_field_energy`; if that changes, the fallback recomputes from `electric_field` and `dx`.
 - The issue-command workflow ships fail-closed with an empty actor allowlist until maintainers populate [agent/policies/actors.yaml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/actors.yaml).
