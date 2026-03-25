@@ -1,0 +1,8 @@
+issue_label = "relativistic-agent"
+issue_label_color = "1d76db"
+issue_label_description = "Automated Copilot milestone loop for relativistic PIC work"
+
+issue_title = "Relativistic milestone: choose next highest-value bounded step"
+issue_title_prefix = "Relativistic milestone:"
+copilot_assignee = "Copilot"
+human_assignees = ["rogeriojorge"]
