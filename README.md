@@ -56,11 +56,27 @@ Hourly self-hosted search minimizes the log10 of the tail-mean electrostatic ene
 
 Search ranges: drift=[0.25, 2.5], ion temperature ratio=[0.001, 1.0], ion mass over proton mass=[0.25, 4.0]
 
-No successful optimization trials have been recorded yet.
+| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Objective |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | trial_0002 | 1.970466 | 2.660747e-02 | 3.481060e+00 | 1.422808e-03 | -2.846854 |
+| 2 | trial_0000 | 1.000000 | 1.000000e-02 | 1.000000e+00 | 1.943575e+00 | 0.288601 |
+| 3 | trial_0001 | 1.417163 | 2.630512e-01 | 1.092385e+00 | 2.688404e+00 | 0.429495 |
 
 ### Movies
 
 The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
+
+#### Initial condition
+
+![Initial condition](reports/readme_assets/initial-condition.gif)
+
+#### Leaderboard rank 1
+
+![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
+
+#### Leaderboard rank 2
+
+![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
 
 See [reports/agent_reasoning.md](reports/agent_reasoning.md) for the public optimizer reasoning and next suggested experiment.
 
