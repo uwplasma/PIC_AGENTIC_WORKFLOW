@@ -424,7 +424,7 @@ def sample_maxwell_juttner_1d(
     inv_cdf = interp1d(cdf_grid, p_grid, kind="linear", bounds_error=False,
                        fill_value=(p_grid[0], p_grid[-1]))
     u_uniform = rng.uniform(0.0, 1.0, size=n_particles)
-    return inv_cdf(u_uniform).astype(float)
+    return inv_cdf(u_uniform)
 
 
 def sample_maxwell_juttner_3d(
@@ -475,7 +475,7 @@ def sample_maxwell_juttner_3d(
     inv_cdf = interp1d(cdf_grid, u_grid, kind="linear", bounds_error=False,
                        fill_value=(u_grid[0], u_grid[-1]))
     u_uniform = rng.uniform(0.0, 1.0, size=n_particles)
-    magnitudes = inv_cdf(u_uniform).astype(float)
+    magnitudes = inv_cdf(u_uniform)
 
     # Step 2: sample isotropic direction using normal distribution trick
     # Sampling uniform direction: draw 3 standard normals, normalize
