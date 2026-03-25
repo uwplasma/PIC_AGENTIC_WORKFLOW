@@ -2,7 +2,7 @@
 
 PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It mutates the electron drift speed in a base JAX-in-Cell input, runs a bounded simulation, scores the final nonlinear saturation of electric-field energy, and uses a persistent Bayesian optimization loop to choose the next trial.
 
-The repo exists as a reviewable pilot for safe agentic scientific workflows. Public CI stays on GitHub-hosted runners, periodic optimization writes only to a dedicated `agent-state` branch, and code-editing automation is PR-first.
+The repo exists as a reviewable pilot for safe agentic scientific workflows. Public CI stays on GitHub-hosted runners, trusted manual and scheduled optimization run on a maintainer-controlled self-hosted macOS runner, periodic optimization writes only to a dedicated `agent-state` branch, and code-editing automation is PR-first.
 
 ## Relationship to JAX-in-Cell
 
@@ -110,20 +110,31 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 
 - `ci.yml`: install, test, and run one smoke trial on GitHub-hosted runners
 - `optimize-dispatch.yml`: manual run with trial count, seed, range override, and optional state-branch push
-- `optimize-scheduled.yml`: scheduled bounded optimization with concurrency control
+- `optimize-scheduled.yml`: hourly bounded optimization with concurrency control on the self-hosted runner
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
 - `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
 
-## Promoting to a Trusted Self-Hosted Lane
+## Trusted Self-Hosted Optimization
 
-The optimization workflows currently target GitHub-hosted runners for small cases. To promote them later:
+The trusted optimization lanes now target a maintainer-controlled self-hosted runner with labels `self-hosted`, `OSX`, `Arm64`, `uwplasma`, and `macmini`.
 
-1. provision a trusted runner group for maintainer-only triggers,
-2. change the workflow `runs-on` label,
-3. keep `pull_request` validation on GitHub-hosted runners,
-4. keep state updates isolated to `agent-state`.
+- `optimize-dispatch.yml` runs on the self-hosted runner
+- `optimize-scheduled.yml` runs on the self-hosted runner
+- `ci.yml` stays on GitHub-hosted runners
+- `optimize-issue-command.yml` stays on GitHub-hosted runners
+- `copilot-maintenance.yml` stays on GitHub-hosted runners
 
-No public PRs or arbitrary comments should ever land on self-hosted infrastructure.
+This split keeps public PR validation and public comment handling away from self-hosted infrastructure while still allowing trusted optimization jobs to use the local machine. Because this repository is public, the runner group access policy in the organization must explicitly allow this repository to use the selected self-hosted runner group.
+
+## What You Will See In GitHub
+
+The unattended hourly experiment loop is a scheduled GitHub Actions workflow, not a GitHub Copilot coding agent task.
+
+1. The workflow runs appear in the `Actions` tab under `Optimize Scheduled`.
+2. Each run will show the job landing on the self-hosted labels when the runner is online.
+3. The runner itself is managed under the organization Actions runner settings, not inside a Copilot coding-agent session view.
+
+If by "agent tab" you mean a GitHub Copilot coding-agent surface, that is not the right GitHub mechanism for an hourly unattended scientific optimization loop. The correct GitHub-native mechanism is a scheduled workflow running on your self-hosted runner.
 
 ## Current Limitations
 

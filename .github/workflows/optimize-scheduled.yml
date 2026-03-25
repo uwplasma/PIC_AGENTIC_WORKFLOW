@@ -2,7 +2,7 @@ name: Optimize Scheduled
 
 on:
   schedule:
-    - cron: "30 12 * * 1"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -14,7 +14,12 @@ concurrency:
 
 jobs:
   optimize:
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - OSX
+      - Arm64
+      - uwplasma
+      - macmini
     env:
       MPLBACKEND: Agg
     steps:
@@ -35,7 +40,7 @@ jobs:
           pip install -e .
 
       - name: Run bounded scheduled campaign
-        run: python scripts/run_campaign.py --num-trials 2 --seed 1701
+        run: python scripts/run_campaign.py --num-trials 1 --seed 1701
 
       - name: Upload optimization artifacts
         uses: actions/upload-artifact@v4

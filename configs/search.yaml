@@ -11,4 +11,4 @@ base_estimator: GP
 state_branch: agent-state
 trials_per_run_default: 2
 trusted_runner_label: ubuntu-latest
-self_hosted_runner_label: [self-hosted, trusted-uwplasma]
+self_hosted_runner_label: [self-hosted, OSX, Arm64, uwplasma, macmini]
