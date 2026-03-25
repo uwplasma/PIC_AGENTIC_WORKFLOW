@@ -113,6 +113,7 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 - `optimize-scheduled.yml`: hourly bounded optimization with concurrency control on the self-hosted runner
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
 - `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
+- `relativistic-agent-loop.yml`: hourly GitHub-hosted watchdog that ensures exactly one open Copilot-assigned relativistic milestone issue exists for the PR-first research loop
 
 ## Relativistic Research Agent
 
@@ -120,9 +121,13 @@ This repository can also host PR-first research-agent work aimed at a future rel
 
 - The dedicated agent brief lives in [agent/prompts/relativistic_research.md](/Users/rogerio/local/PIC_agentic_workflow/agent/prompts/relativistic_research.md).
 - A matching issue template lives in [.github/ISSUE_TEMPLATE/relativistic-research-agent.md](/Users/rogerio/local/PIC_agentic_workflow/.github/ISSUE_TEMPLATE/relativistic-research-agent.md).
+- The loop policy lives in [agent/policies/relativistic_loop.toml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/relativistic_loop.toml).
+- The watchdog automation lives in [.github/workflows/relativistic-agent-loop.yml](/Users/rogerio/local/PIC_agentic_workflow/.github/workflows/relativistic-agent-loop.yml).
 - The intended use is iterative: each agent run should complete one bounded scientific milestone, open one reviewable PR, and recommend the next milestone.
 
 This is the safe way to pursue a momentum-space relativistic design in this repository: benchmark first, define validation criteria, prototype interfaces and diagnostics here, and only then carry the validated upstream changes into JAX-in-Cell itself.
+
+The loop is now partially self-maintaining inside GitHub: when there is no open relativistic milestone issue, the watchdog workflow creates one and assigns it to `Copilot` plus the configured maintainers. The remaining platform dependency is GitHub Copilot itself: once the issue exists in the agent surface, GitHub decides when and how the coding agent executes. The repository can keep the queue populated automatically, but it cannot force the closed-source Copilot service to run continuously outside GitHub's own agent model.
 
 ## Trusted Self-Hosted Optimization
 

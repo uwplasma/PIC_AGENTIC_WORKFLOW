@@ -1,0 +1,32 @@
+name: Relativistic Agent Loop
+
+on:
+  schedule:
+    - cron: "43 * * * *"
+  issues:
+    types:
+      - closed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: relativistic-agent-loop
+  cancel-in-progress: true
+
+jobs:
+  ensure-loop-issue:
+    if: github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Ensure open relativistic milestone issue exists
+        env:
+          GITHUB_API_URL: ${{ github.api_url }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/ensure_relativistic_issue_loop.py
