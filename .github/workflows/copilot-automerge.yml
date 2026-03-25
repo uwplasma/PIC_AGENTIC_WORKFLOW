@@ -16,6 +16,8 @@ jobs:
   arm-automerge:
     if: github.event_name == 'pull_request_target' && github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW' && !github.event.pull_request.draft
     runs-on: ubuntu-latest
+    env:
+      AUTOMERGE_GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
     outputs:
       trusted: ${{ steps.policy.outputs.trusted }}
     steps:
@@ -50,7 +52,7 @@ jobs:
           PY
 
       - name: Approve Copilot PR
-        if: steps.policy.outputs.trusted == 'true' && secrets.AUTOMERGE_GITHUB_TOKEN != ''
+        if: steps.policy.outputs.trusted == 'true' && env.AUTOMERGE_GH_TOKEN != ''
         env:
           # Use the built-in GITHUB_TOKEN (github-actions[bot]) to approve.
           # The PR was created by the Copilot bot; using a separate identity
@@ -63,15 +65,15 @@ jobs:
           gh pr review "$PR_NUMBER" --repo "$REPOSITORY" --approve
 
       - name: Enable auto-merge for Copilot PR
-        if: steps.policy.outputs.trusted == 'true' && secrets.AUTOMERGE_GITHUB_TOKEN != ''
+        if: steps.policy.outputs.trusted == 'true' && env.AUTOMERGE_GH_TOKEN != ''
         env:
-          GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ env.AUTOMERGE_GH_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPOSITORY: ${{ github.repository }}
         run: |
           gh pr merge "$PR_NUMBER" --repo "$REPOSITORY" --auto --squash --delete-branch
 
       - name: Report missing auto-merge token
-        if: steps.policy.outputs.trusted == 'true' && secrets.AUTOMERGE_GITHUB_TOKEN == ''
+        if: steps.policy.outputs.trusted == 'true' && env.AUTOMERGE_GH_TOKEN == ''
         run: |
           echo "AUTOMERGE_GITHUB_TOKEN is not configured, so trusted Copilot PRs cannot auto-merge yet."
