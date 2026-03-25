@@ -14,12 +14,14 @@ concurrency:
 
 jobs:
   optimize:
+    if: github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW' && github.ref == 'refs/heads/main'
     runs-on:
       - self-hosted
       - macOS
       - ARM64
       - uwplasma
       - macmini
+    timeout-minutes: 60
     env:
       MPLBACKEND: Agg
     steps:
