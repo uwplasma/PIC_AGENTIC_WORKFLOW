@@ -1,9 +1,12 @@
 name: README Leaderboard Sync
 
 on:
-  push:
-    branches:
-      - agent-state
+  workflow_run:
+    workflows:
+      - Optimize Scheduled
+      - Optimize Dispatch
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -12,7 +15,7 @@ permissions:
 
 jobs:
   sync-readme:
-    if: github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW'
+    if: github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
