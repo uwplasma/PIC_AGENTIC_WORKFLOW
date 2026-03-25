@@ -60,10 +60,10 @@ jobs:
           git push --force origin automation/readme-leaderboard-sync
 
       - name: Create or reuse PR
-        if: steps.sync.outputs.changed == 'true'
+        if: steps.sync.outputs.changed == 'true' && env.AUTOMERGE_GH_TOKEN != ''
         id: pr
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ env.AUTOMERGE_GH_TOKEN }}
         run: |
           set -euo pipefail
           existing_number=$(gh pr list --repo "$GITHUB_REPOSITORY" --head automation/readme-leaderboard-sync --base main --json number --jq '.[0].number // ""')
@@ -90,6 +90,6 @@ jobs:
           gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --auto --squash --delete-branch
 
       - name: Report missing auto-merge token
-        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && env.AUTOMERGE_GH_TOKEN == ''
+        if: steps.sync.outputs.changed == 'true' && env.AUTOMERGE_GH_TOKEN == ''
         run: |
-          echo "AUTOMERGE_GITHUB_TOKEN is not configured, so the README sync PR cannot auto-merge yet."
+          echo "AUTOMERGE_GITHUB_TOKEN is not configured, so the README sync PR cannot be created or auto-merged yet."
