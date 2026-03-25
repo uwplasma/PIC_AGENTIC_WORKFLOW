@@ -14,7 +14,8 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 ## Objective
 
-- Minimize the log10 of the tail-mean electrostatic energy for the two-stream instability.
+- Physical target: maximize the tail-mean electrostatic energy for the two-stream instability.
+- Optimizer objective: minimize the negative log10 of the tail-mean electrostatic energy.
 - Drift multiplier range: [0.25, 2.5]
 - Ion temperature ratio range: [0.001, 1.0]
 - Ion mass range: [0.25, 4.0]

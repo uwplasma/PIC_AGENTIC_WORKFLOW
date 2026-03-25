@@ -7,7 +7,7 @@ from .utils import atomic_write_json, atomic_write_text, replace_marked_section,
 
 
 def _sorted_successful_trials(trials: list[dict]) -> list[dict]:
-    return sorted((trial for trial in trials if not trial["failed"]), key=lambda trial: trial["optimizer_objective"])
+    return sorted((trial for trial in trials if not trial["failed"]), key=lambda trial: trial["optimizer_score"], reverse=True)
 
 
 def write_trials_csv(path: Path, trials: list[dict]) -> None:
@@ -57,7 +57,8 @@ def write_summary_markdown(
         f"- Ion mass range: [{search_config.ion_mass_min}, {search_config.ion_mass_max}]",
         f"- Drift key: {search_config.drift_key}",
         f"- Score version: {scoring_config.score_version}",
-        "- Objective: minimize the log10 of tail-mean electrostatic energy.",
+        "- Physical target: maximize the tail-mean electrostatic energy over the final window.",
+        "- Optimizer objective: minimize the negative log10 of tail-mean electrostatic energy.",
         "",
     ]
 
@@ -80,12 +81,12 @@ def write_summary_markdown(
         )
 
     if sorted_trials:
-        lines.extend(["## Leaderboard", "", "| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Objective |", "| --- | --- | ---: | ---: | ---: | ---: | ---: |"])
+        lines.extend(["## Leaderboard", "", "| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |", "| --- | --- | ---: | ---: | ---: | ---: | ---: |"])
         for index, trial in enumerate(sorted_trials[: search_config.leaderboard_size], start=1):
             lines.append(
                 "| "
                 f"{index} | {trial['trial_id']} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
-                f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_objective']:.6f} |"
+                f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
             )
         lines.append("")
 
@@ -93,7 +94,7 @@ def write_summary_markdown(
         lines.extend(["## Recent Trials", ""])
         for trial in trials[-10:]:
             lines.append(
-                f"- {trial['trial_id']}: drift={trial['drift_multiplier']:.6f}, temp_ratio={trial['ion_temperature_ratio']:.6e}, mass_ratio={trial['ion_mass_over_proton_mass']:.6e}, objective={trial['optimizer_objective']:.6f}, failed={trial['failed']}"
+                f"- {trial['trial_id']}: drift={trial['drift_multiplier']:.6f}, temp_ratio={trial['ion_temperature_ratio']:.6e}, mass_ratio={trial['ion_mass_over_proton_mass']:.6e}, score={trial['optimizer_score']:.6f}, failed={trial['failed']}"
             )
         lines.append("")
 
@@ -137,7 +138,8 @@ def write_agent_reasoning(
         "",
         "## Objective",
         "",
-        "- Minimize the log10 of the tail-mean electrostatic energy for the two-stream instability.",
+        "- Physical target: maximize the tail-mean electrostatic energy for the two-stream instability.",
+        "- Optimizer objective: minimize the negative log10 of the tail-mean electrostatic energy.",
         f"- Drift multiplier range: [{search_config.drift_multiplier_min}, {search_config.drift_multiplier_max}]",
         f"- Ion temperature ratio range: [{search_config.ion_temperature_ratio_min}, {search_config.ion_temperature_ratio_max}]",
         f"- Ion mass range: [{search_config.ion_mass_min}, {search_config.ion_mass_max}]",
@@ -150,7 +152,8 @@ def write_agent_reasoning(
                 "## Current Best Hypothesis",
                 "",
                 f"- Best trial: {best_result['trial_id']}",
-                f"- Objective: {best_result['optimizer_objective']:.6f}",
+                f"- Score: {best_result['optimizer_score']:.6f}",
+                f"- Optimizer objective: {best_result['optimizer_objective']:.6f}",
                 f"- Tail mean electrostatic energy: {best_result['tail_mean_E']:.6e}",
                 f"- Drift multiplier: {best_result['drift_multiplier']:.6f}",
                 f"- Ion temperature ratio: {best_result['candidate_ion_temperature_ratio']:.6e}",
@@ -173,7 +176,7 @@ def write_agent_reasoning(
         lines.extend(["## What The Optimizer Has Learned", ""])
         for index, trial in enumerate(sorted_trials[:3], start=1):
             lines.append(
-                f"- Rank {index}: {trial['trial_id']} reached objective={trial['optimizer_objective']:.6f} with drift={trial['drift_multiplier']:.6f}, temp_ratio={trial['candidate_ion_temperature_ratio']:.6e}, mass_ratio={trial['candidate_ion_mass_over_proton_mass']:.6e}."
+                f"- Rank {index}: {trial['trial_id']} reached score={trial['optimizer_score']:.6f} with drift={trial['drift_multiplier']:.6f}, temp_ratio={trial['candidate_ion_temperature_ratio']:.6e}, mass_ratio={trial['candidate_ion_mass_over_proton_mass']:.6e}."
             )
         lines.append("")
 
@@ -184,7 +187,7 @@ def write_agent_reasoning(
             [
                 "## Relative Comparison",
                 "",
-                f"- The current best trial improves the objective over the runner-up by {runner_up['optimizer_objective'] - best['optimizer_objective']:.6f}.",
+                f"- The current best trial improves the public score over the runner-up by {best['optimizer_score'] - runner_up['optimizer_score']:.6f}.",
                 f"- Compared with the initial condition, the best trial changes drift by a factor of {best['drift_multiplier']:.6f} and moves the ion temperature ratio to {best['candidate_ion_temperature_ratio']:.6e}.",
                 "",
             ]
@@ -195,7 +198,7 @@ def write_agent_reasoning(
         for trial in trials:
             lines.append(
                 "- "
-                f"{trial['trial_id']}: objective={trial['optimizer_objective']:.6f}, "
+                f"{trial['trial_id']}: score={trial['optimizer_score']:.6f}, objective={trial['optimizer_objective']:.6f}, "
                 f"tail_mean_E={trial['tail_mean_E']:.6e}, drift={trial['drift_multiplier']:.6f}, "
                 f"temp_ratio={trial['candidate_ion_temperature_ratio']:.6e}, "
                 f"mass_ratio={trial['candidate_ion_mass_over_proton_mass']:.6e}, "
@@ -239,7 +242,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
     section_lines = [
         "## Optimization Leaderboard",
         "",
-        "Hourly self-hosted search minimizes the log10 of the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.",
+        "Hourly self-hosted search maximizes the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.",
         "",
         f"Search ranges: drift=[{search_config.drift_multiplier_min}, {search_config.drift_multiplier_max}], ion temperature ratio=[{search_config.ion_temperature_ratio_min}, {search_config.ion_temperature_ratio_max}], ion mass over proton mass=[{search_config.ion_mass_min}, {search_config.ion_mass_max}]",
         "",
@@ -247,7 +250,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
     if sorted_trials:
         section_lines.extend(
             [
-                "| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Objective |",
+                "| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |",
                 "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
             ]
         )
@@ -255,7 +258,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
             section_lines.append(
                 "| "
                 f"{index} | {trial['trial_id']} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
-                f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_objective']:.6f} |"
+                f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
             )
     else:
         section_lines.append("No successful optimization trials have been recorded yet.")

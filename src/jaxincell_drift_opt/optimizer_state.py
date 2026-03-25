@@ -10,7 +10,7 @@ from .config import SearchConfig, load_base_input
 from .utils import atomic_write_json, utc_timestamp
 
 
-STATE_SCHEMA_VERSION = 1
+STATE_SCHEMA_VERSION = 2
 
 
 def build_optimizer(search_config: SearchConfig, random_state: int | None = None) -> Optimizer:
@@ -93,13 +93,13 @@ def load_state(path: Path, search_config: SearchConfig) -> dict:
         trial.setdefault("candidate_ion_temperature_ratio", float(trial["ion_temperature_ratio"]))
         trial.setdefault("candidate_ion_mass_over_proton_mass", float(trial["ion_mass_over_proton_mass"]))
         if not trial.get("failed") and trial.get("tail_mean_E") is not None:
-            objective = float(trial.get("tail_mean_E", 0.0))
-            if objective > 0.0:
+            tail_mean = float(trial.get("tail_mean_E", 0.0))
+            if tail_mean > 0.0:
                 from math import log10
 
-                objective = float(log10(objective))
-                trial["optimizer_objective"] = objective
-                trial["optimizer_score"] = -objective
+                score = float(log10(tail_mean))
+                trial["optimizer_score"] = score
+                trial["optimizer_objective"] = -score
 
     repaired_xs = []
     for index, point in enumerate(state["observations"].get("x", [])):

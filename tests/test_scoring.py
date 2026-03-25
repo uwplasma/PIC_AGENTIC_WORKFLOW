@@ -30,5 +30,5 @@ def test_score_trial_output_uses_tail_mean_log_score():
     assert metrics["tail_max_E"] == 1000.0
     assert metrics["final_E"] == 1000.0
     assert metrics["time_of_peak_E"] == 3.0
-    assert metrics["optimizer_score"] == -3.0
-    assert metrics["optimizer_objective"] == 3.0
+    assert metrics["optimizer_score"] == 3.0
+    assert metrics["optimizer_objective"] == -3.0

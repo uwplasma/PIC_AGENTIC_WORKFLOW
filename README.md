@@ -1,6 +1,6 @@
 # PIC Agentic Workflow
 
-PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It now runs a persistent global Bayesian minimization loop over the two-stream-instability setup, exploring drift multiplier, ion-to-electron temperature ratio, and ion mass proxy to drive the final nonlinear electrostatic energy as low as possible.
+PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It now runs a persistent global Bayesian search loop over the two-stream-instability setup, exploring drift multiplier, ion-to-electron temperature ratio, and ion mass proxy to drive the final nonlinear electrostatic energy as high as possible.
 
 The repo exists as a reviewable pilot for safe agentic scientific workflows. Public CI stays on GitHub-hosted runners, trusted manual and scheduled optimization run on a maintainer-controlled self-hosted macOS runner, periodic optimization writes only to a dedicated `agent-state` branch, and code-editing automation is PR-first.
 
@@ -30,13 +30,15 @@ The default search variables are:
 
 The default search range is configured in [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml).
 
-The physical target is the final nonlinear saturation of electric-field energy. The optimization objective is:
+The physical target is the final nonlinear saturation of electric-field energy. The search maximizes that physical target while minimizing a sign-flipped optimizer objective:
 
 `tail_mean_E = mean(electric_field_energy over final 20% of steps)`
 
-`optimizer_objective = log10(tail_mean_E + eps)`
+`optimizer_score = log10(tail_mean_E + eps)`
 
-The search minimizes `optimizer_objective`, which is equivalent to minimizing `tail_mean_E`. For human-readable plots and summaries, the repo also stores `optimizer_score = -optimizer_objective`, so higher score still means better suppression of electrostatic energy.
+`optimizer_objective = -optimizer_score`
+
+The optimizer still minimizes `optimizer_objective` because `scikit-optimize` is a minimizer, but that is now equivalent to maximizing `tail_mean_E`. Public summaries and leaderboards use `optimizer_score`, so higher score means stronger nonlinear electrostatic saturation.
 
 Secondary metrics include:
 
@@ -52,7 +54,7 @@ Secondary metrics include:
 
 ## Optimization Leaderboard
 
-Hourly self-hosted search minimizes the log10 of the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.
+Hourly self-hosted search maximizes the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.
 
 Search ranges: drift=[0.25, 2.5], ion temperature ratio=[0.001, 1.0], ion mass over proton mass=[0.25, 4.0]
 

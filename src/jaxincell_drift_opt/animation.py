@@ -115,7 +115,7 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
     if not successful_trials:
         return
 
-    ranked_trials = sorted(successful_trials, key=lambda trial: float(trial["optimizer_objective"]))
+    ranked_trials = sorted(successful_trials, key=lambda trial: float(trial["optimizer_score"]), reverse=True)
     targets: list[tuple[str, str, dict]] = []
     baseline = _baseline_trial(successful_trials, search_config)
     if baseline is not None:

@@ -6,7 +6,7 @@ import numpy as np
 
 
 EPSILON_0 = 8.8541878128e-12
-SCORE_VERSION = "tail_mean_electric_field_energy_v1"
+SCORE_VERSION = "tail_mean_electric_field_energy_max_v2"
 
 
 def extract_electric_field_energy(output: dict) -> np.ndarray:
@@ -60,8 +60,8 @@ def score_trial_output(
     tail = energy[-tail_count:]
     peak_index = int(np.argmax(energy))
     tail_mean = float(np.mean(tail))
-    optimizer_objective = float(log10(tail_mean + eps))
-    optimizer_score = float(-optimizer_objective)
+    optimizer_score = float(log10(tail_mean + eps))
+    optimizer_objective = float(-optimizer_score)
 
     return {
         "drift_multiplier": float(drift_multiplier),

@@ -37,8 +37,8 @@ def test_run_campaign_with_mock_runner(tmp_path: Path):
             "tail_max_E": drift_multiplier,
             "final_E": drift_multiplier,
             "time_of_peak_E": 1.0,
-            "optimizer_score": -drift_multiplier,
-            "optimizer_objective": drift_multiplier,
+            "optimizer_score": drift_multiplier,
+            "optimizer_objective": -drift_multiplier,
             "wall_time_seconds": 0.1,
             "seed": 1701 + trial_index,
             "failed": False,
@@ -51,6 +51,7 @@ def test_run_campaign_with_mock_runner(tmp_path: Path):
     state = run_campaign(paths=campaign_paths(root), num_trials=2, trial_runner=fake_trial_runner)
     assert len(state["trials"]) == 3
     assert state["best_result"] is not None
+    assert state["best_result"]["optimizer_score"] == max(trial["optimizer_score"] for trial in state["trials"])
     assert (root / "state" / "optimizer_state.json").exists()
     assert (root / "reports" / "latest_summary.md").exists()
 

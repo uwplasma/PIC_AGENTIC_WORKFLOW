@@ -7,8 +7,9 @@
 - Ion temperature ratio range: [0.001, 1.0]
 - Ion mass range: [0.25, 4.0]
 - Drift key: electron_drift_speed_x
-- Score version: tail_mean_electric_field_energy_v1
-- Objective: minimize the log10 of tail-mean electrostatic energy.
+- Score version: tail_mean_electric_field_energy_max_v2
+- Physical target: maximize the tail-mean electrostatic energy over the final window.
+- Optimizer objective: minimize the negative log10 of tail-mean electrostatic energy.
 
 ## Best Result
 
