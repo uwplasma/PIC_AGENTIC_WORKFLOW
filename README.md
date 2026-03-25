@@ -114,6 +114,16 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
 - `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
 
+## Relativistic Research Agent
+
+This repository can also host PR-first research-agent work aimed at a future relativistic upgrade path for JAX-in-Cell.
+
+- The dedicated agent brief lives in [agent/prompts/relativistic_research.md](/Users/rogerio/local/PIC_agentic_workflow/agent/prompts/relativistic_research.md).
+- A matching issue template lives in [.github/ISSUE_TEMPLATE/relativistic-research-agent.md](/Users/rogerio/local/PIC_agentic_workflow/.github/ISSUE_TEMPLATE/relativistic-research-agent.md).
+- The intended use is iterative: each agent run should complete one bounded scientific milestone, open one reviewable PR, and recommend the next milestone.
+
+This is the safe way to pursue a momentum-space relativistic design in this repository: benchmark first, define validation criteria, prototype interfaces and diagnostics here, and only then carry the validated upstream changes into JAX-in-Cell itself.
+
 ## Trusted Self-Hosted Optimization
 
 The trusted optimization lanes now target a maintainer-controlled self-hosted runner with labels `self-hosted`, `macOS`, `ARM64`, `uwplasma`, and `macmini`.
@@ -139,6 +149,7 @@ If by "agent tab" you mean a GitHub Copilot coding-agent surface, that is not th
 ## Current Limitations
 
 - The initial campaign is one-dimensional and only tunes `electron_drift_speed_x`.
+- This repository does not itself contain the JAX-in-Cell particle pusher or particle state internals, so a true momentum-space relativistic implementation requires a later upstream change in JAX-in-Cell.
 - The repo assumes `diagnostics(output)` continues to expose `electric_field_energy`; if that changes, the fallback recomputes from `electric_field` and `dx`.
 - The issue-command workflow ships fail-closed with an empty actor allowlist until maintainers populate [agent/policies/actors.yaml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/actors.yaml).
 - The maintenance workflow includes a safe placeholder hook for GitHub-native Copilot PR preparation, but the exact org-approved integration is still repository-specific.
