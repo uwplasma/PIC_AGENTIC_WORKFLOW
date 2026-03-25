@@ -116,7 +116,7 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 
 ## Trusted Self-Hosted Optimization
 
-The trusted optimization lanes now target a maintainer-controlled self-hosted runner with labels `self-hosted`, `OSX`, `Arm64`, `uwplasma`, and `macmini`.
+The trusted optimization lanes now target a maintainer-controlled self-hosted runner with labels `self-hosted`, `macOS`, `ARM64`, `uwplasma`, and `macmini`.
 
 - `optimize-dispatch.yml` runs on the self-hosted runner
 - `optimize-scheduled.yml` runs on the self-hosted runner

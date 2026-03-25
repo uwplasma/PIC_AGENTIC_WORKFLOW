@@ -25,7 +25,12 @@ permissions:
 
 jobs:
   optimize:
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - macOS
+      - ARM64
+      - uwplasma
+      - macmini
     env:
       MPLBACKEND: Agg
     steps:

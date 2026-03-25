@@ -16,8 +16,8 @@ jobs:
   optimize:
     runs-on:
       - self-hosted
-      - OSX
-      - Arm64
+      - macOS
+      - ARM64
       - uwplasma
       - macmini
     env:
