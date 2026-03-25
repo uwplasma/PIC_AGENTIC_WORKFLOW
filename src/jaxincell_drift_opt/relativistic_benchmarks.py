@@ -108,7 +108,7 @@ def gamma_from_beta(beta: float) -> float:
     Parameters
     ----------
     beta:
-        Normalised velocity v/c.  Must satisfy 0 <= |beta| < 1.
+        Normalized velocity v/c.  Must satisfy 0 <= |beta| < 1.
 
     Returns
     -------
@@ -131,7 +131,7 @@ def beta_from_gamma(gamma: float) -> float:
     Returns
     -------
     float
-        Normalised velocity beta = sqrt(1 - 1/gamma^2).
+        Normalized velocity beta = sqrt(1 - 1/gamma^2).
     """
     if gamma < 1.0:
         raise ValueError(f"gamma must be >= 1, got gamma={gamma!r}")
@@ -139,12 +139,12 @@ def beta_from_gamma(gamma: float) -> float:
 
 
 def normalized_momentum_from_beta(beta: float) -> float:
-    """Return the normalised 4-momentum magnitude p / (m_e c) for a given beta.
+    """Return the normalized 4-momentum magnitude p / (m_e c) for a given beta.
 
     Parameters
     ----------
     beta:
-        Normalised velocity v/c.
+        Normalized velocity v/c.
 
     Returns
     -------
