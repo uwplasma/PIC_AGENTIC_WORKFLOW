@@ -127,7 +127,7 @@ This repository can also host PR-first research-agent work aimed at a future rel
 
 This is the safe way to pursue a momentum-space relativistic design in this repository: benchmark first, define validation criteria, prototype interfaces and diagnostics here, and only then carry the validated upstream changes into JAX-in-Cell itself.
 
-The loop is now partially self-maintaining inside GitHub: when there is no open relativistic milestone issue, the watchdog workflow creates one and assigns it to `Copilot` plus the configured maintainers. The remaining platform dependency is GitHub Copilot itself: once the issue exists in the agent surface, GitHub decides when and how the coding agent executes. The repository can keep the queue populated automatically, but it cannot force the closed-source Copilot service to run continuously outside GitHub's own agent model.
+The loop is now partially self-maintaining inside GitHub: when there is no open relativistic milestone issue, the watchdog workflow creates one and assigns it to the configured maintainers, and it attempts to attach `Copilot` as well. In testing, the standard GitHub Issues API created the issue successfully but did not attach the `Copilot` assignee even when called with a maintainer token, which indicates a current platform limitation rather than a repository bug. The repository can keep the queue populated automatically, but it cannot force the closed-source Copilot service to run continuously or attach itself through the public API if GitHub does not expose that capability.
 
 ## Trusted Self-Hosted Optimization
 
