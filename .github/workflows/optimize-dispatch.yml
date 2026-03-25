@@ -93,11 +93,13 @@ jobs:
       - name: Restore latest optimizer state from agent-state
         run: |
           set -euo pipefail
+          git worktree remove --force .agent-state-restore || true
           git fetch origin agent-state:agent-state || true
           rm -rf .agent-state-restore
           if git show-ref --verify --quiet refs/heads/agent-state; then
             git worktree add .agent-state-restore agent-state
             .venv/bin/python scripts/restore_state_branch.py --source-root "$PWD/.agent-state-restore" --target-root "$PWD"
+            git worktree remove --force .agent-state-restore
           else
             echo "No agent-state branch available yet; starting from repository state."
           fi
@@ -127,6 +129,7 @@ jobs:
         if: inputs.push_state_branch == 'true'
         run: |
           set -euo pipefail
+          git worktree remove --force .agent-state-restore || true
           git fetch origin agent-state:agent-state || true
           rm -rf .agent-state
           if git show-ref --verify --quiet refs/heads/agent-state; then
@@ -154,3 +157,5 @@ jobs:
           fi
           git commit -m "Update campaign state from run ${GITHUB_RUN_ID}"
           git push origin agent-state
+          cd ..
+          git worktree remove --force .agent-state
