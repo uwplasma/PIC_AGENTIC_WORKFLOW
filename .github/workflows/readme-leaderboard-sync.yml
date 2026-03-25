@@ -17,6 +17,8 @@ jobs:
   sync-readme:
     if: github.repository == 'uwplasma/PIC_AGENTIC_WORKFLOW' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
+    env:
+      AUTOMERGE_GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
     steps:
       - name: Checkout main
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
@@ -80,15 +82,15 @@ jobs:
           echo "number=$new_number" >> "$GITHUB_OUTPUT"
 
       - name: Approve and auto-merge README sync PR
-        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && secrets.AUTOMERGE_GITHUB_TOKEN != ''
+        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && env.AUTOMERGE_GH_TOKEN != ''
         env:
-          GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ env.AUTOMERGE_GH_TOKEN }}
           PR_NUMBER: ${{ steps.pr.outputs.number }}
         run: |
           gh pr review "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --approve
           gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --auto --squash --delete-branch
 
       - name: Report missing auto-merge token
-        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && secrets.AUTOMERGE_GITHUB_TOKEN == ''
+        if: steps.sync.outputs.changed == 'true' && steps.pr.outputs.number != '' && env.AUTOMERGE_GH_TOKEN == ''
         run: |
           echo "AUTOMERGE_GITHUB_TOKEN is not configured, so the README sync PR cannot auto-merge yet."
