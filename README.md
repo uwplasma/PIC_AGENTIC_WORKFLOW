@@ -1,75 +1,95 @@
 # PIC Agentic Workflow
 
-PIC Agentic Workflow is a thin orchestration layer around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It now runs a persistent global Bayesian search loop over the two-stream-instability setup, exploring drift multiplier, ion-to-electron temperature ratio, and ion mass proxy to drive the final nonlinear electrostatic energy as high as possible.
+PIC Agentic Workflow is a live optimization lab around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It continuously explores a plasma parameter space and publishes the latest leaderboard, reasoning, and artifacts back into this repository.
 
-The repo exists as a reviewable pilot for safe agentic scientific workflows. Public CI stays on GitHub-hosted runners, trusted manual and scheduled optimization run on a maintainer-controlled self-hosted macOS runner, periodic optimization writes only to a dedicated `agent-state` branch, and code-editing automation is PR-first.
+The current goal is simple: find parameter settings that maximize the nonlinear saturation of electrostatic energy in the two-stream instability, while keeping every trial visible and reproducible.
 
-## Public Reasoning Log
+## Start Here
 
-The first file to inspect for the current competition state is [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md).
+- Read the agent's running decision log: [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md)
+- Watch live scheduled runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)
+- Watch manual restarts and on-demand runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
+- Watch the public README update workflow: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)
+- See how the next run is chosen: [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](/Users/rogerio/local/PIC_agentic_workflow/src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml)
 
-That report is the public decision log for the optimization loop: active solver parameters, the per-trial public analysis record, what the optimizer currently believes, and the planned next experiment. It is intentionally a structured public rationale rather than a hidden private chain-of-thought dump.
+## What This Repo Is Doing
 
-## Relationship to JAX-in-Cell
+- The optimizer searches over `drift_multiplier`, `ion_temperature_over_electron_temperature_x`, and `ion_mass_over_proton_mass`.
+- Each run writes trial artifacts, a public summary, and a leaderboard snapshot.
+- The canonical live state is stored on `agent-state`, then synced back into `main` for public viewing.
+- The parameter-space figure in the leaderboard shows where the optimizer has already explored and how it moved between trials.
 
-This repo does not fork or patch JAX-in-Cell internals. It imports the public package and uses the current supported flow:
+## Objective
 
-1. `load_parameters(...)` reads a TOML input.
-2. `simulation(...)` runs the case.
-3. `diagnostics(output)` computes `electric_field_energy` and related metrics.
-
-The adapter validates the real drift parameter name against the installed package before each run. With the current code path, the global search space includes `electron_drift_speed_x`, `ion_temperature_over_electron_temperature_x`, and `ion_mass_over_proton_mass`.
-
-## Objective and Score
-
-The default search variables are:
-
-- `drift_multiplier`, applied as `candidate_drift = base_drift * drift_multiplier`
-- `ion_temperature_over_electron_temperature_x`
-- `ion_mass_over_proton_mass`
-
-The default search range is configured in [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml).
-
-The physical target is the final nonlinear saturation of electric-field energy. The search maximizes that physical target while minimizing a sign-flipped optimizer objective:
+The physical quantity being optimized is the tail mean of the electric-field energy over the final part of each simulation:
 
 `tail_mean_E = mean(electric_field_energy over final 20% of steps)`
 
+The public leaderboard uses:
+
 `optimizer_score = log10(tail_mean_E + eps)`
+
+Internally, the Bayesian optimizer still minimizes the sign-flipped objective because `scikit-optimize` is a minimizer:
 
 `optimizer_objective = -optimizer_score`
 
-The optimizer still minimizes `optimizer_objective` because `scikit-optimize` is a minimizer, but that is now equivalent to maximizing `tail_mean_E`. Public summaries and leaderboards use `optimizer_score`, so higher score means stronger nonlinear electrostatic saturation.
+Higher score means a stronger nonlinear electrostatic saturation.
 
-Secondary metrics include:
+## How The Next Run Is Figured Out
 
-- `tail_mean_E`
-- `tail_max_E`
-- `final_E`
-- `time_of_peak_E`
-- `wall_time_seconds`
-- `seed`
-- `failed`
+- Search ranges live in [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml).
+- The loop replays all prior observations from `state/optimizer_state.json`.
+- It rebuilds the Bayesian optimizer and asks for the next suggested point in [src/jaxincell_drift_opt/optimizer_loop.py](/Users/rogerio/local/PIC_agentic_workflow/src/jaxincell_drift_opt/optimizer_loop.py).
+- The current public explanation of that next step is always refreshed in [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md).
+
+## Public Reasoning Log
+
+[reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md) is the public decision log for the optimizer. It records what has been tried, what the model currently thinks is promising, and what it wants to try next.
 
 <!-- leaderboard:start -->
 
 ## Optimization Leaderboard
 
-Hourly self-hosted search maximizes the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.
+This table updates from the live `agent-state` branch. Higher score means stronger nonlinear electrostatic saturation.
 
-Search ranges: drift=[0.25, 2.5], ion temperature ratio=[0.001, 1.0], ion mass over proton mass=[0.25, 4.0]
+Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass over proton mass=[0.01, 4.0]
 
-| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | trial_0014 | 1.556915 | 1.000000e+00 | 2.500000e-01 | 1.116652e+01 | 1.047918 |
-| 2 | trial_0060 | 1.742208 | 1.000000e+00 | 2.500000e-01 | 1.022004e+01 | 1.009453 |
-| 3 | trial_0030 | 1.623804 | 1.468625e-03 | 2.663768e-01 | 1.012072e+01 | 1.005211 |
-| 4 | trial_0039 | 1.550145 | 1.215525e-03 | 2.583556e-01 | 9.766342e+00 | 0.989732 |
-| 5 | trial_0037 | 1.610618 | 2.546762e-01 | 2.502109e-01 | 9.406616e+00 | 0.973433 |
-| 6 | trial_0029 | 1.550189 | 1.215519e-03 | 2.583534e-01 | 9.400365e+00 | 0.973145 |
-| 7 | trial_0020 | 1.593855 | 1.000000e-03 | 2.500000e-01 | 9.385850e+00 | 0.972474 |
-| 8 | trial_0040 | 1.728667 | 4.776756e-03 | 2.500433e-01 | 9.353437e+00 | 0.970971 |
-| 9 | trial_0036 | 1.568204 | 2.438989e-01 | 2.569085e-01 | 9.323194e+00 | 0.969565 |
-| 10 | trial_0028 | 1.568203 | 2.439017e-01 | 2.568994e-01 | 9.308397e+00 | 0.968875 |
+| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | trial_0014 | 2026-03-26 06:00 UTC | 1.556915 | 1.000000e+00 | 2.500000e-01 | 1.116652e+01 | 1.047918 |
+| 2 | trial_0060 | 2026-03-27 16:21 UTC | 1.742208 | 1.000000e+00 | 2.500000e-01 | 1.022004e+01 | 1.009453 |
+| 3 | trial_0030 | 2026-03-26 17:30 UTC | 1.623804 | 1.468625e-03 | 2.663768e-01 | 1.012072e+01 | 1.005211 |
+| 4 | trial_0039 | 2026-03-26 23:50 UTC | 1.550145 | 1.215525e-03 | 2.583556e-01 | 9.766342e+00 | 0.989732 |
+| 5 | trial_0037 | 2026-03-26 22:52 UTC | 1.610618 | 2.546762e-01 | 2.502109e-01 | 9.406616e+00 | 0.973433 |
+| 6 | trial_0029 | 2026-03-26 17:20 UTC | 1.550189 | 1.215519e-03 | 2.583534e-01 | 9.400365e+00 | 0.973145 |
+| 7 | trial_0020 | 2026-03-26 10:24 UTC | 1.593855 | 1.000000e-03 | 2.500000e-01 | 9.385850e+00 | 0.972474 |
+| 8 | trial_0040 | 2026-03-26 23:59 UTC | 1.728667 | 4.776756e-03 | 2.500433e-01 | 9.353437e+00 | 0.970971 |
+| 9 | trial_0036 | 2026-03-26 21:57 UTC | 1.568204 | 2.438989e-01 | 2.569085e-01 | 9.323194e+00 | 0.969565 |
+| 10 | trial_0028 | 2026-03-26 15:53 UTC | 1.568203 | 2.439017e-01 | 2.568994e-01 | 9.308397e+00 | 0.968875 |
+| 11 | trial_0021 | 2026-03-26 11:15 UTC | 1.592669 | 1.000000e-03 | 2.500000e-01 | 9.205208e+00 | 0.964034 |
+| 12 | trial_0038 | 2026-03-26 23:01 UTC | 1.529372 | 7.143841e-01 | 2.666373e-01 | 9.173592e+00 | 0.962539 |
+| 13 | trial_0055 | 2026-03-27 13:46 UTC | 1.638016 | 1.000000e+00 | 2.500000e-01 | 9.117197e+00 | 0.959861 |
+| 14 | trial_0004 | 2026-03-25 21:29 UTC | 1.610619 | 2.546783e-01 | 2.500000e-01 | 8.879253e+00 | 0.948376 |
+| 15 | trial_0026 | 2026-03-26 14:10 UTC | 1.605683 | 1.000000e-03 | 2.500000e-01 | 8.758897e+00 | 0.942449 |
+| 16 | trial_0012 | 2026-03-26 03:38 UTC | 1.534184 | 1.000000e+00 | 2.500000e-01 | 8.733743e+00 | 0.941200 |
+| 17 | trial_0031 | 2026-03-26 19:34 UTC | 1.606290 | 1.171542e-03 | 2.574116e-01 | 8.688866e+00 | 0.938963 |
+| 18 | trial_0013 | 2026-03-26 05:51 UTC | 1.548860 | 1.000000e-03 | 2.500000e-01 | 8.655493e+00 | 0.937292 |
+| 19 | trial_0023 | 2026-03-26 12:03 UTC | 1.588860 | 1.000000e+00 | 2.500000e-01 | 8.635983e+00 | 0.936312 |
+| 20 | trial_0025 | 2026-03-26 14:01 UTC | 1.588647 | 1.000000e+00 | 2.500000e-01 | 8.578518e+00 | 0.933412 |
+
+### Parameter Space Map
+
+This live figure shows where the optimizer has already looked, the order it moved through the search space, the current best point, and the next suggested point.
+
+![Optimizer path through parameter space](reports/plots/parameter_space_trajectory.png)
+
+### Follow The Search
+
+- Read the agent's public reasoning: [reports/agent_reasoning.md](reports/agent_reasoning.md)
+- Watch scheduled live runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)
+- Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
+- Watch README updates land: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)
+- See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
 
 ### Movies
 
@@ -87,11 +107,9 @@ The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect
 
 ![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
 
-See [reports/agent_reasoning.md](reports/agent_reasoning.md) for the public optimizer reasoning and next suggested experiment.
-
 <!-- leaderboard:end -->
 
-## Repository Layout
+## Repo Map
 
 - `configs/`: base input, search settings, scoring settings
 - `src/jaxincell_drift_opt/`: adapter, scoring, optimizer, reporting, plotting

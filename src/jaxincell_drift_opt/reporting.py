@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from pathlib import Path
 
 from .config import ScoringConfig, SearchConfig, load_base_input
@@ -8,6 +9,17 @@ from .utils import atomic_write_json, atomic_write_text, replace_marked_section,
 
 def _sorted_successful_trials(trials: list[dict]) -> list[dict]:
     return sorted((trial for trial in trials if not trial["failed"]), key=lambda trial: trial["optimizer_score"], reverse=True)
+
+
+def _format_started_at(value: str | None) -> str:
+    if not value:
+        return "-"
+    try:
+        normalized = value.replace("Z", "+00:00")
+        parsed = datetime.fromisoformat(normalized).astimezone(timezone.utc)
+        return parsed.strftime("%Y-%m-%d %H:%M UTC")
+    except ValueError:
+        return value
 
 
 def write_trials_csv(path: Path, trials: list[dict]) -> None:
@@ -81,11 +93,11 @@ def write_summary_markdown(
         )
 
     if sorted_trials:
-        lines.extend(["## Leaderboard", "", "| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |", "| --- | --- | ---: | ---: | ---: | ---: | ---: |"])
+        lines.extend(["## Leaderboard", "", "| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |", "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |"])
         for index, trial in enumerate(sorted_trials[: search_config.leaderboard_size], start=1):
             lines.append(
                 "| "
-                f"{index} | {trial['trial_id']} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
+                f"{index} | {trial['trial_id']} | {_format_started_at(trial.get('started_at'))} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
                 f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
             )
         lines.append("")
@@ -94,7 +106,7 @@ def write_summary_markdown(
         lines.extend(["## Recent Trials", ""])
         for trial in trials[-10:]:
             lines.append(
-                f"- {trial['trial_id']}: drift={trial['drift_multiplier']:.6f}, temp_ratio={trial['ion_temperature_ratio']:.6e}, mass_ratio={trial['ion_mass_over_proton_mass']:.6e}, score={trial['optimizer_score']:.6f}, failed={trial['failed']}"
+                f"- {trial['trial_id']} at {_format_started_at(trial.get('started_at'))}: drift={trial['drift_multiplier']:.6f}, temp_ratio={trial['ion_temperature_ratio']:.6e}, mass_ratio={trial['ion_mass_over_proton_mass']:.6e}, score={trial['optimizer_score']:.6f}, failed={trial['failed']}"
             )
         lines.append("")
 
@@ -230,6 +242,17 @@ def write_agent_reasoning(
             "",
         ]
     )
+
+    lines.extend(
+        [
+            "## How The Next Run Is Chosen",
+            "",
+            f"- The optimizer replays every prior observation stored in `state/optimizer_state.json` and then asks the Bayesian model for the next point using `{search_config.base_estimator}` with `{search_config.acq_func}` acquisition.",
+            "- The public decision summary here is refreshed after every trial, so the next suggestion is always tied to the current recorded campaign state.",
+            "- The live search bounds come from `configs/search.yaml`, and the execution loop lives in `src/jaxincell_drift_opt/optimizer_loop.py`.",
+            "",
+        ]
+    )
     atomic_write_text(path, "\n".join(lines) + "\n")
 
 
@@ -242,7 +265,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
     section_lines = [
         "## Optimization Leaderboard",
         "",
-        "Hourly self-hosted search maximizes the tail-mean electrostatic energy for the two-stream instability over drift multiplier, ion-to-electron temperature ratio, and ion mass proxy.",
+        "This table updates from the live `agent-state` branch. Higher score means stronger nonlinear electrostatic saturation.",
         "",
         f"Search ranges: drift=[{search_config.drift_multiplier_min}, {search_config.drift_multiplier_max}], ion temperature ratio=[{search_config.ion_temperature_ratio_min}, {search_config.ion_temperature_ratio_max}], ion mass over proton mass=[{search_config.ion_mass_min}, {search_config.ion_mass_max}]",
         "",
@@ -250,24 +273,39 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
     if sorted_trials:
         section_lines.extend(
             [
-                "| Rank | Trial | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |",
-                "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
+                "| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |",
+                "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |",
             ]
         )
         for index, trial in enumerate(sorted_trials[: search_config.leaderboard_size], start=1):
             section_lines.append(
                 "| "
-                f"{index} | {trial['trial_id']} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
+                f"{index} | {trial['trial_id']} | {_format_started_at(trial.get('started_at'))} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
                 f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
             )
     else:
         section_lines.append("No successful optimization trials have been recorded yet.")
     section_lines.append("")
+    if (path.parent / "reports/plots/parameter_space_trajectory.png").exists():
+        section_lines.extend(
+            [
+                "### Parameter Space Map",
+                "",
+                "This live figure shows where the optimizer has already looked, the order it moved through the search space, the current best point, and the next suggested point.",
+                "",
+                "![Optimizer path through parameter space](reports/plots/parameter_space_trajectory.png)",
+                "",
+            ]
+        )
     section_lines.extend(
         [
-            "### Movies",
+            "### Follow The Search",
             "",
-            "The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.",
+            "- Read the agent's public reasoning: [reports/agent_reasoning.md](reports/agent_reasoning.md)",
+            "- Watch scheduled live runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)",
+            "- Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)",
+            "- Watch README updates land: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)",
+            "- See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)",
             "",
         ]
     )
@@ -276,11 +314,17 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
         ("Leaderboard rank 1", Path("reports/readme_assets/leaderboard-rank-1.gif")),
         ("Leaderboard rank 2", Path("reports/readme_assets/leaderboard-rank-2.gif")),
     ]
-    for title, asset_path in movie_assets:
-        if (path.parent / asset_path).exists():
-            section_lines.extend([f"#### {title}", "", f"![{title}]({asset_path.as_posix()})", ""])
-    if (path.parent / "reports/agent_reasoning.md").exists():
-        section_lines.append("See [reports/agent_reasoning.md](reports/agent_reasoning.md) for the public optimizer reasoning and next suggested experiment.")
-        section_lines.append("")
+    existing_movie_assets = [(title, asset_path) for title, asset_path in movie_assets if (path.parent / asset_path).exists()]
+    if existing_movie_assets:
+        section_lines.extend(
+            [
+                "### Movies",
+                "",
+                "The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.",
+                "",
+            ]
+        )
+    for title, asset_path in existing_movie_assets:
+        section_lines.extend([f"#### {title}", "", f"![{title}]({asset_path.as_posix()})", ""])
     updated = replace_marked_section(path.read_text(encoding="utf-8"), marker_start, marker_end, section_lines)
     atomic_write_text(path, updated)

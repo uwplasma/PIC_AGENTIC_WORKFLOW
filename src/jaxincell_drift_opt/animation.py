@@ -106,6 +106,20 @@ def _baseline_trial(trials: list[dict], search_config: SearchConfig) -> dict | N
     return None
 
 
+def _clear_readme_movie_assets(paths: CampaignPaths) -> None:
+    for asset_name in [
+        "initial-condition.gif",
+        "leaderboard-rank-1.gif",
+        "leaderboard-rank-2.gif",
+        "initial-condition.mp4",
+        "leaderboard-rank-1.mp4",
+        "leaderboard-rank-2.mp4",
+    ]:
+        asset_path = paths.readme_assets_dir / asset_name
+        if asset_path.exists():
+            asset_path.unlink()
+
+
 def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config: SearchConfig) -> None:
     ffmpeg_path = shutil.which("ffmpeg")
     if ffmpeg_path is None:
@@ -113,6 +127,7 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
 
     successful_trials = [trial for trial in trials if not trial.get("failed")]
     if not successful_trials:
+        _clear_readme_movie_assets(paths)
         return
 
     ranked_trials = sorted(successful_trials, key=lambda trial: float(trial["optimizer_score"]), reverse=True)
@@ -124,6 +139,15 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
         targets.append(("leaderboard-rank-1", "Leaderboard rank 1", ranked_trials[0]))
     if len(ranked_trials) > 1:
         targets.append(("leaderboard-rank-2", "Leaderboard rank 2", ranked_trials[1]))
+
+    rendered_slugs = {slug for slug, _title, _trial in targets}
+    for asset_name in ["initial-condition", "leaderboard-rank-1", "leaderboard-rank-2"]:
+        if asset_name in rendered_slugs:
+            continue
+        for suffix in [".gif", ".mp4"]:
+            asset_path = paths.readme_assets_dir / f"{asset_name}{suffix}"
+            if asset_path.exists():
+                asset_path.unlink()
 
     for slug, _title, trial in targets:
         if "trial_dir" not in trial:

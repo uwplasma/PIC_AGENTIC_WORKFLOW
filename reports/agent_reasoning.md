@@ -5,7 +5,7 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 ## Active Competition Configuration
 
-- Base input: /Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml
+- Base input: /Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml
 - Number of grid points: 100
 - Number of pseudoelectrons: 5000
 - Total steps: 1500
@@ -16,9 +16,9 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 - Physical target: maximize the tail-mean electrostatic energy for the two-stream instability.
 - Optimizer objective: minimize the negative log10 of the tail-mean electrostatic energy.
-- Drift multiplier range: [0.25, 2.5]
-- Ion temperature ratio range: [0.001, 1.0]
-- Ion mass range: [0.25, 4.0]
+- Drift multiplier range: [0.01, 2.5]
+- Ion temperature ratio range: [0.001, 100.0]
+- Ion mass range: [0.01, 4.0]
 
 ## Current Best Hypothesis
 
@@ -107,13 +107,19 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 0.568957
-- Ion temperature ratio: 8.735101e-03
-- Ion mass over proton mass: 2.500000e-01
+- Drift multiplier: 1.743158
+- Ion temperature ratio: 1.000000e+02
+- Ion mass over proton mass: 1.000000e-02
 - Observations available to the optimizer: 61
 
 ## Public Copilot Research Trail
 
 - Repository issue and pull request threads are the public review trail for the relativistic porting agent.
 - This markdown report is the public reasoning and decision trail for the unattended optimization loop.
+
+## How The Next Run Is Chosen
+
+- The optimizer replays every prior observation stored in `state/optimizer_state.json` and then asks the Bayesian model for the next point using `GP` with `EI` acquisition.
+- The public decision summary here is refreshed after every trial, so the next suggestion is always tied to the current recorded campaign state.
+- The live search bounds come from `configs/search.yaml`, and the execution loop lives in `src/jaxincell_drift_opt/optimizer_loop.py`.
 

@@ -5,7 +5,13 @@ from pathlib import Path
 from .animation import render_readme_movies
 from .config import CampaignPaths, load_scoring_config, load_search_config
 from .optimizer_state import load_state, register_trial, replay_optimizer, save_state
-from .plotting import plot_baseline_vs_best, plot_best_run, plot_optimization_trace, plot_score_vs_multiplier
+from .plotting import (
+    plot_baseline_vs_best,
+    plot_best_run,
+    plot_optimization_trace,
+    plot_parameter_space_trajectory,
+    plot_score_vs_multiplier,
+)
 from .reporting import write_agent_reasoning, write_best_result, write_readme_leaderboard, write_summary_markdown, write_trials_csv
 from .run_trial import run_trial
 from .utils import ensure_directory
@@ -19,12 +25,18 @@ def refresh_outputs(paths: CampaignPaths, state: dict, search_config, scoring_co
     write_trials_csv(paths.trials_csv_path, state["trials"])
     write_best_result(paths.best_result_path, state.get("best_result"))
     write_summary_markdown(paths.latest_summary_path, state["trials"], state.get("best_result"), search_config, scoring_config)
+    next_suggestion = suggest_next(paths)
     plot_optimization_trace(state["trials"], paths.report_plots_dir / "optimization_trace.png")
     plot_score_vs_multiplier(state["trials"], paths.report_plots_dir / "score_vs_drift_multiplier.png")
+    plot_parameter_space_trajectory(
+        state["trials"],
+        search_config,
+        paths.report_plots_dir / "parameter_space_trajectory.png",
+        next_suggestion=next_suggestion,
+    )
     if state.get("best_result"):
         plot_best_run(state["best_result"], paths.root, paths.report_plots_dir / "best_run_energy.png")
         plot_baseline_vs_best(state["trials"], paths.root, paths.report_plots_dir / "baseline_vs_best.png")
-    next_suggestion = suggest_next(paths)
     write_agent_reasoning(paths.agent_reasoning_path, state["trials"], state.get("best_result"), search_config, next_suggestion)
     render_readme_movies(paths, state["trials"], search_config)
     write_readme_leaderboard(paths.root / "README.md", state["trials"], search_config)
