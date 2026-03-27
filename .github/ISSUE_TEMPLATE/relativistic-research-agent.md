@@ -19,7 +19,7 @@ Move PIC_AGENTIC_WORKFLOW one bounded step closer to a formally relativistic, mo
 
 ## Required Prompt
 
-Use the instructions in [agent/prompts/relativistic_research.md](/Users/rogerio/local/PIC_agentic_workflow/agent/prompts/relativistic_research.md).
+Use the instructions in [agent/prompts/relativistic_research.md](../../agent/prompts/relativistic_research.md).
 
 ## Milestone For This Issue
 

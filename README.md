@@ -6,11 +6,11 @@ The current goal is simple: find parameter settings that maximize the nonlinear 
 
 ## Start Here
 
-- Read the agent's running decision log: [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md)
+- Read the agent's running decision log: [reports/agent_reasoning.md](reports/agent_reasoning.md)
 - Watch live scheduled runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)
 - Watch manual restarts and on-demand runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
 - Watch the public README update workflow: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)
-- See how the next run is chosen: [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](/Users/rogerio/local/PIC_agentic_workflow/src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml)
+- See how the next run is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
 
 ## What This Repo Is Doing
 
@@ -37,14 +37,14 @@ Higher score means a stronger nonlinear electrostatic saturation.
 
 ## How The Next Run Is Figured Out
 
-- Search ranges live in [configs/search.yaml](/Users/rogerio/local/PIC_agentic_workflow/configs/search.yaml).
+- Search ranges live in [configs/search.yaml](configs/search.yaml).
 - The loop replays all prior observations from `state/optimizer_state.json`.
-- It rebuilds the Bayesian optimizer and asks for the next suggested point in [src/jaxincell_drift_opt/optimizer_loop.py](/Users/rogerio/local/PIC_agentic_workflow/src/jaxincell_drift_opt/optimizer_loop.py).
-- The current public explanation of that next step is always refreshed in [reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md).
+- It rebuilds the Bayesian optimizer and asks for the next suggested point in [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py).
+- The current public explanation of that next step is always refreshed in [reports/agent_reasoning.md](reports/agent_reasoning.md).
 
 ## Public Reasoning Log
 
-[reports/agent_reasoning.md](/Users/rogerio/local/PIC_agentic_workflow/reports/agent_reasoning.md) is the public decision log for the optimizer. It records what has been tried, what the model currently thinks is promising, and what it wants to try next.
+[reports/agent_reasoning.md](reports/agent_reasoning.md) is the public decision log for the optimizer. It records what has been tried, what the model currently thinks is promising, and what it wants to try next.
 
 <!-- leaderboard:start -->
 
@@ -190,17 +190,17 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 
 This repository can also host PR-first research-agent work aimed at a future relativistic upgrade path for JAX-in-Cell.
 
-- The dedicated agent brief lives in [agent/prompts/relativistic_research.md](/Users/rogerio/local/PIC_agentic_workflow/agent/prompts/relativistic_research.md).
-- A matching issue template lives in [.github/ISSUE_TEMPLATE/relativistic-research-agent.md](/Users/rogerio/local/PIC_agentic_workflow/.github/ISSUE_TEMPLATE/relativistic-research-agent.md).
-- The loop policy lives in [agent/policies/relativistic_loop.toml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/relativistic_loop.toml).
-- The watchdog automation lives in [.github/workflows/relativistic-agent-loop.yml](/Users/rogerio/local/PIC_agentic_workflow/.github/workflows/relativistic-agent-loop.yml).
+- The dedicated agent brief lives in [agent/prompts/relativistic_research.md](agent/prompts/relativistic_research.md).
+- A matching issue template lives in [.github/ISSUE_TEMPLATE/relativistic-research-agent.md](.github/ISSUE_TEMPLATE/relativistic-research-agent.md).
+- The loop policy lives in [agent/policies/relativistic_loop.toml](agent/policies/relativistic_loop.toml).
+- The watchdog automation lives in [.github/workflows/relativistic-agent-loop.yml](.github/workflows/relativistic-agent-loop.yml).
 - The intended use is iterative: each agent run should complete one bounded scientific milestone, open one reviewable PR, and recommend the next milestone.
 
 This is the safe way to pursue a momentum-space relativistic design in this repository: benchmark first, define validation criteria, prototype interfaces and diagnostics here, and only then carry the validated upstream changes into JAX-in-Cell itself.
 
 The loop is now partially self-maintaining inside GitHub: when there is no open relativistic milestone issue, the watchdog workflow creates one and assigns it to the configured maintainers, and it attempts to attach `Copilot` as well. In testing, the standard GitHub Issues API created the issue successfully but did not attach the `Copilot` assignee even when called with a maintainer token, which indicates a current platform limitation rather than a repository bug. The repository can keep the queue populated automatically, but it cannot force the closed-source Copilot service to run continuously or attach itself through the public API if GitHub does not expose that capability.
 
-Trusted Copilot PRs can, however, be auto-approved and auto-merged after CI if you configure a repository secret named `AUTOMERGE_GITHUB_TOKEN` containing a maintainer token with repository access. The workflow policy for that path lives in [agent/policies/automerge.toml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/automerge.toml).
+Trusted Copilot PRs can, however, be auto-approved and auto-merged after CI if you configure a repository secret named `AUTOMERGE_GITHUB_TOKEN` containing a maintainer token with repository access. The workflow policy for that path lives in [agent/policies/automerge.toml](agent/policies/automerge.toml).
 
 The same maintainer token is also used by the README sync workflow to auto-merge the public leaderboard updates that are generated from the hourly optimization state.
 
@@ -231,7 +231,7 @@ If by "agent tab" you mean a GitHub Copilot coding-agent surface, that is not th
 - The current global campaign still operates within the non-relativistic JAX-in-Cell wrapper interface and does not yet change the upstream particle pusher.
 - This repository does not itself contain the JAX-in-Cell particle pusher or particle state internals, so a true momentum-space relativistic implementation requires a later upstream change in JAX-in-Cell.
 - The repo assumes `diagnostics(output)` continues to expose `electric_field_energy`; if that changes, the fallback recomputes from `electric_field` and `dx`.
-- The issue-command workflow ships fail-closed with an empty actor allowlist until maintainers populate [agent/policies/actors.yaml](/Users/rogerio/local/PIC_agentic_workflow/agent/policies/actors.yaml).
+- The issue-command workflow ships fail-closed with an empty actor allowlist until maintainers populate [agent/policies/actors.yaml](agent/policies/actors.yaml).
 - The maintenance workflow includes a safe placeholder hook for GitHub-native Copilot PR preparation, but the exact org-approved integration is still repository-specific.
 
 ## Manual GitHub Steps If Permissions Differ
