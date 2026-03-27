@@ -5,7 +5,7 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 ## Active Competition Configuration
 
-- Base input: /Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml
+- Base input: /Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml
 - Number of grid points: 100
 - Number of pseudoelectrons: 5000
 - Total steps: 1500
@@ -104,13 +104,16 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0058: score=0.301022, objective=-0.301022, tail_mean_E=1.999962e+00, drift=0.936535, temp_ratio=5.772285e-01, mass_ratio=2.500000e-01, failed=False.
 - trial_0059: score=0.411275, objective=-0.411275, tail_mean_E=2.577955e+00, drift=1.214929, temp_ratio=2.090702e-01, mass_ratio=4.000000e+00, failed=False.
 - trial_0060: score=1.009453, objective=-1.009453, tail_mean_E=1.022004e+01, drift=1.742208, temp_ratio=1.000000e+00, mass_ratio=2.500000e-01, failed=False.
+- trial_0061: score=0.223017, objective=-0.223017, tail_mean_E=1.671156e+00, drift=1.743158, temp_ratio=1.000000e+02, mass_ratio=1.000000e-02, failed=False.
+- trial_0062: score=0.176531, objective=-0.176531, tail_mean_E=1.501519e+00, drift=1.439562, temp_ratio=1.000000e+02, mass_ratio=1.000000e-02, failed=False.
+- trial_0063: score=-0.412799, objective=0.412799, tail_mean_E=3.865462e-01, drift=1.185956, temp_ratio=1.000000e+02, mass_ratio=1.000000e-02, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 1.743158
+- Drift multiplier: 1.592484
 - Ion temperature ratio: 1.000000e+02
-- Ion mass over proton mass: 1.000000e-02
-- Observations available to the optimizer: 61
+- Ion mass over proton mass: 1.331792e-02
+- Observations available to the optimizer: 64
 
 ## Public Copilot Research Trail
 
