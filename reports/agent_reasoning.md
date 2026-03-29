@@ -22,24 +22,24 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 ## Current Best Hypothesis
 
-- Best trial: trial_0166
-- Score: 1.225711
-- Optimizer objective: -1.225711
-- Tail mean electrostatic energy: 1.681553e+01
-- Drift multiplier: 2.207717
+- Best trial: trial_0173
+- Score: 1.266019
+- Optimizer objective: -1.266019
+- Tail mean electrostatic energy: 1.845095e+01
+- Drift multiplier: 2.232236
 - Ion temperature ratio: 1.000000e-03
 - Ion mass over proton mass: 1.000000e-02
 
 ## What The Optimizer Has Learned
 
-- Rank 1: trial_0166 reached score=1.225711 with drift=2.207717, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02.
-- Rank 2: trial_0161 reached score=1.221467 with drift=2.199477, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02.
-- Rank 3: trial_0162 reached score=1.208830 with drift=2.162362, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02.
+- Rank 1: trial_0173 reached score=1.266019 with drift=2.232236, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02.
+- Rank 2: trial_0166 reached score=1.225711 with drift=2.207717, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02.
+- Rank 3: trial_0161 reached score=1.221467 with drift=2.199477, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02.
 
 ## Relative Comparison
 
-- The current best trial improves the public score over the runner-up by 0.004244.
-- Compared with the initial condition, the best trial changes drift by a factor of 2.207717 and moves the ion temperature ratio to 1.000000e-03.
+- The current best trial improves the public score over the runner-up by 0.040308.
+- Compared with the initial condition, the best trial changes drift by a factor of 2.232236 and moves the ion temperature ratio to 1.000000e-03.
 
 ## Trial-By-Trial Public Decision Log
 
@@ -212,13 +212,22 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0166: score=1.225711, objective=-1.225711, tail_mean_E=1.681553e+01, drift=2.207717, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
 - trial_0167: score=1.055629, objective=-1.055629, tail_mean_E=1.136657e+01, drift=2.197740, temp_ratio=5.647377e-03, mass_ratio=1.000000e-02, failed=False.
 - trial_0168: score=1.203505, objective=-1.203505, tail_mean_E=1.597734e+01, drift=2.207899, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0169: score=1.102903, objective=-1.102903, tail_mean_E=1.267368e+01, drift=2.203014, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0170: score=0.962851, objective=-0.962851, tail_mean_E=9.180176e+00, drift=1.843658, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0171: score=1.033980, objective=-1.033980, tail_mean_E=1.081383e+01, drift=2.055331, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0172: score=1.101353, objective=-1.101353, tail_mean_E=1.262854e+01, drift=1.969449, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0173: score=1.266019, objective=-1.266019, tail_mean_E=1.845095e+01, drift=2.232236, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0174: score=1.205503, objective=-1.205503, tail_mean_E=1.605103e+01, drift=2.244200, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0175: score=1.214395, objective=-1.214395, tail_mean_E=1.638307e+01, drift=2.234429, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0176: score=1.188610, objective=-1.188610, tail_mean_E=1.543867e+01, drift=2.230971, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
+- trial_0177: score=1.024878, objective=-1.024878, tail_mean_E=1.058957e+01, drift=1.919996, temp_ratio=1.000000e-03, mass_ratio=1.000000e-02, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 2.203014
-- Ion temperature ratio: 1.000000e-03
+- Drift multiplier: 1.974691
+- Ion temperature ratio: 3.016604e-02
 - Ion mass over proton mass: 1.000000e-02
-- Observations available to the optimizer: 169
+- Observations available to the optimizer: 178
 
 ## Public Copilot Research Trail
 
