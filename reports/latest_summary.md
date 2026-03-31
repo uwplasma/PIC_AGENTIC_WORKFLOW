@@ -2,7 +2,7 @@
 
 ## Campaign
 
-- Trials completed: 262
+- Trials completed: 265
 - Drift range: [0.01, 2.5]
 - Ion temperature ratio range: [0.001, 100.0]
 - Ion mass range: [0.01, 4.0]
@@ -50,9 +50,6 @@
 
 ## Recent Trials
 
-- trial_0252 at 2026-03-31 11:31 UTC: drift=0.925883, temp_ratio=1.000000e+02, mass_ratio=1.191473e-01, score=0.054851, failed=False
-- trial_0253 at 2026-03-31 12:03 UTC: drift=1.806678, temp_ratio=1.000000e-03, mass_ratio=3.597374e-02, score=0.891406, failed=False
-- trial_0254 at 2026-03-31 12:13 UTC: drift=1.923756, temp_ratio=1.000000e+02, mass_ratio=5.287571e-02, score=-0.035057, failed=False
 - trial_0255 at 2026-03-31 12:22 UTC: drift=1.724591, temp_ratio=3.296246e-01, mass_ratio=4.239180e-01, score=0.882761, failed=False
 - trial_0256 at 2026-03-31 14:04 UTC: drift=1.811568, temp_ratio=6.742655e-02, mass_ratio=2.810627e-02, score=0.702420, failed=False
 - trial_0257 at 2026-03-31 14:13 UTC: drift=1.929705, temp_ratio=1.000000e-03, mass_ratio=1.740784e-02, score=0.992448, failed=False
@@ -60,6 +57,9 @@
 - trial_0259 at 2026-03-31 17:16 UTC: drift=1.738848, temp_ratio=1.000000e-03, mass_ratio=1.215379e-01, score=0.929069, failed=False
 - trial_0260 at 2026-03-31 17:25 UTC: drift=1.886807, temp_ratio=1.000000e-03, mass_ratio=1.368972e-02, score=1.133167, failed=False
 - trial_0261 at 2026-03-31 17:33 UTC: drift=0.708662, temp_ratio=8.614842e+01, mass_ratio=3.886493e-02, score=-0.764143, failed=False
+- trial_0262 at 2026-03-31 18:10 UTC: drift=1.502095, temp_ratio=1.601344e-01, mass_ratio=4.255239e-01, score=0.888735, failed=False
+- trial_0263 at 2026-03-31 18:19 UTC: drift=2.500000, temp_ratio=1.000000e+02, mass_ratio=2.150050e-02, score=-1.125329, failed=False
+- trial_0264 at 2026-03-31 18:28 UTC: drift=1.901433, temp_ratio=1.000000e-03, mass_ratio=2.920787e-02, score=0.941771, failed=False
 
 ## Notes
 
