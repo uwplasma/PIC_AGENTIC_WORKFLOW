@@ -299,13 +299,16 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0253: score=0.891406, objective=-0.891406, tail_mean_E=7.787639e+00, drift=1.806678, temp_ratio=1.000000e-03, mass_ratio=3.597374e-02, failed=False.
 - trial_0254: score=-0.035057, objective=0.035057, tail_mean_E=9.224509e-01, drift=1.923756, temp_ratio=1.000000e+02, mass_ratio=5.287571e-02, failed=False.
 - trial_0255: score=0.882761, objective=-0.882761, tail_mean_E=7.634162e+00, drift=1.724591, temp_ratio=3.296246e-01, mass_ratio=4.239180e-01, failed=False.
+- trial_0256: score=0.702420, objective=-0.702420, tail_mean_E=5.039873e+00, drift=1.811568, temp_ratio=6.742655e-02, mass_ratio=2.810627e-02, failed=False.
+- trial_0257: score=0.992448, objective=-0.992448, tail_mean_E=9.827616e+00, drift=1.929705, temp_ratio=1.000000e-03, mass_ratio=1.740784e-02, failed=False.
+- trial_0258: score=0.807530, objective=-0.807530, tail_mean_E=6.419928e+00, drift=1.344730, temp_ratio=1.000000e-03, mass_ratio=1.891900e-01, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 1.811568
-- Ion temperature ratio: 6.742655e-02
-- Ion mass over proton mass: 2.810627e-02
-- Observations available to the optimizer: 256
+- Drift multiplier: 1.738848
+- Ion temperature ratio: 1.000000e-03
+- Ion mass over proton mass: 1.215379e-01
+- Observations available to the optimizer: 259
 
 ## Public Copilot Research Trail
 
