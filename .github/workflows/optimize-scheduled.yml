@@ -21,7 +21,7 @@ jobs:
       - ARM64
       - uwplasma
       - macmini
-    timeout-minutes: 60
+    timeout-minutes: 180
     env:
       MPLBACKEND: Agg
       AUTOMERGE_GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
@@ -43,7 +43,7 @@ jobs:
           .venv/bin/python -m pip install -e .
 
       - name: Run bounded scheduled campaign
-        run: .venv/bin/python scripts/run_campaign.py --seed 1701
+        run: .venv/bin/python scripts/run_campaign.py --num-trials 1 --seed 1701
 
       - name: Upload optimization artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

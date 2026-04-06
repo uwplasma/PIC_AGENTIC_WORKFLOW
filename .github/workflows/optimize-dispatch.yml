@@ -6,7 +6,7 @@ on:
       num_trials:
         description: Number of new trials to run
         required: true
-        default: "2"
+        default: "1"
       seed:
         description: Optional integer seed override
         required: false
@@ -75,7 +75,7 @@ jobs:
       - ARM64
       - uwplasma
       - macmini
-    timeout-minutes: 60
+    timeout-minutes: 180
     env:
       MPLBACKEND: Agg
       AUTOMERGE_GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
