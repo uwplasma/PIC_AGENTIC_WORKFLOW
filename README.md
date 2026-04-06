@@ -2,7 +2,7 @@
 
 PIC Agentic Workflow is a live optimization lab around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It continuously explores a plasma parameter space and publishes the latest leaderboard, reasoning, and artifacts back into this repository.
 
-The current goal is simple: find parameter settings that maximize the nonlinear saturation of electrostatic energy in the two-stream instability, while keeping every trial visible and reproducible.
+The current campaign has been restarted from scratch with a higher-fidelity simulation baseline. The goal remains the same: find parameter settings that maximize the nonlinear saturation of electrostatic energy in the two-stream instability, while keeping every trial visible, reproducible, and scientifically interpretable.
 
 ## Start Here
 
@@ -46,6 +46,32 @@ Higher score means a stronger nonlinear electrostatic saturation.
 
 [reports/agent_reasoning.md](reports/agent_reasoning.md) is the public decision log for the optimizer. It records what has been tried, what the model currently thinks is promising, and what it wants to try next.
 
+## April 2026 Restart
+
+The previous saturation campaign ran cleanly for 418 completed trials and reached a best public score of `1.293439` at `trial_0184`, with `tail_mean_E = 1.965345e+01`. That campaign did its job: it identified a strong high-drift, low-ion-temperature, low-ion-mass regime, and it made clear that the next scientific question could not be answered reliably with the shorter, lower-particle baseline.
+
+The restart is deliberate. The previous leaderboard suggested that the best candidates were beginning to demand more simulation time, more particles, and a smaller time step in order to separate real nonlinear saturation from under-resolved numerical behavior.
+
+### What Changed In The New Baseline
+
+- `timestep_over_spatialstep_times_c`: `2.0 -> 1.0` to take smaller time steps.
+- `number_grid_points`: `100 -> 120` to improve spatial resolution.
+- `number_pseudoelectrons`: `5000 -> 12000` to reduce particle noise.
+- `total_steps`: `1500 -> 5000` to let the nonlinear phase run longer before scoring.
+- `number_of_particle_substeps_implicit_CN`: unchanged at `2`.
+
+These changes live in [configs/base_input.toml](configs/base_input.toml). The search space in [configs/search.yaml](configs/search.yaml) is unchanged, so the restart isolates the solver-fidelity change rather than mixing it with a new optimizer geometry.
+
+## Archived Previous Campaign
+
+- Full restart note and archived leaderboard summary: [reports/history/2026-04-high-fidelity-restart/README.md](reports/history/2026-04-high-fidelity-restart/README.md)
+- Archived public summary: [reports/history/2026-04-high-fidelity-restart/latest_summary_pre_restart.md](reports/history/2026-04-high-fidelity-restart/latest_summary_pre_restart.md)
+- Archived public reasoning log: [reports/history/2026-04-high-fidelity-restart/agent_reasoning_pre_restart.md](reports/history/2026-04-high-fidelity-restart/agent_reasoning_pre_restart.md)
+- Archived parameter-space trajectory: [reports/history/2026-04-high-fidelity-restart/parameter_space_trajectory_pre_restart.png](reports/history/2026-04-high-fidelity-restart/parameter_space_trajectory_pre_restart.png)
+- Archived movies: [initial condition](reports/history/2026-04-high-fidelity-restart/initial-condition.gif), [leaderboard rank 1](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-1.gif), [leaderboard rank 2](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-2.gif)
+
+This keeps the old campaign visible in-repo while freeing the live leaderboard below to track the new higher-fidelity run from a clean state.
+
 <!-- leaderboard:start -->
 
 ## Optimization Leaderboard
@@ -54,28 +80,7 @@ This table updates from the live `agent-state` branch. Higher score means strong
 
 Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass over proton mass=[0.01, 4.0]
 
-| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | trial_0184 | 2026-03-29 20:51 UTC | 2.230586 | 1.000000e-03 | 1.000000e-02 | 1.965345e+01 | 1.293439 |
-| 2 | trial_0182 | 2026-03-29 19:58 UTC | 2.234738 | 1.000000e-03 | 1.000000e-02 | 1.876810e+01 | 1.273420 |
-| 3 | trial_0334 | 2026-04-02 10:16 UTC | 1.924501 | 1.119754e-02 | 3.866414e-02 | 1.855863e+01 | 1.268546 |
-| 4 | trial_0173 | 2026-03-29 17:04 UTC | 2.232236 | 1.000000e-03 | 1.000000e-02 | 1.845095e+01 | 1.266019 |
-| 5 | trial_0185 | 2026-03-29 21:00 UTC | 2.278048 | 1.000000e-03 | 1.000000e-02 | 1.824489e+01 | 1.261141 |
-| 6 | trial_0398 | 2026-04-03 17:12 UTC | 2.015530 | 1.580697e-02 | 2.548310e-02 | 1.787412e+01 | 1.252225 |
-| 7 | trial_0179 | 2026-03-29 19:13 UTC | 2.261338 | 1.000000e-03 | 1.000000e-02 | 1.763901e+01 | 1.246474 |
-| 8 | trial_0385 | 2026-04-03 11:55 UTC | 1.992857 | 4.971736e-03 | 2.482895e-02 | 1.758403e+01 | 1.245118 |
-| 9 | trial_0265 | 2026-03-31 19:31 UTC | 1.977430 | 1.253960e-03 | 2.635736e-02 | 1.737146e+01 | 1.239836 |
-| 10 | trial_0332 | 2026-04-02 09:26 UTC | 1.909058 | 1.169289e-02 | 4.004541e-02 | 1.734606e+01 | 1.239201 |
-| 11 | trial_0384 | 2026-04-03 11:22 UTC | 1.992026 | 9.883957e-03 | 2.859517e-02 | 1.720717e+01 | 1.235710 |
-| 12 | trial_0400 | 2026-04-03 17:54 UTC | 2.023740 | 7.666160e-02 | 2.200340e-02 | 1.719687e+01 | 1.235449 |
-| 13 | trial_0383 | 2026-04-03 11:14 UTC | 1.998636 | 1.368044e-02 | 2.454443e-02 | 1.696714e+01 | 1.229609 |
-| 14 | trial_0166 | 2026-03-29 14:55 UTC | 2.207717 | 1.000000e-03 | 1.000000e-02 | 1.681553e+01 | 1.225711 |
-| 15 | trial_0325 | 2026-04-02 05:51 UTC | 1.926713 | 1.000000e-03 | 4.018647e-02 | 1.675426e+01 | 1.224125 |
-| 16 | trial_0161 | 2026-03-29 11:54 UTC | 2.199477 | 1.000000e-03 | 1.000000e-02 | 1.665201e+01 | 1.221467 |
-| 17 | trial_0175 | 2026-03-29 17:50 UTC | 2.234429 | 1.000000e-03 | 1.000000e-02 | 1.638307e+01 | 1.214395 |
-| 18 | trial_0162 | 2026-03-29 12:03 UTC | 2.162362 | 1.000000e-03 | 1.000000e-02 | 1.617447e+01 | 1.208830 |
-| 19 | trial_0326 | 2026-04-02 06:00 UTC | 1.885456 | 1.000000e-03 | 4.596777e-02 | 1.605206e+01 | 1.205531 |
-| 20 | trial_0174 | 2026-03-29 17:12 UTC | 2.244200 | 1.000000e-03 | 1.000000e-02 | 1.605103e+01 | 1.205503 |
+No successful optimization trials have been recorded yet for the restarted campaign.
 
 ### Parameter Space Map
 
@@ -90,22 +95,6 @@ This live figure shows where the optimizer has already looked, the order it move
 - Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
 - Watch README updates land: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)
 - See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
-
-### Movies
-
-The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
-
-#### Initial condition
-
-![Initial condition](reports/readme_assets/initial-condition.gif)
-
-#### Leaderboard rank 1
-
-![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
-
-#### Leaderboard rank 2
-
-![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
 
 <!-- leaderboard:end -->
 

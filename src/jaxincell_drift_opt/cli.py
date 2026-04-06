@@ -7,6 +7,7 @@ from pathlib import Path
 from .config import campaign_paths, load_scoring_config, load_search_config
 from .optimizer_loop import run_campaign, suggest_next
 from .optimizer_state import default_state, save_state
+from .plotting import plot_parameter_space_trajectory
 from .reporting import write_agent_reasoning, write_best_result, write_readme_leaderboard, write_summary_markdown, write_trials_csv
 from .run_trial import run_trial
 from .utils import ensure_directory
@@ -109,6 +110,8 @@ def bootstrap_state_main() -> None:
     write_trials_csv(paths.trials_csv_path, [])
     write_best_result(paths.best_result_path, None)
     write_summary_markdown(paths.latest_summary_path, [], None, search_config, scoring_config)
-    write_agent_reasoning(paths.agent_reasoning_path, [], None, search_config, suggest_next(paths))
+    next_suggestion = suggest_next(paths)
+    write_agent_reasoning(paths.agent_reasoning_path, [], None, search_config, next_suggestion)
+    plot_parameter_space_trajectory([], search_config, paths.report_plots_dir / "parameter_space_trajectory.png", next_suggestion=next_suggestion)
     write_readme_leaderboard(paths.root / "README.md", [], search_config)
     print(paths.optimizer_state_path)

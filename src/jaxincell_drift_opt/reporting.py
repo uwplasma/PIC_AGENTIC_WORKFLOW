@@ -22,6 +22,13 @@ def _format_started_at(value: str | None) -> str:
         return value
 
 
+def _format_repo_relative_path(value: Path, repo_root: Path) -> str:
+    try:
+        return value.resolve().relative_to(repo_root.resolve()).as_posix()
+    except ValueError:
+        return value.as_posix()
+
+
 def write_trials_csv(path: Path, trials: list[dict]) -> None:
     fieldnames = [
         "trial_id",
@@ -132,6 +139,8 @@ def write_agent_reasoning(
 ) -> None:
     sorted_trials = _sorted_successful_trials(trials)
     base_input = load_base_input(search_config.base_input)
+    repo_root = path.parent.parent.resolve()
+    input_parameters = base_input.get("input_parameters", {})
     solver_parameters = base_input.get("solver_parameters", {})
     lines = [
         "# Agent Reasoning",
@@ -141,10 +150,12 @@ def write_agent_reasoning(
         "",
         "## Active Competition Configuration",
         "",
-        f"- Base input: {search_config.base_input}",
+        f"- Base input: {_format_repo_relative_path(search_config.base_input, repo_root)}",
         f"- Number of grid points: {int(solver_parameters.get('number_grid_points', 0))}",
         f"- Number of pseudoelectrons: {int(solver_parameters.get('number_pseudoelectrons', 0))}",
         f"- Total steps: {int(solver_parameters.get('total_steps', 0))}",
+        f"- Time step over spatial step times c: {float(input_parameters.get('timestep_over_spatialstep_times_c', 0.0)):.6g}",
+        f"- Particle substeps per solver step: {int(solver_parameters.get('number_of_particle_substeps_implicit_CN', 0))}",
         f"- Baseline included: {search_config.include_baseline}",
         f"- Baseline drift multiplier: {search_config.baseline_multiplier:.6f}",
         "",
@@ -284,7 +295,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
                 f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
             )
     else:
-        section_lines.append("No successful optimization trials have been recorded yet.")
+        section_lines.append("No successful optimization trials have been recorded yet for the restarted campaign.")
     section_lines.append("")
     if (path.parent / "reports/plots/parameter_space_trajectory.png").exists():
         section_lines.extend(
