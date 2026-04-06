@@ -41,6 +41,24 @@ class ScoringConfig:
 
 
 @dataclass(frozen=True)
+class RenderConfig:
+    include_baseline_movie: bool
+    max_ranked_movies: int
+    replay_max_grid_points: int | None
+    replay_max_pseudoelectrons: int | None
+    replay_max_total_steps: int | None
+    fps: int
+    dpi: int
+    save_stride: int
+    save_dpi: int
+    save_crf: int
+    save_preset: str | None
+    save_codec: str | None
+    gif_fps: int
+    gif_width: int
+
+
+@dataclass(frozen=True)
 class CampaignPaths:
     root: Path
 
@@ -75,6 +93,10 @@ class CampaignPaths:
     @property
     def scoring_config_path(self) -> Path:
         return self.configs_dir / "scoring.yaml"
+
+    @property
+    def rendering_config_path(self) -> Path:
+        return self.configs_dir / "rendering.yaml"
 
     @property
     def optimizer_state_path(self) -> Path:
@@ -141,6 +163,40 @@ def load_scoring_config(path: Path) -> ScoringConfig:
         eps=float(data.get("eps", 1.0e-30)),
         failure_penalty=float(data.get("failure_penalty", 1.0e6)),
         score_version=str(data.get("score_version", "tail_mean_electric_field_energy_v1")),
+    )
+
+
+def _optional_int(data: dict, key: str, default: int | None) -> int | None:
+    value = data.get(key, default)
+    if value in (None, ""):
+        return None
+    return int(value)
+
+
+def _optional_str(data: dict, key: str, default: str | None) -> str | None:
+    value = data.get(key, default)
+    if value in (None, ""):
+        return None
+    return str(value)
+
+
+def load_render_config(path: Path) -> RenderConfig:
+    data = load_yaml(path) if path.exists() else {}
+    return RenderConfig(
+        include_baseline_movie=bool(data.get("include_baseline_movie", True)),
+        max_ranked_movies=int(data.get("max_ranked_movies", 1)),
+        replay_max_grid_points=_optional_int(data, "replay_max_grid_points", 64),
+        replay_max_pseudoelectrons=_optional_int(data, "replay_max_pseudoelectrons", 4000),
+        replay_max_total_steps=_optional_int(data, "replay_max_total_steps", 2000),
+        fps=int(data.get("fps", 10)),
+        dpi=int(data.get("dpi", 70)),
+        save_stride=int(data.get("save_stride", 6)),
+        save_dpi=int(data.get("save_dpi", 48)),
+        save_crf=int(data.get("save_crf", 38)),
+        save_preset=_optional_str(data, "save_preset", "veryfast"),
+        save_codec=_optional_str(data, "save_codec", None),
+        gif_fps=int(data.get("gif_fps", 6)),
+        gif_width=int(data.get("gif_width", 640)),
     )
 
 

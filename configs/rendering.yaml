@@ -1,0 +1,14 @@
+include_baseline_movie: true
+max_ranked_movies: 1
+replay_max_grid_points: 64
+replay_max_pseudoelectrons: 4000
+replay_max_total_steps: 2000
+fps: 10
+dpi: 70
+save_stride: 6
+save_dpi: 48
+save_crf: 38
+save_preset: veryfast
+save_codec:
+gif_fps: 6
+gif_width: 640

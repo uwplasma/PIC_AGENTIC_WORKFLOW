@@ -100,7 +100,7 @@ This keeps the old campaign visible in-repo while freeing the live leaderboard b
 
 ## Repo Map
 
-- `configs/`: base input, search settings, scoring settings
+- `configs/`: base input, search settings, scoring settings, and README movie replay/render controls in `rendering.yaml`
 - `src/jaxincell_drift_opt/`: adapter, scoring, optimizer, reporting, plotting
 - `scripts/`: local and workflow entry points
 - `tests/`: lightweight unit tests and mocked optimizer smoke tests
@@ -168,7 +168,7 @@ The optimizer state is stored as JSON observations rather than a Python pickle. 
 
 - `ci.yml`: install, test, and run one smoke trial on GitHub-hosted runners
 - `optimize-dispatch.yml`: manual run with trial count, seed, and optional drift-range override, committing results directly to `main`
-- `optimize-scheduled.yml`: hourly bounded optimization with concurrency control on the self-hosted runner
+- `optimize-scheduled.yml`: hourly bounded optimization with concurrency control on the self-hosted runner, using the README movie replay/render settings from `configs/rendering.yaml`
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
 - `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
 - `copilot-automerge.yml`: trusted auto-approval and auto-merge for Copilot-authored PRs when a maintainer token is configured
