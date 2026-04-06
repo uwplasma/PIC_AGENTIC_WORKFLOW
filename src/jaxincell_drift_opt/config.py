@@ -126,7 +126,7 @@ def load_search_config(path: Path) -> SearchConfig:
         n_initial_points=int(data.get("n_initial_points", 4)),
         acq_func=str(data.get("acq_func", "EI")),
         base_estimator=str(data.get("base_estimator", "GP")),
-        state_branch=str(data.get("state_branch", "agent-state")),
+        state_branch=str(data.get("state_branch", "main")),
         trials_per_run_default=int(data.get("trials_per_run_default", 2)),
         leaderboard_size=int(data.get("leaderboard_size", 10)),
         trusted_runner_label=str(data.get("trusted_runner_label", "ubuntu-latest")),

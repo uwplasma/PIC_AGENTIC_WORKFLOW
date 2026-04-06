@@ -7,14 +7,14 @@ This repository is public but uses a narrow trust split for automation.
 - Public `push` and `pull_request` validation stays on GitHub-hosted runners.
 - Issue-comment parsing stays on GitHub-hosted runners.
 - Only trusted optimization workflows are allowed to target the self-hosted runner.
-- Optimization state is written to `agent-state`, never directly to `main`.
+- Optimization state is committed directly to `main` by maintainer-controlled scheduled and dispatch workflows.
 
 ## Self-Hosted Runner Safety Rules
 
 The self-hosted runner is only appropriate if all of the following remain true:
 
 1. Public PRs never execute on the self-hosted runner.
-2. `main` is branch-protected and requires pull requests.
+2. `main` is branch-protected and only trusted automation tokens or maintainers can bypass that protection.
 3. Only a short allowlist of maintainers can manually dispatch self-hosted workflows.
 4. The organization runner group is restricted to this repository or a very small trusted set.
 5. The runner group allows this public repository only because the workflows routed to it are maintainer-controlled and non-PR.

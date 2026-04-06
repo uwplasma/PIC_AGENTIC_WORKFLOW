@@ -4,19 +4,45 @@ PIC Agentic Workflow is a live optimization lab around [uwplasma/JAX-in-Cell](ht
 
 The current campaign has been restarted from scratch with a higher-fidelity simulation baseline. The goal remains the same: find parameter settings that maximize the nonlinear saturation of electrostatic energy in the two-stream instability, while keeping every trial visible, reproducible, and scientifically interpretable.
 
+<!-- leaderboard:start -->
+
+## Optimization Leaderboard
+
+This table updates directly on the live `main` branch. Higher score means stronger nonlinear electrostatic saturation.
+
+Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass over proton mass=[0.01, 4.0]
+
+No successful optimization trials have been recorded yet for the restarted campaign.
+
+### Parameter Space Map
+
+This live figure shows where the optimizer has already looked, the order it moved through the search space, the current best point, and the next suggested point.
+
+![Optimizer path through parameter space](reports/plots/parameter_space_trajectory.png)
+
+### Follow The Search
+
+- Read the agent's public reasoning: [reports/agent_reasoning.md](reports/agent_reasoning.md)
+- Watch scheduled live runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)
+- Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
+- Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)
+- See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
+
+<!-- leaderboard:end -->
+
 ## Start Here
 
 - Read the agent's running decision log: [reports/agent_reasoning.md](reports/agent_reasoning.md)
 - Watch live scheduled runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)
 - Watch manual restarts and on-demand runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
-- Watch the public README update workflow: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)
+- Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)
 - See how the next run is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
 
 ## What This Repo Is Doing
 
 - The optimizer searches over `drift_multiplier`, `ion_temperature_over_electron_temperature_x`, and `ion_mass_over_proton_mass`.
 - Each run writes trial artifacts, a public summary, and a leaderboard snapshot.
-- The canonical live state is stored on `agent-state`, then synced back into `main` for public viewing.
+- The canonical live state is committed directly on `main`.
 - The parameter-space figure in the leaderboard shows where the optimizer has already explored and how it moved between trials.
 
 ## Objective
@@ -71,32 +97,6 @@ These changes live in [configs/base_input.toml](configs/base_input.toml). The se
 - Archived movies: [initial condition](reports/history/2026-04-high-fidelity-restart/initial-condition.gif), [leaderboard rank 1](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-1.gif), [leaderboard rank 2](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-2.gif)
 
 This keeps the old campaign visible in-repo while freeing the live leaderboard below to track the new higher-fidelity run from a clean state.
-
-<!-- leaderboard:start -->
-
-## Optimization Leaderboard
-
-This table updates from the live `agent-state` branch. Higher score means stronger nonlinear electrostatic saturation.
-
-Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass over proton mass=[0.01, 4.0]
-
-No successful optimization trials have been recorded yet for the restarted campaign.
-
-### Parameter Space Map
-
-This live figure shows where the optimizer has already looked, the order it moved through the search space, the current best point, and the next suggested point.
-
-![Optimizer path through parameter space](reports/plots/parameter_space_trajectory.png)
-
-### Follow The Search
-
-- Read the agent's public reasoning: [reports/agent_reasoning.md](reports/agent_reasoning.md)
-- Watch scheduled live runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)
-- Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
-- Watch README updates land: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)
-- See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
-
-<!-- leaderboard:end -->
 
 ## Repo Map
 
@@ -155,24 +155,23 @@ This updates:
 
 ## State Persistence
 
-The canonical persistence target is the `agent-state` branch. Optimization workflows:
+The canonical persistence target is `main`. Optimization workflows:
 
 1. run a bounded number of new trials,
 2. update `state/`, `reports/`, and `results/`,
 3. upload those directories as artifacts,
-4. optionally copy them onto the `agent-state` branch.
+4. commit the refreshed `state/`, `reports/`, `results/`, and `README.md` directly back onto `main`.
 
 The optimizer state is stored as JSON observations rather than a Python pickle. On resume, the repo reconstructs the `scikit-optimize` `Optimizer` and replays prior `tell(...)` calls.
 
 ## Workflows
 
 - `ci.yml`: install, test, and run one smoke trial on GitHub-hosted runners
-- `optimize-dispatch.yml`: manual run with trial count, seed, range override, and optional state-branch push
+- `optimize-dispatch.yml`: manual run with trial count, seed, and optional drift-range override, committing results directly to `main`
 - `optimize-scheduled.yml`: hourly bounded optimization with concurrency control on the self-hosted runner
 - `optimize-issue-command.yml`: restricted issue-comment commands, gated by actor allowlist
 - `copilot-maintenance.yml`: weekly/manual maintenance checks, with a neutral placeholder for GitHub-native Copilot PR automation
 - `copilot-automerge.yml`: trusted auto-approval and auto-merge for Copilot-authored PRs when a maintainer token is configured
-- `readme-leaderboard-sync.yml`: GitHub-hosted sync that lifts the generated leaderboard README from `agent-state` back onto `main`
 - `relativistic-agent-loop.yml`: hourly GitHub-hosted watchdog that ensures exactly one open Copilot-assigned relativistic milestone issue exists for the PR-first research loop
 
 ## Relativistic Research Agent
@@ -191,7 +190,7 @@ The loop is now partially self-maintaining inside GitHub: when there is no open 
 
 Trusted Copilot PRs can, however, be auto-approved and auto-merged after CI if you configure a repository secret named `AUTOMERGE_GITHUB_TOKEN` containing a maintainer token with repository access. The workflow policy for that path lives in [agent/policies/automerge.toml](agent/policies/automerge.toml).
 
-The same maintainer token is also used by the README sync workflow to auto-merge the public leaderboard updates that are generated from the hourly optimization state.
+The same maintainer token can be used by the trusted optimization workflows to push the refreshed state directly back onto `main` when branch protection would otherwise block the default workflow token.
 
 ## Trusted Self-Hosted Optimization
 
@@ -228,7 +227,7 @@ If by "agent tab" you mean a GitHub Copilot coding-agent surface, that is not th
 If local `gh` credentials or org permissions prevent automation, the remaining manual steps are:
 
 1. Create the remote repository from this local folder.
-2. Push `main` and create `agent-state`.
+2. Push `main`.
 3. Populate the actor allowlist.
 4. Add any organization-approved GitHub Copilot automation wiring if you later want PR-first maintenance automation.
 5. Protect `main` and restrict direct pushes.

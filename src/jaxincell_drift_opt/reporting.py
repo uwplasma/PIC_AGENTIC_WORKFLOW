@@ -123,7 +123,11 @@ def write_summary_markdown(
             "",
             "- State is replayable from JSON observations in `state/optimizer_state.json`.",
             "- Workflow artifacts mirror `state/`, `reports/`, and `results/`.",
-            f"- Scheduled workflow should publish state to `{search_config.state_branch}`, not `main`.",
+            (
+                "- Scheduled workflow writes state, reports, and results directly to `main`."
+                if search_config.state_branch == "main"
+                else f"- Scheduled workflow should publish state to `{search_config.state_branch}`, not `main`."
+            ),
             "",
         ]
     )
@@ -276,7 +280,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
     section_lines = [
         "## Optimization Leaderboard",
         "",
-        "This table updates from the live `agent-state` branch. Higher score means stronger nonlinear electrostatic saturation.",
+        f"This table updates directly on the live `{search_config.state_branch}` branch. Higher score means stronger nonlinear electrostatic saturation.",
         "",
         f"Search ranges: drift=[{search_config.drift_multiplier_min}, {search_config.drift_multiplier_max}], ion temperature ratio=[{search_config.ion_temperature_ratio_min}, {search_config.ion_temperature_ratio_max}], ion mass over proton mass=[{search_config.ion_mass_min}, {search_config.ion_mass_max}]",
         "",
@@ -315,7 +319,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
             "- Read the agent's public reasoning: [reports/agent_reasoning.md](reports/agent_reasoning.md)",
             "- Watch scheduled live runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)",
             "- Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)",
-            "- Watch README updates land: [README Leaderboard Sync](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/readme-leaderboard-sync.yml)",
+            "- Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)",
             "- See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)",
             "",
         ]

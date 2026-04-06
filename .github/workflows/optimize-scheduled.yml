@@ -24,6 +24,7 @@ jobs:
     timeout-minutes: 60
     env:
       MPLBACKEND: Agg
+      AUTOMERGE_GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
@@ -35,20 +36,6 @@ jobs:
           python3 --version
           python3 -m venv .venv
           .venv/bin/python -m pip install --upgrade pip
-
-      - name: Restore latest optimizer state from agent-state
-        run: |
-          set -euo pipefail
-          git worktree remove --force .agent-state-restore || true
-          git fetch origin agent-state:agent-state || true
-          rm -rf .agent-state-restore
-          if git show-ref --verify --quiet refs/heads/agent-state; then
-            git worktree add .agent-state-restore agent-state
-            .venv/bin/python scripts/restore_state_branch.py --source-root "$PWD/.agent-state-restore" --target-root "$PWD"
-            git worktree remove --force .agent-state-restore
-          else
-            echo "No agent-state branch available yet; starting from repository state."
-          fi
 
       - name: Install dependencies
         run: |
@@ -67,30 +54,19 @@ jobs:
             results/
             state/
 
-      - name: Publish state branch
+      - name: Commit and push main
         run: |
           set -euo pipefail
-          git worktree remove --force .agent-state-restore || true
-          git fetch origin agent-state:agent-state || true
-          rm -rf .agent-state
-          if git show-ref --verify --quiet refs/heads/agent-state; then
-            git worktree add .agent-state agent-state
-          else
-            git worktree add --detach .agent-state
-            cd .agent-state
-            git checkout --orphan agent-state
-            git rm -rf . >/dev/null 2>&1 || true
-            cd ..
-          fi
-          .venv/bin/python scripts/push_state_branch.py --source-root "$PWD" --target-root "$PWD/.agent-state"
-          cd .agent-state
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
           git add state reports results README.md
           if git diff --cached --quiet; then
-            echo "No state changes to push."
+            echo "No campaign changes to push."
             exit 0
           fi
-          git commit -m "Scheduled optimization state update ${GITHUB_RUN_ID}"
-          git push origin agent-state
-          git worktree remove --force .agent-state
+          git commit -m "Scheduled optimization update ${GITHUB_RUN_ID}"
+          if [ -n "${AUTOMERGE_GH_TOKEN:-}" ]; then
+            git remote set-url origin "https://x-access-token:${AUTOMERGE_GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          fi
+          git pull --rebase origin main
+          git push origin HEAD:main

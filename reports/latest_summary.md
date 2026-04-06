@@ -15,5 +15,5 @@
 
 - State is replayable from JSON observations in `state/optimizer_state.json`.
 - Workflow artifacts mirror `state/`, `reports/`, and `results/`.
-- Scheduled workflow should publish state to `agent-state`, not `main`.
+- Scheduled workflow writes state, reports, and results directly to `main`.
 

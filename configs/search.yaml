@@ -14,7 +14,7 @@ optimizer_random_state: 1701
 n_initial_points: 4
 acq_func: EI
 base_estimator: GP
-state_branch: agent-state
+state_branch: main
 trials_per_run_default: 3
 leaderboard_size: 20
 trusted_runner_label: ubuntu-latest
