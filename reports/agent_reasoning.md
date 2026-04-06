@@ -455,13 +455,19 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0409: score=1.107056, objective=-1.107056, tail_mean_E=1.279547e+01, drift=2.038299, temp_ratio=1.670250e-02, mass_ratio=1.761906e-02, failed=False.
 - trial_0410: score=1.136915, objective=-1.136915, tail_mean_E=1.370613e+01, drift=2.084854, temp_ratio=1.070159e-01, mass_ratio=1.000000e-02, failed=False.
 - trial_0411: score=1.087921, objective=-1.087921, tail_mean_E=1.224394e+01, drift=2.065298, temp_ratio=7.359374e-01, mass_ratio=1.706429e-02, failed=False.
+- trial_0412: score=1.037840, objective=-1.037840, tail_mean_E=1.091037e+01, drift=2.028254, temp_ratio=2.670071e-01, mass_ratio=1.851842e-02, failed=False.
+- trial_0413: score=0.962847, objective=-0.962847, tail_mean_E=9.180096e+00, drift=2.082689, temp_ratio=4.221147e-01, mass_ratio=1.252342e-02, failed=False.
+- trial_0414: score=1.094826, objective=-1.094826, tail_mean_E=1.244015e+01, drift=2.062849, temp_ratio=9.087451e-02, mass_ratio=1.899374e-02, failed=False.
+- trial_0415: score=0.855616, objective=-0.855616, tail_mean_E=7.171606e+00, drift=1.797425, temp_ratio=1.483436e+00, mass_ratio=1.370909e-01, failed=False.
+- trial_0416: score=0.630160, objective=-0.630160, tail_mean_E=4.267370e+00, drift=1.409673, temp_ratio=9.748671e+01, mass_ratio=2.168543e+00, failed=False.
+- trial_0417: score=0.916803, objective=-0.916803, tail_mean_E=8.256641e+00, drift=1.461548, temp_ratio=1.721343e-02, mass_ratio=2.563845e-01, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 2.028254
-- Ion temperature ratio: 2.670071e-01
-- Ion mass over proton mass: 1.851842e-02
-- Observations available to the optimizer: 412
+- Drift multiplier: 0.973027
+- Ion temperature ratio: 4.378308e-01
+- Ion mass over proton mass: 2.671704e+00
+- Observations available to the optimizer: 418
 
 ## Public Copilot Research Trail
 
