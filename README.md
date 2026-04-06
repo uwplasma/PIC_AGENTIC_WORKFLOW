@@ -12,7 +12,10 @@ This table updates directly on the live `main` branch. Higher score means strong
 
 Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass over proton mass=[0.01, 4.0]
 
-No successful optimization trials have been recorded yet for the restarted campaign.
+| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | trial_0001 | 2026-04-06 22:09 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 2.806108e+00 | 0.448104 |
+| 2 | trial_0000 | 2026-04-06 22:06 UTC | 1.000000 | 1.000000e-02 | 1.000000e+00 | 2.583178e+00 | 0.412154 |
 
 ### Parameter Space Map
 
@@ -27,6 +30,18 @@ This live figure shows where the optimizer has already looked, the order it move
 - Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
 - Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)
 - See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
+
+### Movies
+
+The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
+
+#### Initial condition
+
+![Initial condition](reports/readme_assets/initial-condition.gif)
+
+#### Leaderboard rank 1
+
+![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
 
 <!-- leaderboard:end -->
 
