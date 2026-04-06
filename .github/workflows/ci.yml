@@ -30,6 +30,9 @@ jobs:
       - name: Run tests
         run: pytest -q
 
+      - name: Switch to smoke config
+        run: cp configs/search_smoke.yaml configs/search.yaml
+
       - name: Bootstrap state
         run: python scripts/bootstrap_state.py
 

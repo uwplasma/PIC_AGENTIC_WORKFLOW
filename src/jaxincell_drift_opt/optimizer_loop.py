@@ -17,7 +17,7 @@ from .run_trial import run_trial
 from .utils import ensure_directory
 
 
-def refresh_outputs(paths: CampaignPaths, state: dict, search_config, scoring_config) -> None:
+def refresh_outputs(paths: CampaignPaths, state: dict, search_config, scoring_config, *, render_movies: bool = True) -> None:
     ensure_directory(paths.state_dir)
     ensure_directory(paths.reports_dir)
     ensure_directory(paths.report_plots_dir)
@@ -38,7 +38,8 @@ def refresh_outputs(paths: CampaignPaths, state: dict, search_config, scoring_co
         plot_best_run(state["best_result"], paths.root, paths.report_plots_dir / "best_run_energy.png")
         plot_baseline_vs_best(state["trials"], paths.root, paths.report_plots_dir / "baseline_vs_best.png")
     write_agent_reasoning(paths.agent_reasoning_path, state["trials"], state.get("best_result"), search_config, next_suggestion)
-    render_readme_movies(paths, state["trials"], search_config)
+    if render_movies:
+        render_readme_movies(paths, state["trials"], search_config)
     write_readme_leaderboard(paths.root / "README.md", state["trials"], search_config)
 
 
@@ -74,7 +75,7 @@ def run_campaign(
         )
         register_trial(state, baseline_metrics)
         save_state(paths.optimizer_state_path, state)
-        refresh_outputs(paths, state, search_config, scoring_config)
+        refresh_outputs(paths, state, search_config, scoring_config, render_movies=False)
 
     optimizer = replay_optimizer(state, search_config)
     start_index = len(state["trials"])
@@ -100,7 +101,9 @@ def run_campaign(
         optimizer.tell([drift_multiplier, ion_temperature_ratio, ion_mass_over_proton_mass], float(trial_metrics["optimizer_objective"]))
         register_trial(state, trial_metrics)
         save_state(paths.optimizer_state_path, state)
-        refresh_outputs(paths, state, search_config, scoring_config)
+        refresh_outputs(paths, state, search_config, scoring_config, render_movies=False)
+
+    refresh_outputs(paths, state, search_config, scoring_config, render_movies=True)
 
     return state
 
