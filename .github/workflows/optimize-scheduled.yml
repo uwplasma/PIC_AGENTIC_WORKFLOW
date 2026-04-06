@@ -30,6 +30,7 @@ jobs:
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up local virtual environment
         run: |
@@ -67,6 +68,7 @@ jobs:
           git commit -m "Scheduled optimization update ${GITHUB_RUN_ID}"
           if [ -n "${AUTOMERGE_GH_TOKEN:-}" ]; then
             git remote set-url origin "https://x-access-token:${AUTOMERGE_GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git config --unset-all http.https://github.com/.extraheader || true
           fi
           git pull --rebase origin main
           git push origin HEAD:main
