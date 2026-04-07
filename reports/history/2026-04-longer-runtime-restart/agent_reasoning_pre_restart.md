@@ -6,10 +6,10 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 ## Active Competition Configuration
 
 - Base input: configs/base_input.toml
-- Number of grid points: 120
-- Number of pseudoelectrons: 12000
-- Total steps: 5000
-- Time step over spatial step times c: 1
+- Number of grid points: 100
+- Number of pseudoelectrons: 10000
+- Total steps: 6500
+- Time step over spatial step times c: 1.5
 - Particle substeps per solver step: 2
 - Baseline included: True
 - Baseline drift multiplier: 1.000000
@@ -56,13 +56,14 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0008: score=0.500095, objective=-0.500095, tail_mean_E=3.162970e+00, drift=1.035567, temp_ratio=3.307409e-02, mass_ratio=9.087398e-01, failed=False.
 - trial_0009: score=0.521608, objective=-0.521608, tail_mean_E=3.323595e+00, drift=1.081476, temp_ratio=3.688025e-03, mass_ratio=8.880275e-01, failed=False.
 - trial_0010: score=0.521818, objective=-0.521818, tail_mean_E=3.325203e+00, drift=1.305280, temp_ratio=7.328883e+01, mass_ratio=8.310291e-01, failed=False.
+- trial_0011: score=0.193662, objective=-0.193662, tail_mean_E=1.561931e+00, drift=0.809051, temp_ratio=6.477306e-03, mass_ratio=7.648425e-01, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 0.809051
-- Ion temperature ratio: 6.477306e-03
-- Ion mass over proton mass: 7.648425e-01
-- Observations available to the optimizer: 11
+- Drift multiplier: 1.185419
+- Ion temperature ratio: 1.084759e-03
+- Ion mass over proton mass: 7.335259e-01
+- Observations available to the optimizer: 12
 
 ## Public Copilot Research Trail
 

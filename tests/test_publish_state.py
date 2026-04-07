@@ -117,6 +117,7 @@ def test_merge_campaign_state_copies_new_trials_and_saves_merged_state(tmp_path:
 
     merged = json.loads((target_root / "state" / "optimizer_state.json").read_text(encoding="utf-8"))
     assert result["changed"] is True
+    assert result["reason"] == "merged"
     assert result["new_trial_ids"] == ["trial_0001"]
     assert (target_root / "results" / "trial_0001" / "metrics.json").exists()
     assert [trial["trial_id"] for trial in merged["trials"]] == ["trial_0000", "trial_0001"]
@@ -144,5 +145,68 @@ def test_merge_campaign_state_skips_duplicate_only_updates(tmp_path: Path, monke
     result = merge_campaign_state(source_root, target_root)
 
     assert result["changed"] is False
+    assert result["reason"] == "no_new_trials"
     assert result["duplicate_trial_ids"] == ["trial_0000"]
+    assert refresh_calls == []
+
+
+def test_merge_campaign_state_rejects_mismatched_campaign_id(tmp_path: Path, monkeypatch):
+    source_root = tmp_path / "source"
+    target_root = tmp_path / "target"
+    _write_repo_skeleton(source_root)
+    _write_repo_skeleton(target_root)
+
+    search_config = load_search_config(target_root / "configs" / "search.yaml")
+    target_state = default_state(search_config)
+    save_state(target_root / "state" / "optimizer_state.json", target_state)
+
+    source_state = default_state(search_config)
+    source_state["campaign_id"] = "old-campaign"
+    register_trial(source_state, _trial("trial_0000", 1.0, 0.2))
+    save_state(source_root / "state" / "optimizer_state.json", source_state)
+
+    refresh_calls: list[int] = []
+    monkeypatch.setattr(
+        "jaxincell_drift_opt.publish_state.refresh_outputs",
+        lambda *_args, **_kwargs: refresh_calls.append(1),
+    )
+
+    result = merge_campaign_state(source_root, target_root)
+
+    assert result["changed"] is False
+    assert result["reason"] == "campaign_mismatch"
+    assert refresh_calls == []
+
+
+def test_merge_campaign_state_rejects_legacy_source_state_when_target_has_campaign_id(tmp_path: Path, monkeypatch):
+    source_root = tmp_path / "source"
+    target_root = tmp_path / "target"
+    _write_repo_skeleton(source_root)
+    _write_repo_skeleton(target_root)
+
+    search_config = load_search_config(target_root / "configs" / "search.yaml")
+    target_state = default_state(search_config)
+    save_state(target_root / "state" / "optimizer_state.json", target_state)
+
+    legacy_source_state = {
+        "schema_version": 2,
+        "created_at": "2026-04-07T00:00:00+00:00",
+        "updated_at": "2026-04-07T00:00:00+00:00",
+        "optimizer": target_state["optimizer"],
+        "observations": {"x": [[1.0, 0.01, 1.0]], "y": [-0.2]},
+        "trials": [_trial("trial_0000", 1.0, 0.2)],
+        "best_result": _trial("trial_0000", 1.0, 0.2),
+    }
+    (source_root / "state" / "optimizer_state.json").write_text(json.dumps(legacy_source_state, indent=2), encoding="utf-8")
+
+    refresh_calls: list[int] = []
+    monkeypatch.setattr(
+        "jaxincell_drift_opt.publish_state.refresh_outputs",
+        lambda *_args, **_kwargs: refresh_calls.append(1),
+    )
+
+    result = merge_campaign_state(source_root, target_root)
+
+    assert result["changed"] is False
+    assert result["reason"] == "legacy_source_campaign"
     assert refresh_calls == []

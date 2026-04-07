@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from jaxincell_drift_opt.config import load_search_config
-from jaxincell_drift_opt.optimizer_state import default_state, load_state, merge_states, rebuild_state, register_trial, save_state
+from jaxincell_drift_opt.optimizer_state import compute_campaign_id, default_state, load_state, merge_states, rebuild_state, register_trial, save_state
 
 
 def test_optimizer_state_round_trip(tmp_path: Path):
@@ -59,6 +59,14 @@ def test_load_state_recomputes_score_direction_from_tail_energy(tmp_path: Path):
     assert loaded["trials"][0]["optimizer_score"] == 3.0
     assert loaded["trials"][0]["optimizer_objective"] == -3.0
     assert loaded["best_result"]["trial_id"] == "trial_0000"
+
+
+def test_default_state_includes_campaign_id():
+    search_config = load_search_config(Path(__file__).resolve().parents[1] / "configs" / "search.yaml")
+
+    state = default_state(search_config)
+
+    assert state["campaign_id"] == compute_campaign_id(search_config)
 
 
 def test_rebuild_state_reconstructs_observations_in_trial_order(tmp_path: Path):

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import shutil
 from pathlib import Path
 
@@ -7,6 +8,16 @@ from .config import campaign_paths, load_scoring_config, load_search_config
 from .optimizer_loop import refresh_outputs
 from .optimizer_state import load_state, merge_states, save_state
 from .utils import ensure_directory
+
+
+def _read_state_campaign_metadata(path: Path) -> tuple[str | None, bool]:
+    if not path.exists():
+        return None, False
+    with path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    if "campaign_id" not in payload:
+        return None, False
+    return str(payload.get("campaign_id")), True
 
 
 def _trial_directory(root: Path, trial: dict) -> Path | None:
@@ -47,11 +58,33 @@ def merge_campaign_state(source_root: Path, target_root: Path, *, render_movies:
 
     source_state = load_state(source_paths.optimizer_state_path, search_config)
     target_state = load_state(target_paths.optimizer_state_path, search_config)
+    source_campaign_id, source_has_campaign_id = _read_state_campaign_metadata(source_paths.optimizer_state_path)
+    target_campaign_id, target_has_campaign_id = _read_state_campaign_metadata(target_paths.optimizer_state_path)
+
+    if target_has_campaign_id:
+        if source_has_campaign_id and source_campaign_id != target_campaign_id:
+            return {
+                "changed": False,
+                "reason": "campaign_mismatch",
+                "new_trial_ids": [],
+                "duplicate_trial_ids": [],
+                "copied_trial_dirs": [],
+            }
+        if not source_has_campaign_id and source_state.get("trials"):
+            return {
+                "changed": False,
+                "reason": "legacy_source_campaign",
+                "new_trial_ids": [],
+                "duplicate_trial_ids": [],
+                "copied_trial_dirs": [],
+            }
+
     merged_state, new_trial_ids, duplicate_trial_ids = merge_states(target_state, source_state, search_config)
 
     if not new_trial_ids:
         return {
             "changed": False,
+            "reason": "no_new_trials",
             "new_trial_ids": [],
             "duplicate_trial_ids": duplicate_trial_ids,
             "copied_trial_dirs": [],
@@ -69,6 +102,7 @@ def merge_campaign_state(source_root: Path, target_root: Path, *, render_movies:
 
     return {
         "changed": True,
+        "reason": "merged",
         "new_trial_ids": new_trial_ids,
         "duplicate_trial_ids": duplicate_trial_ids,
         "copied_trial_dirs": copied_trial_dirs,

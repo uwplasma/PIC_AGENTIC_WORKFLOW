@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -11,6 +12,31 @@ from .utils import atomic_write_json, utc_timestamp
 
 
 STATE_SCHEMA_VERSION = 2
+
+
+def compute_campaign_id(search_config: SearchConfig) -> str:
+    payload = {
+        "base_input": load_base_input(search_config.base_input),
+        "search": {
+            "drift_key": search_config.drift_key,
+            "drift_multiplier_min": search_config.drift_multiplier_min,
+            "drift_multiplier_max": search_config.drift_multiplier_max,
+            "ion_temperature_ratio_key": search_config.ion_temperature_ratio_key,
+            "ion_temperature_ratio_min": search_config.ion_temperature_ratio_min,
+            "ion_temperature_ratio_max": search_config.ion_temperature_ratio_max,
+            "ion_mass_key": search_config.ion_mass_key,
+            "ion_mass_min": search_config.ion_mass_min,
+            "ion_mass_max": search_config.ion_mass_max,
+            "include_baseline": search_config.include_baseline,
+            "baseline_multiplier": search_config.baseline_multiplier,
+            "optimizer_random_state": search_config.optimizer_random_state,
+            "n_initial_points": search_config.n_initial_points,
+            "acq_func": search_config.acq_func,
+            "base_estimator": search_config.base_estimator,
+        },
+    }
+    digest = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+    return digest[:16]
 
 
 def build_optimizer(search_config: SearchConfig, random_state: int | None = None) -> Optimizer:
@@ -41,6 +67,7 @@ def default_state(search_config: SearchConfig) -> dict:
     now = utc_timestamp()
     return {
         "schema_version": STATE_SCHEMA_VERSION,
+        "campaign_id": compute_campaign_id(search_config),
         "created_at": now,
         "updated_at": now,
         "optimizer": {
@@ -65,6 +92,8 @@ def load_state(path: Path, search_config: SearchConfig) -> dict:
         return default_state(search_config)
     with path.open("r", encoding="utf-8") as handle:
         state = json.load(handle)
+
+    state.setdefault("campaign_id", compute_campaign_id(search_config))
 
     base_input = load_base_input(search_config.base_input).get("input_parameters", {})
     default_ion_temperature_ratio = float(base_input.get(search_config.ion_temperature_ratio_key, 0.01))
@@ -169,6 +198,7 @@ def rebuild_state(search_config: SearchConfig, trials: list[dict], *, template_s
     template_state = template_state or {}
 
     state["schema_version"] = max(int(template_state.get("schema_version", STATE_SCHEMA_VERSION)), STATE_SCHEMA_VERSION)
+    state["campaign_id"] = str(template_state.get("campaign_id", state["campaign_id"]))
     if template_state.get("created_at"):
         state["created_at"] = template_state["created_at"]
 

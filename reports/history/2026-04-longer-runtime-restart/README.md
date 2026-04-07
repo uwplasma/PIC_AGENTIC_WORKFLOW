@@ -4,7 +4,7 @@ This directory preserves the public artifacts from the intermediate April 2026 c
 
 ## What The Archived Campaign Achieved
 
-- Completed trials: `11`
+- Completed trials: `12`
 - Best trial: `trial_0010`
 - Best public score: `0.521818`
 - Best tail-mean electric-field energy: `3.325203e+00`
@@ -27,6 +27,7 @@ The intermediate campaign improved on the restarted baseline, but it still showe
 - The best trials were still pushing significant field growth late in the run.
 - The next scientific step was to extend physical-time coverage rather than keep optimizing a short observation window.
 - Public movies also had to stay cheap enough to publish, so the render path was decoupled from the longer live baseline by enforcing a short movie-duration cap.
+- A stale scheduled publish landed one final extra trial (`trial_0011`) after the first reset commit; this archive preserves that final public state before the corrected reset.
 
 ## Solver Changes Introduced For The Live Restart
 
