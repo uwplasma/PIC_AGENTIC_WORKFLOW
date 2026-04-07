@@ -3,6 +3,7 @@ max_ranked_movies: 2
 replay_max_grid_points: 64
 replay_max_pseudoelectrons: 4000
 replay_max_total_steps: 2000
+max_movie_seconds: 8
 fps: 10
 dpi: 70
 save_stride: 6

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import shutil
 import subprocess
 from pathlib import Path
@@ -39,6 +40,19 @@ def _apply_render_replay_profile(solver_parameters: dict, render_config: RenderC
     return profiled
 
 
+def _effective_save_stride(solver_parameters: dict, render_config: RenderConfig) -> int:
+    base_stride = max(1, int(render_config.save_stride))
+    total_steps = int(solver_parameters.get("total_steps", 0))
+    if total_steps <= 0:
+        return base_stride
+
+    max_movie_seconds = float(render_config.max_movie_seconds)
+    fps = max(1, int(render_config.fps))
+    max_frames = max(1, math.floor(max_movie_seconds * fps))
+    duration_limited_stride = max(1, math.ceil(total_steps / max_frames))
+    return max(base_stride, duration_limited_stride)
+
+
 def _render_mp4(input_parameters: dict, solver_parameters: dict, output_path: Path, render_config: RenderConfig) -> None:
     from jax import block_until_ready
     from jaxincell import diagnostics, simulation
@@ -46,6 +60,7 @@ def _render_mp4(input_parameters: dict, solver_parameters: dict, output_path: Pa
 
     ensure_directory(output_path.parent)
     profiled_solver_parameters = _apply_render_replay_profile(solver_parameters, render_config)
+    effective_save_stride = _effective_save_stride(profiled_solver_parameters, render_config)
     normalized_solver_parameters = {key: _to_hashable(value) for key, value in profiled_solver_parameters.items()}
     rendered_output = block_until_ready(simulation(input_parameters, **normalized_solver_parameters))
     diagnostics(rendered_output)
@@ -57,7 +72,7 @@ def _render_mp4(input_parameters: dict, solver_parameters: dict, output_path: Pa
         dpi=render_config.dpi,
         show=False,
         animation_interval=1,
-        save_stride=render_config.save_stride,
+        save_stride=effective_save_stride,
         save_dpi=render_config.save_dpi,
         save_crf=render_config.save_crf,
         save_preset=render_config.save_preset,

@@ -2,7 +2,7 @@
 
 PIC Agentic Workflow is a live optimization lab around [uwplasma/JAX-in-Cell](https://github.com/uwplasma/JAX-in-Cell). It continuously explores a plasma parameter space and publishes the latest leaderboard, reasoning, and artifacts back into this repository.
 
-The current campaign has been restarted from scratch with a higher-fidelity simulation baseline. The goal remains the same: find parameter settings that maximize the nonlinear saturation of electrostatic energy in the two-stream instability, while keeping every trial visible, reproducible, and scientifically interpretable.
+The current campaign has been restarted from scratch with a longer-runtime simulation baseline. The goal remains the same: find parameter settings that maximize the nonlinear saturation of electrostatic energy in the two-stream instability, while keeping every trial visible, reproducible, and scientifically interpretable.
 
 <!-- leaderboard:start -->
 
@@ -12,19 +12,7 @@ This table updates directly on the live `main` branch. Higher score means strong
 
 Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass over proton mass=[0.01, 4.0]
 
-| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | trial_0010 | 2026-04-07 14:35 UTC | 1.305280 | 7.328883e+01 | 8.310291e-01 | 3.325203e+00 | 0.521818 |
-| 2 | trial_0009 | 2026-04-07 14:18 UTC | 1.081476 | 3.688025e-03 | 8.880275e-01 | 3.323595e+00 | 0.521608 |
-| 3 | trial_0008 | 2026-04-07 11:53 UTC | 1.035567 | 3.307409e-02 | 9.087398e-01 | 3.162970e+00 | 0.500095 |
-| 4 | trial_0007 | 2026-04-07 09:50 UTC | 1.012228 | 9.742964e-03 | 9.593326e-01 | 2.870835e+00 | 0.458008 |
-| 5 | trial_0001 | 2026-04-06 22:09 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 2.806108e+00 | 0.448104 |
-| 6 | trial_0000 | 2026-04-06 22:06 UTC | 1.000000 | 1.000000e-02 | 1.000000e+00 | 2.583178e+00 | 0.412154 |
-| 7 | trial_0002 | 2026-04-06 23:01 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 2.330451e+00 | 0.367440 |
-| 8 | trial_0003 | 2026-04-06 23:56 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 2.054744e+00 | 0.312758 |
-| 9 | trial_0004 | 2026-04-07 03:39 UTC | 0.960704 | 1.487234e-02 | 2.379395e-01 | 1.830490e+00 | 0.262567 |
-| 10 | trial_0005 | 2026-04-07 06:05 UTC | 0.854412 | 1.124889e-02 | 1.144645e+00 | 1.645037e+00 | 0.216176 |
-| 11 | trial_0006 | 2026-04-07 08:04 UTC | 1.263124 | 1.105104e+01 | 1.661493e-01 | 1.510296e+00 | 0.179062 |
+No successful optimization trials have been recorded yet for the restarted campaign.
 
 ### Parameter Space Map
 
@@ -39,22 +27,6 @@ This live figure shows where the optimizer has already looked, the order it move
 - Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)
 - Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)
 - See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
-
-### Movies
-
-The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
-
-#### Initial condition
-
-![Initial condition](reports/readme_assets/initial-condition.gif)
-
-#### Leaderboard rank 1
-
-![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
-
-#### Leaderboard rank 2
-
-![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
 
 <!-- leaderboard:end -->
 
@@ -100,35 +72,40 @@ Higher score means a stronger nonlinear electrostatic saturation.
 
 [reports/agent_reasoning.md](reports/agent_reasoning.md) is the public decision log for the optimizer. It records what has been tried, what the model currently thinks is promising, and what it wants to try next.
 
-## April 2026 Restart
+## April 2026 Restarts
 
-The previous saturation campaign ran cleanly for 418 completed trials and reached a best public score of `1.293439` at `trial_0184`, with `tail_mean_E = 1.965345e+01`. That campaign did its job: it identified a strong high-drift, low-ion-temperature, low-ion-mass regime, and it made clear that the next scientific question could not be answered reliably with the shorter, lower-particle baseline.
+The original saturation campaign ran cleanly for 418 completed trials and reached a best public score of `1.293439` at `trial_0184`, with `tail_mean_E = 1.965345e+01`. That campaign did its job: it identified a strong high-drift, low-ion-temperature, low-ion-mass regime, and it made clear that the next scientific question could not be answered reliably with the old short, low-particle baseline.
 
-The restart is deliberate. The previous leaderboard suggested that the best candidates were beginning to demand more simulation time, more particles, and a smaller time step in order to separate real nonlinear saturation from under-resolved numerical behavior.
+The first April restart raised fidelity substantially and produced an 11-trial intermediate leaderboard led by `trial_0010` at score `0.521818`, but it still showed that the simulated physical time was ending too early for the best candidates. The live campaign has therefore been restarted again with a longer runtime window while keeping public movie publication cheap.
 
-### What Changed In The New Baseline
+### What Changed In The Live Baseline
 
-- `timestep_over_spatialstep_times_c`: `2.0 -> 1.0` to take smaller time steps.
-- `number_grid_points`: `100 -> 120` to improve spatial resolution.
-- `number_pseudoelectrons`: `5000 -> 12000` to reduce particle noise.
-- `total_steps`: `1500 -> 5000` to let the nonlinear phase run longer before scoring.
-- `number_of_particle_substeps_implicit_CN`: unchanged at `2`.
+- `timestep_over_spatialstep_times_c`: `1.0 -> 1.5` to cover more physical time per run.
+- `number_grid_points`: `120 -> 100` to keep the longer live baseline affordable.
+- `number_pseudoelectrons`: `12000 -> 10000` to reduce cost slightly while staying above the original `5000`-particle regime.
+- `total_steps`: `5000 -> 6500` to extend the nonlinear evolution window.
+- `number_of_particle_substeps_implicit_CN = 2` unchanged.
 
-These changes live in [configs/base_input.toml](configs/base_input.toml). The search space in [configs/search.yaml](configs/search.yaml) is unchanged, so the restart isolates the solver-fidelity change rather than mixing it with a new optimizer geometry.
+The README movie replay path is decoupled from the solver baseline: `configs/rendering.yaml` now enforces `max_movie_seconds = 8`, so public GIFs stay short even when the underlying simulation runs longer.
 
-## Archived Previous Campaign
+These changes live in [configs/base_input.toml](configs/base_input.toml). The search space in [configs/search.yaml](configs/search.yaml) is unchanged, so the restart isolates the runtime-window change rather than mixing it with a new optimizer geometry.
 
-- Full restart note and archived leaderboard summary: [reports/history/2026-04-high-fidelity-restart/README.md](reports/history/2026-04-high-fidelity-restart/README.md)
-- Archived public summary: [reports/history/2026-04-high-fidelity-restart/latest_summary_pre_restart.md](reports/history/2026-04-high-fidelity-restart/latest_summary_pre_restart.md)
-- Archived public reasoning log: [reports/history/2026-04-high-fidelity-restart/agent_reasoning_pre_restart.md](reports/history/2026-04-high-fidelity-restart/agent_reasoning_pre_restart.md)
-- Archived parameter-space trajectory: [reports/history/2026-04-high-fidelity-restart/parameter_space_trajectory_pre_restart.png](reports/history/2026-04-high-fidelity-restart/parameter_space_trajectory_pre_restart.png)
-- Archived movies: [initial condition](reports/history/2026-04-high-fidelity-restart/initial-condition.gif), [leaderboard rank 1](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-1.gif), [leaderboard rank 2](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-2.gif)
+## Archived Previous Campaigns
 
-This keeps the old campaign visible in-repo while freeing the live leaderboard below to track the new higher-fidelity run from a clean state.
+- Original high-fidelity restart archive: [reports/history/2026-04-high-fidelity-restart/README.md](reports/history/2026-04-high-fidelity-restart/README.md)
+- Intermediate longer-runtime pre-reset archive: [reports/history/2026-04-longer-runtime-restart/README.md](reports/history/2026-04-longer-runtime-restart/README.md)
+- Original archived public summary: [reports/history/2026-04-high-fidelity-restart/latest_summary_pre_restart.md](reports/history/2026-04-high-fidelity-restart/latest_summary_pre_restart.md)
+- Intermediate archived public summary: [reports/history/2026-04-longer-runtime-restart/latest_summary_pre_restart.md](reports/history/2026-04-longer-runtime-restart/latest_summary_pre_restart.md)
+- Original archived public reasoning log: [reports/history/2026-04-high-fidelity-restart/agent_reasoning_pre_restart.md](reports/history/2026-04-high-fidelity-restart/agent_reasoning_pre_restart.md)
+- Intermediate archived public reasoning log: [reports/history/2026-04-longer-runtime-restart/agent_reasoning_pre_restart.md](reports/history/2026-04-longer-runtime-restart/agent_reasoning_pre_restart.md)
+- Original archived movies: [initial condition](reports/history/2026-04-high-fidelity-restart/initial-condition.gif), [leaderboard rank 1](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-1.gif), [leaderboard rank 2](reports/history/2026-04-high-fidelity-restart/leaderboard-rank-2.gif)
+- Intermediate archived movies: [initial condition](reports/history/2026-04-longer-runtime-restart/initial-condition.gif), [leaderboard rank 1](reports/history/2026-04-longer-runtime-restart/leaderboard-rank-1.gif), [leaderboard rank 2](reports/history/2026-04-longer-runtime-restart/leaderboard-rank-2.gif)
+
+This keeps both earlier April campaigns visible in-repo while freeing the live leaderboard below to track the new longer-runtime run from a clean state.
 
 ## Repo Map
 
-- `configs/`: base input, search settings, scoring settings, and README movie replay/render controls in `rendering.yaml` including `max_ranked_movies` for how many leaderboard GIFs to publish
+- `configs/`: base input, search settings, scoring settings, and README movie replay/render controls in `rendering.yaml` including `max_ranked_movies` for how many leaderboard GIFs to publish and `max_movie_seconds` to keep public movies short even when simulation lengths increase
 - `src/jaxincell_drift_opt/`: adapter, scoring, optimizer, reporting, plotting
 - `scripts/`: local and workflow entry points
 - `tests/`: lightweight unit tests and mocked optimizer smoke tests

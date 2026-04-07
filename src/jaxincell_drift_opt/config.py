@@ -47,6 +47,7 @@ class RenderConfig:
     replay_max_grid_points: int | None
     replay_max_pseudoelectrons: int | None
     replay_max_total_steps: int | None
+    max_movie_seconds: float
     fps: int
     dpi: int
     save_stride: int
@@ -188,6 +189,7 @@ def load_render_config(path: Path) -> RenderConfig:
         replay_max_grid_points=_optional_int(data, "replay_max_grid_points", 64),
         replay_max_pseudoelectrons=_optional_int(data, "replay_max_pseudoelectrons", 4000),
         replay_max_total_steps=_optional_int(data, "replay_max_total_steps", 2000),
+        max_movie_seconds=float(data.get("max_movie_seconds", 8.0)),
         fps=int(data.get("fps", 10)),
         dpi=int(data.get("dpi", 70)),
         save_stride=int(data.get("save_stride", 6)),

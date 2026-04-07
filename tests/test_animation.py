@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from jaxincell_drift_opt.animation import _apply_render_replay_profile, render_readme_movies
+from jaxincell_drift_opt.animation import _apply_render_replay_profile, _effective_save_stride, render_readme_movies
 from jaxincell_drift_opt.config import SearchConfig, campaign_paths, load_render_config
 
 
@@ -12,6 +12,7 @@ def test_load_render_config_defaults_when_missing(tmp_path: Path):
     assert render_config.replay_max_grid_points == 64
     assert render_config.replay_max_pseudoelectrons == 4000
     assert render_config.replay_max_total_steps == 2000
+    assert render_config.max_movie_seconds == 8.0
     assert render_config.gif_width == 640
 
 
@@ -39,6 +40,24 @@ def test_apply_render_replay_profile_caps_solver_parameters():
     assert profiled["number_pseudoelectrons"] == 4000
     assert profiled["total_steps"] == 2000
     assert profiled["number_of_particle_substeps_implicit_CN"] == 2
+
+
+def test_effective_save_stride_caps_movie_duration():
+    render_config = load_render_config(Path("/does/not/exist.yaml"))
+
+    effective_stride = _effective_save_stride({"total_steps": 2000}, render_config)
+
+    assert effective_stride == 25
+
+
+def test_effective_save_stride_respects_larger_configured_stride(tmp_path: Path):
+    config_path = tmp_path / "rendering.yaml"
+    config_path.write_text("save_stride: 40\nmax_movie_seconds: 8\nfps: 10\n", encoding="utf-8")
+    render_config = load_render_config(config_path)
+
+    effective_stride = _effective_save_stride({"total_steps": 2000}, render_config)
+
+    assert effective_stride == 40
 
 
 def test_render_readme_movies_reuses_duplicate_trial_render(tmp_path: Path, monkeypatch):
