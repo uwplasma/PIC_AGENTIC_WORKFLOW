@@ -122,7 +122,7 @@ This keeps the old campaign visible in-repo while freeing the live leaderboard b
 
 ## Repo Map
 
-- `configs/`: base input, search settings, scoring settings, and README movie replay/render controls in `rendering.yaml`
+- `configs/`: base input, search settings, scoring settings, and README movie replay/render controls in `rendering.yaml` including `max_ranked_movies` for how many leaderboard GIFs to publish
 - `src/jaxincell_drift_opt/`: adapter, scoring, optimizer, reporting, plotting
 - `scripts/`: local and workflow entry points
 - `tests/`: lightweight unit tests and mocked optimizer smoke tests

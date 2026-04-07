@@ -15,6 +15,15 @@ def test_load_render_config_defaults_when_missing(tmp_path: Path):
     assert render_config.gif_width == 640
 
 
+def test_load_render_config_reads_ranked_movie_count(tmp_path: Path):
+    config_path = tmp_path / "rendering.yaml"
+    config_path.write_text("max_ranked_movies: 2\n", encoding="utf-8")
+
+    render_config = load_render_config(config_path)
+
+    assert render_config.max_ranked_movies == 2
+
+
 def test_apply_render_replay_profile_caps_solver_parameters():
     profiled = _apply_render_replay_profile(
         {

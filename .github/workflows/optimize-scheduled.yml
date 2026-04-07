@@ -27,7 +27,7 @@ jobs:
       AUTOMERGE_GH_TOKEN: ${{ secrets.AUTOMERGE_GITHUB_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -47,7 +47,7 @@ jobs:
         run: .venv/bin/python scripts/run_campaign.py --num-trials 1 --seed 1701
 
       - name: Upload optimization artifacts
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
         with:
           name: optimize-scheduled-artifacts
           path: |
