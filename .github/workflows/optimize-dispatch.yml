@@ -116,6 +116,15 @@ jobs:
       - name: Commit and push main
         run: |
           set -euo pipefail
+          source_root="$PWD"
+          publish_root="$(mktemp -d)"
+          git fetch origin main
+          git worktree add --detach "$publish_root" origin/main
+          trap 'git worktree remove --force "$publish_root" || true' EXIT
+          PYTHONPATH="$publish_root/src" .venv/bin/python scripts/merge_publish_state.py \
+            --source-root "$source_root" \
+            --target-root "$publish_root"
+          cd "$publish_root"
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
           git add state reports results README.md
@@ -128,5 +137,4 @@ jobs:
             git remote set-url origin "https://x-access-token:${AUTOMERGE_GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             git config --unset-all http.https://github.com/.extraheader || true
           fi
-          git pull --rebase origin main
           git push origin HEAD:main

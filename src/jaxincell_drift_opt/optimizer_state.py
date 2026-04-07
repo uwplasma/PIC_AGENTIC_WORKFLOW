@@ -152,3 +152,58 @@ def register_trial(state: dict, trial_metrics: dict) -> dict:
         if best_result is None or trial_metrics["optimizer_objective"] < best_result["optimizer_objective"]:
             state["best_result"] = trial_metrics
     return state
+
+
+def _trial_id_sort_key(trial_id: str) -> tuple[int, int | str]:
+    prefix, separator, suffix = trial_id.rpartition("_")
+    if prefix == "trial" and separator == "_":
+        try:
+            return (0, int(suffix))
+        except ValueError:
+            pass
+    return (1, trial_id)
+
+
+def rebuild_state(search_config: SearchConfig, trials: list[dict], *, template_state: dict | None = None) -> dict:
+    state = default_state(search_config)
+    template_state = template_state or {}
+
+    state["schema_version"] = max(int(template_state.get("schema_version", STATE_SCHEMA_VERSION)), STATE_SCHEMA_VERSION)
+    if template_state.get("created_at"):
+        state["created_at"] = template_state["created_at"]
+
+    optimizer_template = template_state.get("optimizer") or {}
+    state["optimizer"] = {
+        **state["optimizer"],
+        **optimizer_template,
+    }
+
+    ordered_trials = sorted((dict(trial) for trial in trials), key=lambda trial: _trial_id_sort_key(str(trial.get("trial_id", ""))))
+    for trial in ordered_trials:
+        register_trial(state, trial)
+    return state
+
+
+def merge_states(preferred_state: dict, incoming_state: dict, search_config: SearchConfig) -> tuple[dict, list[str], list[str]]:
+    preferred_by_id = {str(trial["trial_id"]): dict(trial) for trial in preferred_state.get("trials", [])}
+    incoming_by_id = {str(trial["trial_id"]): dict(trial) for trial in incoming_state.get("trials", [])}
+
+    new_trial_ids = [trial_id for trial_id in incoming_by_id if trial_id not in preferred_by_id]
+    duplicate_trial_ids = [trial_id for trial_id in incoming_by_id if trial_id in preferred_by_id]
+
+    merged_trials_by_id = {**incoming_by_id, **preferred_by_id}
+    merged_trials = [merged_trials_by_id[trial_id] for trial_id in sorted(merged_trials_by_id, key=_trial_id_sort_key)]
+
+    template_state = preferred_state if preferred_state else incoming_state
+    merged_state = rebuild_state(search_config, merged_trials, template_state=template_state)
+    merged_state["schema_version"] = max(
+        int(preferred_state.get("schema_version", STATE_SCHEMA_VERSION)),
+        int(incoming_state.get("schema_version", STATE_SCHEMA_VERSION)),
+        STATE_SCHEMA_VERSION,
+    )
+
+    created_candidates = [value for value in [preferred_state.get("created_at"), incoming_state.get("created_at")] if value]
+    if created_candidates:
+        merged_state["created_at"] = min(created_candidates)
+
+    return merged_state, sorted(new_trial_ids, key=_trial_id_sort_key), sorted(duplicate_trial_ids, key=_trial_id_sort_key)
