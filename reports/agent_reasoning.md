@@ -35,12 +35,12 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 ## What The Optimizer Has Learned
 
 - Rank 1: trial_0012 reached score=0.623304 with drift=1.463166, temp_ratio=1.000000e-03, mass_ratio=4.000000e+00.
-- Rank 2: trial_0009 reached score=0.593441 with drift=1.526133, temp_ratio=2.263762e+01, mass_ratio=4.000000e+00.
-- Rank 3: trial_0013 reached score=0.566663 with drift=1.450447, temp_ratio=1.000000e+02, mass_ratio=4.000000e+00.
+- Rank 2: trial_0014 reached score=0.620085 with drift=1.524812, temp_ratio=1.000000e-03, mass_ratio=4.000000e+00.
+- Rank 3: trial_0009 reached score=0.593441 with drift=1.526133, temp_ratio=2.263762e+01, mass_ratio=4.000000e+00.
 
 ## Relative Comparison
 
-- The current best trial improves the public score over the runner-up by 0.029863.
+- The current best trial improves the public score over the runner-up by 0.003218.
 - Compared with the initial condition, the best trial changes drift by a factor of 1.463166 and moves the ion temperature ratio to 1.000000e-03.
 
 ## Trial-By-Trial Public Decision Log
@@ -59,13 +59,14 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0011: score=-1.198906, objective=1.198906, tail_mean_E=6.325493e-02, drift=1.894532, temp_ratio=1.000000e+02, mass_ratio=4.000000e+00, failed=False.
 - trial_0012: score=0.623304, objective=-0.623304, tail_mean_E=4.200524e+00, drift=1.463166, temp_ratio=1.000000e-03, mass_ratio=4.000000e+00, failed=False.
 - trial_0013: score=0.566663, objective=-0.566663, tail_mean_E=3.686911e+00, drift=1.450447, temp_ratio=1.000000e+02, mass_ratio=4.000000e+00, failed=False.
+- trial_0014: score=0.620085, objective=-0.620085, tail_mean_E=4.169510e+00, drift=1.524812, temp_ratio=1.000000e-03, mass_ratio=4.000000e+00, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 1.524812
+- Drift multiplier: 1.601807
 - Ion temperature ratio: 1.000000e-03
-- Ion mass over proton mass: 4.000000e+00
-- Observations available to the optimizer: 14
+- Ion mass over proton mass: 1.000000e-02
+- Observations available to the optimizer: 15
 
 ## Public Copilot Research Trail
 
