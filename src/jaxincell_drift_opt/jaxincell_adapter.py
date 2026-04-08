@@ -28,6 +28,15 @@ def load_base_case(base_input_path: Path) -> tuple[dict, dict, dict]:
     return input_parameters, solver_parameters, initialized_parameters
 
 
+def compute_plasma_frequency(input_parameters: dict) -> float | None:
+    symbols = _load_jaxincell_symbols()
+    initialized_parameters = symbols["initialize_simulation_parameters"](dict(input_parameters))
+    plasma_frequency = initialized_parameters.get("plasma_frequency")
+    if plasma_frequency is None:
+        return None
+    return float(plasma_frequency)
+
+
 def validate_drift_key(base_input_path: Path, drift_key: str) -> None:
     input_parameters, _, initialized_parameters = load_base_case(base_input_path)
     if drift_key not in input_parameters and drift_key not in initialized_parameters:

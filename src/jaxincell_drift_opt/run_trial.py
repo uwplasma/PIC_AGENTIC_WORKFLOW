@@ -41,6 +41,7 @@ def run_trial(
         output = result["output"]
         electric_field_energy = extract_electric_field_energy(output)
         time_array = np.asarray(output.get("time_array"), dtype=float)
+        plasma_frequency = float(np.asarray(output.get("plasma_frequency"), dtype=float)) if "plasma_frequency" in output else None
         metrics = score_trial_output(
             output,
             drift_multiplier=drift_multiplier,
@@ -77,9 +78,10 @@ def run_trial(
             trial_dir / "timeseries.npz",
             time_array=time_array,
             electric_field_energy=electric_field_energy,
+            plasma_frequency=np.nan if plasma_frequency is None else plasma_frequency,
         )
         plot_trial_energy_series(
-            time_array,
+            time_array if plasma_frequency is None else time_array * plasma_frequency,
             electric_field_energy,
             trial_dir / "electric_field_energy.png",
             title=f"{trial_id} electric-field energy",

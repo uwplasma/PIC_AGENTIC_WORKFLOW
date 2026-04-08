@@ -46,21 +46,33 @@ This live figure shows where the optimizer has already looked, the order it move
 - Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)
 - See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)
 
-### Movies
+### Exact Scored Energy Traces
 
-The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.
+These PNGs come from the exact saved trial timeseries used for scoring. Use them for quantitative electric-field-energy comparisons; the time axis is shown in $\omega_{pe}^{-1}$.
 
-#### Initial condition
+#### Best scored run
 
-![Initial condition](reports/readme_assets/initial-condition.gif)
+![Best scored run](reports/plots/best_run_energy.png)
+
+#### Baseline vs best
+
+![Baseline vs best](reports/plots/baseline_vs_best.png)
+
+### Full-Simulation Movies
+
+These MP4 movies are rerun from the full saved trial configurations with no solver caps. They use frame skipping only, so the movie duration stays short while still covering the full simulation window.
 
 #### Leaderboard rank 1
 
-![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)
+<video src="reports/readme_assets/leaderboard-rank-1.mp4" controls preload="metadata" width="720"></video>
+
+[Open Leaderboard rank 1 MP4](reports/readme_assets/leaderboard-rank-1.mp4)
 
 #### Leaderboard rank 2
 
-![Leaderboard rank 2](reports/readme_assets/leaderboard-rank-2.gif)
+<video src="reports/readme_assets/leaderboard-rank-2.mp4" controls preload="metadata" width="720"></video>
+
+[Open Leaderboard rank 2 MP4](reports/readme_assets/leaderboard-rank-2.mp4)
 
 <!-- leaderboard:end -->
 
@@ -120,7 +132,7 @@ The first April restart raised fidelity substantially and produced an 11-trial i
 - `total_steps`: `5000 -> 6500` to extend the nonlinear evolution window.
 - `number_of_particle_substeps_implicit_CN = 2` unchanged.
 
-The README movie replay path is decoupled from the solver baseline: `configs/rendering.yaml` now enforces `max_movie_seconds = 8`, so public GIFs stay short even when the underlying simulation runs longer.
+The README movie pipeline now reruns the published rank movies from the full saved trial configurations with no solver caps. `configs/rendering.yaml` only controls frame skipping and encoding, so the public MP4s still cover the full simulation window while remaining short enough to inspect quickly.
 
 These changes live in [configs/base_input.toml](configs/base_input.toml). The search space in [configs/search.yaml](configs/search.yaml) is unchanged, so the restart isolates the runtime-window change rather than mixing it with a new optimizer geometry.
 
@@ -139,7 +151,7 @@ This keeps both earlier April campaigns visible in-repo while freeing the live l
 
 ## Repo Map
 
-- `configs/`: base input, search settings, scoring settings, and README movie replay/render controls in `rendering.yaml` including `max_ranked_movies` for how many leaderboard GIFs to publish and `max_movie_seconds` to keep public movies short even when simulation lengths increase
+- `configs/`: base input, search settings, scoring settings, and README movie/render controls in `rendering.yaml` for full-simulation MP4 publication plus the quantitative scored energy traces in `reports/plots/`
 - `src/jaxincell_drift_opt/`: adapter, scoring, optimizer, reporting, plotting
 - `scripts/`: local and workflow entry points
 - `tests/`: lightweight unit tests and mocked optimizer smoke tests

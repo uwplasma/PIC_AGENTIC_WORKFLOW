@@ -324,22 +324,47 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
             "",
         ]
     )
+    exact_plot_assets = [
+        ("Best scored run", Path("reports/plots/best_run_energy.png")),
+        ("Baseline vs best", Path("reports/plots/baseline_vs_best.png")),
+    ]
+    existing_exact_plot_assets = [(title, asset_path) for title, asset_path in exact_plot_assets if (path.parent / asset_path).exists()]
+    if existing_exact_plot_assets:
+        section_lines.extend(
+            [
+                "### Exact Scored Energy Traces",
+                "",
+                "These PNGs come from the exact saved trial timeseries used for scoring. Use them for quantitative electric-field-energy comparisons; the time axis is shown in $\\omega_{pe}^{-1}$.",
+                "",
+            ]
+        )
+    for title, asset_path in existing_exact_plot_assets:
+        section_lines.extend([f"#### {title}", "", f"![{title}]({asset_path.as_posix()})", ""])
     movie_assets = [
-        ("Initial condition", Path("reports/readme_assets/initial-condition.gif")),
-        ("Leaderboard rank 1", Path("reports/readme_assets/leaderboard-rank-1.gif")),
-        ("Leaderboard rank 2", Path("reports/readme_assets/leaderboard-rank-2.gif")),
+        ("Initial condition", Path("reports/readme_assets/initial-condition.mp4")),
+        ("Leaderboard rank 1", Path("reports/readme_assets/leaderboard-rank-1.mp4")),
+        ("Leaderboard rank 2", Path("reports/readme_assets/leaderboard-rank-2.mp4")),
     ]
     existing_movie_assets = [(title, asset_path) for title, asset_path in movie_assets if (path.parent / asset_path).exists()]
     if existing_movie_assets:
         section_lines.extend(
             [
-                "### Movies",
+                "### Full-Simulation Movies",
                 "",
-                "The GIFs below reuse the multi-panel JAX-in-Cell movie layout so you can inspect phase space, field evolution, and the energy subplot directly in the public repository.",
+                "These MP4 movies are rerun from the full saved trial configurations with no solver caps. They use frame skipping only, so the movie duration stays short while still covering the full simulation window.",
                 "",
             ]
         )
     for title, asset_path in existing_movie_assets:
-        section_lines.extend([f"#### {title}", "", f"![{title}]({asset_path.as_posix()})", ""])
+        section_lines.extend(
+            [
+                f"#### {title}",
+                "",
+                f"<video src=\"{asset_path.as_posix()}\" controls preload=\"metadata\" width=\"720\"></video>",
+                "",
+                f"[Open {title} MP4]({asset_path.as_posix()})",
+                "",
+            ]
+        )
     updated = replace_marked_section(path.read_text(encoding="utf-8"), marker_start, marker_end, section_lines)
     atomic_write_text(path, updated)

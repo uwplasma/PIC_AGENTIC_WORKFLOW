@@ -44,9 +44,6 @@ class ScoringConfig:
 class RenderConfig:
     include_baseline_movie: bool
     max_ranked_movies: int
-    replay_max_grid_points: int | None
-    replay_max_pseudoelectrons: int | None
-    replay_max_total_steps: int | None
     max_movie_seconds: float
     fps: int
     dpi: int
@@ -55,8 +52,6 @@ class RenderConfig:
     save_crf: int
     save_preset: str | None
     save_codec: str | None
-    gif_fps: int
-    gif_width: int
 
 
 @dataclass(frozen=True)
@@ -186,9 +181,6 @@ def load_render_config(path: Path) -> RenderConfig:
     return RenderConfig(
         include_baseline_movie=bool(data.get("include_baseline_movie", True)),
         max_ranked_movies=int(data.get("max_ranked_movies", 1)),
-        replay_max_grid_points=_optional_int(data, "replay_max_grid_points", 64),
-        replay_max_pseudoelectrons=_optional_int(data, "replay_max_pseudoelectrons", 4000),
-        replay_max_total_steps=_optional_int(data, "replay_max_total_steps", 2000),
         max_movie_seconds=float(data.get("max_movie_seconds", 8.0)),
         fps=int(data.get("fps", 10)),
         dpi=int(data.get("dpi", 70)),
@@ -197,8 +189,6 @@ def load_render_config(path: Path) -> RenderConfig:
         save_crf=int(data.get("save_crf", 38)),
         save_preset=_optional_str(data, "save_preset", "veryfast"),
         save_codec=_optional_str(data, "save_codec", None),
-        gif_fps=int(data.get("gif_fps", 6)),
-        gif_width=int(data.get("gif_width", 640)),
     )
 
 

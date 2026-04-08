@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import matplotlib
@@ -8,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from .config import SearchConfig
+from .jaxincell_adapter import compute_plasma_frequency
 from .utils import ensure_directory
 
 
@@ -16,7 +18,7 @@ def plot_trial_energy_series(time_array: np.ndarray, electric_field_energy: np.n
     fig, axis = plt.subplots(figsize=(8, 5))
     axis.plot(time_array, electric_field_energy, linewidth=2)
     axis.set_title(title)
-    axis.set_xlabel("time")
+    axis.set_xlabel(r"Time ($\omega_{pe}^{-1}$)")
     axis.set_ylabel("electric field energy")
     axis.set_yscale("log")
     axis.grid(alpha=0.3)
@@ -154,8 +156,31 @@ def plot_parameter_space_trajectory(
 
 
 def load_timeseries(npz_path: Path) -> tuple[np.ndarray, np.ndarray]:
-    data = np.load(npz_path)
-    return np.asarray(data["time_array"], dtype=float), np.asarray(data["electric_field_energy"], dtype=float)
+    with np.load(npz_path) as data:
+        time_array = np.asarray(data["time_array"], dtype=float)
+        electric_field_energy = np.asarray(data["electric_field_energy"], dtype=float)
+        plasma_frequency = _load_plasma_frequency(npz_path, data)
+    if plasma_frequency is not None:
+        time_array = time_array * plasma_frequency
+    return time_array, electric_field_energy
+
+
+def _load_plasma_frequency(npz_path: Path, data: np.lib.npyio.NpzFile) -> float | None:
+    if "plasma_frequency" in data:
+        value = float(np.asarray(data["plasma_frequency"], dtype=float))
+        if np.isfinite(value) and value > 0.0:
+            return value
+
+    frozen_input_path = npz_path.parent / "frozen_input.json"
+    if not frozen_input_path.exists():
+        return None
+
+    try:
+        payload = json.loads(frozen_input_path.read_text(encoding="utf-8"))
+        input_parameters = payload.get("input_parameters", {})
+        return compute_plasma_frequency(input_parameters)
+    except Exception:
+        return None
 
 
 def plot_best_run(best_trial: dict, root: Path, output_path: Path) -> None:
@@ -176,7 +201,7 @@ def plot_baseline_vs_best(trials: list[dict], root: Path, output_path: Path) -> 
     fig, axis = plt.subplots(figsize=(8, 5))
     axis.plot(baseline_time, baseline_energy, label=f"baseline ({baseline['drift_multiplier']:.3f})")
     axis.plot(best_time, best_energy, label=f"best ({best['drift_multiplier']:.3f})")
-    axis.set_xlabel("time")
+    axis.set_xlabel(r"Time ($\omega_{pe}^{-1}$)")
     axis.set_ylabel("electric field energy")
     axis.set_yscale("log")
     axis.set_title("Baseline vs Best")
