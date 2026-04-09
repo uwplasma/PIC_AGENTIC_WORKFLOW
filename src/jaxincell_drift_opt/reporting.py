@@ -11,6 +11,20 @@ def _sorted_successful_trials(trials: list[dict]) -> list[dict]:
     return sorted((trial for trial in trials if not trial["failed"]), key=lambda trial: trial["optimizer_score"], reverse=True)
 
 
+def _leaderboard_table_lines(trials: list[dict], *, start_rank: int) -> list[str]:
+    lines = [
+        "| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |",
+        "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for offset, trial in enumerate(trials, start=start_rank):
+        lines.append(
+            "| "
+            f"{offset} | {trial['trial_id']} | {_format_started_at(trial.get('started_at'))} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
+            f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
+        )
+    return lines
+
+
 def _format_started_at(value: str | None) -> str:
     if not value:
         return "-"
@@ -193,8 +207,8 @@ def write_agent_reasoning(
             [
                 "## Current Best Hypothesis",
                 "",
-                "- No completed successful trials are recorded yet for this competition reset.",
-                "- The next run will establish the fresh baseline and first posterior update under the current solver parameters.",
+                "- No completed successful trials are recorded yet for this campaign.",
+                "- The next run will establish the baseline and first posterior update under the current solver parameters.",
                 "",
             ]
         )
@@ -232,7 +246,7 @@ def write_agent_reasoning(
                 f"failed={trial['failed']}."
             )
     else:
-        lines.append("- No trials have been run since the fresh-start reset.")
+        lines.append("- No trials have been run yet in this campaign.")
     lines.append("")
 
     if next_suggestion is not None:
@@ -286,20 +300,23 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
         "",
     ]
     if sorted_trials:
-        section_lines.extend(
-            [
-                "| Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |",
-                "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |",
-            ]
-        )
-        for index, trial in enumerate(sorted_trials[: search_config.leaderboard_size], start=1):
-            section_lines.append(
-                "| "
-                f"{index} | {trial['trial_id']} | {_format_started_at(trial.get('started_at'))} | {trial['drift_multiplier']:.6f} | {trial['candidate_ion_temperature_ratio']:.6e} | "
-                f"{trial['candidate_ion_mass_over_proton_mass']:.6e} | {trial['tail_mean_E']:.6e} | {trial['optimizer_score']:.6f} |"
+        visible_trials = sorted_trials[:4]
+        hidden_trials = sorted_trials[4 : search_config.leaderboard_size]
+        section_lines.extend(_leaderboard_table_lines(visible_trials, start_rank=1))
+        if hidden_trials:
+            section_lines.extend(
+                [
+                    "",
+                    "<details>",
+                    "<summary>Show ranks 5-20</summary>",
+                    "",
+                    *_leaderboard_table_lines(hidden_trials, start_rank=5),
+                    "",
+                    "</details>",
+                ]
             )
     else:
-        section_lines.append("No successful optimization trials have been recorded yet for the restarted campaign.")
+        section_lines.append("No successful optimization trials have been recorded yet for this campaign.")
     section_lines.append("")
     if (path.parent / "reports/plots/parameter_space_trajectory.png").exists():
         section_lines.extend(
@@ -318,7 +335,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
             "",
             "- Read the agent's public reasoning: [reports/agent_reasoning.md](reports/agent_reasoning.md)",
             "- Watch scheduled live runs: [Optimize Scheduled](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-scheduled.yml)",
-            "- Watch manual or restart runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)",
+            "- Watch manual runs: [Optimize Dispatch](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/actions/workflows/optimize-dispatch.yml)",
             "- Watch optimization commits land on main: [main commit history](https://github.com/uwplasma/PIC_AGENTIC_WORKFLOW/commits/main/)",
             "- See how the next point is chosen: [reports/agent_reasoning.md](reports/agent_reasoning.md), [src/jaxincell_drift_opt/optimizer_loop.py](src/jaxincell_drift_opt/optimizer_loop.py), and [configs/search.yaml](configs/search.yaml)",
             "",
@@ -341,18 +358,17 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
     for title, asset_path in existing_exact_plot_assets:
         section_lines.extend([f"#### {title}", "", f"![{title}]({asset_path.as_posix()})", ""])
     movie_assets = [
-        ("Initial condition", Path("reports/readme_assets/initial-condition.mp4")),
-        ("Leaderboard rank 1", Path("reports/readme_assets/leaderboard-rank-1.mp4")),
-        ("Leaderboard rank 2", Path("reports/readme_assets/leaderboard-rank-2.mp4")),
+        ("Initial baseline", Path("reports/readme_assets/initial-condition.gif")),
+        ("Leaderboard rank 1", Path("reports/readme_assets/leaderboard-rank-1.gif")),
+        ("Leaderboard rank 2", Path("reports/readme_assets/leaderboard-rank-2.gif")),
     ]
     existing_movie_assets = [(title, asset_path) for title, asset_path in movie_assets if (path.parent / asset_path).exists()]
     if existing_movie_assets:
         section_lines.extend(
             [
-                "### Full-Simulation Movies",
+                "### Movies",
                 "",
-                "These MP4 movies are rerun from the full saved trial configurations with no solver caps. They use frame skipping only, so the movie duration stays short while still covering the full simulation window.",
-                "GitHub renders them as direct MP4 links on the README page rather than inline video players.",
+                "These GIFs are rendered from the full saved trial configurations with no solver caps. They use frame skipping only, so they stay short while still covering the full simulation window.",
                 "",
             ]
         )
@@ -361,7 +377,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
             [
                 f"#### {title}",
                 "",
-                f"[Open {title} MP4]({asset_path.as_posix()})",
+                f"![{title}]({asset_path.as_posix()})",
                 "",
             ]
         )

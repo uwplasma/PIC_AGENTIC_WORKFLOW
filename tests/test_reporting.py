@@ -12,7 +12,23 @@ def test_write_readme_leaderboard_emphasizes_exact_plots_over_preview_movies(tmp
     (tmp_path / "reports" / "readme_assets").mkdir(parents=True)
     (tmp_path / "reports" / "plots" / "best_run_energy.png").write_text("png", encoding="utf-8")
     (tmp_path / "reports" / "plots" / "baseline_vs_best.png").write_text("png", encoding="utf-8")
-    (tmp_path / "reports" / "readme_assets" / "leaderboard-rank-1.mp4").write_text("mp4", encoding="utf-8")
+    (tmp_path / "reports" / "readme_assets" / "initial-condition.gif").write_text("gif", encoding="utf-8")
+    (tmp_path / "reports" / "readme_assets" / "leaderboard-rank-1.gif").write_text("gif", encoding="utf-8")
+
+    trials = []
+    for index in range(6):
+        trials.append(
+            {
+                "trial_id": f"trial_{index:04d}",
+                "started_at": "2026-04-09T00:00:00+00:00",
+                "drift_multiplier": 1.0 + index,
+                "candidate_ion_temperature_ratio": 0.01,
+                "candidate_ion_mass_over_proton_mass": 1.0,
+                "tail_mean_E": 2.0 - 0.1 * index,
+                "optimizer_score": 2.0 - 0.1 * index,
+                "failed": False,
+            }
+        )
 
     search_config = SearchConfig(
         base_input=tmp_path / "configs" / "base_input.toml",
@@ -38,12 +54,13 @@ def test_write_readme_leaderboard_emphasizes_exact_plots_over_preview_movies(tmp
         self_hosted_runner_label=("self-hosted", "macOS"),
     )
 
-    write_readme_leaderboard(readme_path, [], search_config)
+    write_readme_leaderboard(readme_path, trials, search_config)
 
     content = readme_path.read_text(encoding="utf-8")
     assert "### Exact Scored Energy Traces" in content
     assert "Use them for quantitative electric-field-energy comparisons" in content
-    assert "### Full-Simulation Movies" in content
-    assert "They use frame skipping only" in content
-    assert "GitHub renders them as direct MP4 links" in content
-    assert "[Open Leaderboard rank 1 MP4](reports/readme_assets/leaderboard-rank-1.mp4)" in content
+    assert "<details>" in content
+    assert "Show ranks 5-20" in content
+    assert "### Movies" in content
+    assert "![Initial baseline](reports/readme_assets/initial-condition.gif)" in content
+    assert "![Leaderboard rank 1](reports/readme_assets/leaderboard-rank-1.gif)" in content

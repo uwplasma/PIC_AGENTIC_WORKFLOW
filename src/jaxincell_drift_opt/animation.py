@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import shutil
+import subprocess
 from pathlib import Path
 
 from .config import CampaignPaths, RenderConfig, SearchConfig, load_base_input, load_render_config
@@ -92,6 +93,48 @@ def _render_mp4(input_parameters: dict, solver_parameters: dict, output_path: Pa
     )
 
 
+def _convert_mp4_to_gif(mp4_path: Path, gif_path: Path, render_config: RenderConfig) -> None:
+    ensure_directory(gif_path.parent)
+    palette_path = gif_path.with_suffix(".palette.png")
+    gif_filter = f"fps={render_config.gif_fps},scale={render_config.gif_width}:-1:flags=lanczos"
+    try:
+        subprocess.run(
+            [
+                shutil.which("ffmpeg") or "ffmpeg",
+                "-y",
+                "-i",
+                str(mp4_path),
+                "-vf",
+                f"{gif_filter},palettegen",
+                str(palette_path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        subprocess.run(
+            [
+                shutil.which("ffmpeg") or "ffmpeg",
+                "-y",
+                "-i",
+                str(mp4_path),
+                "-i",
+                str(palette_path),
+                "-lavfi",
+                f"{gif_filter}[x];[x][1:v]paletteuse",
+                str(gif_path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    finally:
+        if palette_path.exists():
+            palette_path.unlink()
+        if mp4_path.exists():
+            mp4_path.unlink()
+
+
 def _baseline_trial(trials: list[dict], search_config: SearchConfig) -> dict | None:
     base_input = load_base_input(search_config.base_input).get("input_parameters", {})
     base_ion_temperature_ratio = float(base_input.get(search_config.ion_temperature_ratio_key, 0.01))
@@ -165,25 +208,25 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
         if "trial_dir" not in trial:
             continue
         trial_key = str(trial.get("trial_id") or trial["trial_dir"])
-        mp4_path = paths.readme_assets_dir / f"{slug}.mp4"
-        existing_asset_path = paths.readme_assets_dir / f"{slug}.mp4"
+        gif_path = paths.readme_assets_dir / f"{slug}.gif"
+        existing_asset_path = paths.readme_assets_dir / f"{slug}.gif"
         if existing_manifest.get(slug) == trial_key and existing_asset_path.exists():
             updated_manifest[slug] = trial_key
             rendered_movies[trial_key] = existing_asset_path
             continue
         if trial_key in rendered_movies:
-            shutil.copyfile(rendered_movies[trial_key], mp4_path)
+            shutil.copyfile(rendered_movies[trial_key], gif_path)
             updated_manifest[slug] = trial_key
             continue
         copied_from_existing = False
         for existing_slug, existing_trial_key in existing_manifest.items():
             if existing_trial_key != trial_key:
                 continue
-            existing_mp4_path = paths.readme_assets_dir / f"{existing_slug}.mp4"
-            if not existing_mp4_path.exists():
+            existing_gif_path = paths.readme_assets_dir / f"{existing_slug}.gif"
+            if not existing_gif_path.exists():
                 continue
-            shutil.copyfile(existing_mp4_path, mp4_path)
-            rendered_movies[trial_key] = mp4_path
+            shutil.copyfile(existing_gif_path, gif_path)
+            rendered_movies[trial_key] = gif_path
             updated_manifest[slug] = trial_key
             copied_from_existing = True
             break
@@ -194,8 +237,10 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
         if frozen_case is None:
             continue
         input_parameters, solver_parameters = frozen_case
+        mp4_path = paths.readme_assets_dir / f"{slug}.mp4"
         _render_mp4(input_parameters, solver_parameters, mp4_path, render_config)
-        rendered_movies[trial_key] = mp4_path
+        _convert_mp4_to_gif(mp4_path, gif_path, render_config)
+        rendered_movies[trial_key] = gif_path
         updated_manifest[slug] = trial_key
 
     _save_movie_manifest(paths, updated_manifest)

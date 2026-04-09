@@ -52,6 +52,8 @@ class RenderConfig:
     save_crf: int
     save_preset: str | None
     save_codec: str | None
+    gif_fps: int
+    gif_width: int
 
 
 @dataclass(frozen=True)
@@ -189,6 +191,8 @@ def load_render_config(path: Path) -> RenderConfig:
         save_crf=int(data.get("save_crf", 38)),
         save_preset=_optional_str(data, "save_preset", "veryfast"),
         save_codec=_optional_str(data, "save_codec", None),
+        gif_fps=int(data.get("gif_fps", 6)),
+        gif_width=int(data.get("gif_width", 640)),
     )
 
 

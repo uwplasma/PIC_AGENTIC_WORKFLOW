@@ -1,4 +1,4 @@
-include_baseline_movie: false
+include_baseline_movie: true
 max_ranked_movies: 2
 max_movie_seconds: 8
 fps: 10
@@ -8,3 +8,5 @@ save_dpi: 48
 save_crf: 38
 save_preset: veryfast
 save_codec:
+gif_fps: 6
+gif_width: 640

@@ -2,7 +2,7 @@
   "input_parameters": {
     "amplitude_perturbation_x": 5e-07,
     "electron_charge_over_elementary_charge": -1,
-    "electron_drift_speed_x": 60000000.0,
+    "electron_drift_speed_x": 20000000.0,
     "external_electric_field_amplitude": 0,
     "external_electric_field_wavenumber": 0,
     "filter_alpha": 0.5,

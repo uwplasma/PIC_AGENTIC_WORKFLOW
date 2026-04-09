@@ -10,6 +10,7 @@ def test_load_render_config_defaults_when_missing(tmp_path: Path):
 
     assert render_config.max_ranked_movies == 1
     assert render_config.max_movie_seconds == 8.0
+    assert render_config.gif_width == 640
 
 
 def test_load_render_config_reads_ranked_movie_count(tmp_path: Path):
@@ -65,6 +66,8 @@ def test_render_readme_movies_reuses_duplicate_trial_render(tmp_path: Path, monk
     )
 
     render_calls: list[tuple[int, int, int]] = []
+    convert_calls: list[str] = []
+
     def fake_render_mp4(_input_parameters, solver_parameters, output_path, _render_config):
         render_calls.append(
             (
@@ -76,8 +79,14 @@ def test_render_readme_movies_reuses_duplicate_trial_render(tmp_path: Path, monk
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text("mp4", encoding="utf-8")
 
+    def fake_convert_mp4_to_gif(mp4_path, gif_path, _render_config):
+        convert_calls.append(mp4_path.name)
+        gif_path.write_text("gif", encoding="utf-8")
+        mp4_path.unlink()
+
     monkeypatch.setattr("jaxincell_drift_opt.animation.shutil.which", lambda name: "/usr/bin/ffmpeg" if name == "ffmpeg" else None)
     monkeypatch.setattr("jaxincell_drift_opt.animation._render_mp4", fake_render_mp4)
+    monkeypatch.setattr("jaxincell_drift_opt.animation._convert_mp4_to_gif", fake_convert_mp4_to_gif)
 
     search_config = SearchConfig(
         base_input=root / "configs" / "base_input.toml",
@@ -115,8 +124,9 @@ def test_render_readme_movies_reuses_duplicate_trial_render(tmp_path: Path, monk
     render_readme_movies(campaign_paths(root), [trial], search_config)
 
     assert render_calls == [(120, 12000, 5000)]
-    assert (root / "reports" / "readme_assets" / "initial-condition.mp4").exists()
-    assert (root / "reports" / "readme_assets" / "leaderboard-rank-1.mp4").exists()
+    assert convert_calls == ["initial-condition.mp4"]
+    assert (root / "reports" / "readme_assets" / "initial-condition.gif").exists()
+    assert (root / "reports" / "readme_assets" / "leaderboard-rank-1.gif").exists()
     assert not (root / "reports" / "readme_assets" / "leaderboard-rank-2.gif").exists()
 
 
@@ -129,7 +139,7 @@ def test_render_readme_movies_skips_unchanged_existing_movie(tmp_path: Path, mon
         "[input_parameters]\nion_temperature_over_electron_temperature_x = 0.01\nion_mass_over_proton_mass = 1.0\n",
         encoding="utf-8",
     )
-    (root / "reports" / "readme_assets" / "leaderboard-rank-1.mp4").write_text("existing", encoding="utf-8")
+    (root / "reports" / "readme_assets" / "leaderboard-rank-1.gif").write_text("existing", encoding="utf-8")
     (root / "reports" / "readme_assets" / "movie_manifest.json").write_text(
         json.dumps({"leaderboard-rank-1": "trial_0009"}),
         encoding="utf-8",
@@ -181,4 +191,4 @@ def test_render_readme_movies_skips_unchanged_existing_movie(tmp_path: Path, mon
         search_config,
     )
 
-    assert (root / "reports" / "readme_assets" / "leaderboard-rank-1.mp4").read_text(encoding="utf-8") == "existing"
+    assert (root / "reports" / "readme_assets" / "leaderboard-rank-1.gif").read_text(encoding="utf-8") == "existing"
