@@ -9,6 +9,33 @@ from .config import CampaignPaths, RenderConfig, SearchConfig, load_base_input, 
 from .utils import ensure_directory
 
 
+def _movie_manifest_path(paths: CampaignPaths) -> Path:
+    return paths.readme_assets_dir / "movie_manifest.json"
+
+
+def _load_movie_manifest(paths: CampaignPaths) -> dict[str, str]:
+    manifest_path = _movie_manifest_path(paths)
+    if not manifest_path.exists():
+        return {}
+    try:
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+    return {str(key): str(value) for key, value in payload.items()}
+
+
+def _save_movie_manifest(paths: CampaignPaths, manifest: dict[str, str]) -> None:
+    manifest_path = _movie_manifest_path(paths)
+    if not manifest:
+        if manifest_path.exists():
+            manifest_path.unlink()
+        return
+    ensure_directory(manifest_path.parent)
+    manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
 def _to_hashable(value):
     if isinstance(value, list):
         return tuple(_to_hashable(item) for item in value)
@@ -94,6 +121,7 @@ def _clear_readme_movie_assets(paths: CampaignPaths) -> None:
         asset_path = paths.readme_assets_dir / asset_name
         if asset_path.exists():
             asset_path.unlink()
+    _save_movie_manifest(paths, {})
 
 
 def _movie_targets(trials: list[dict], search_config: SearchConfig, render_config: RenderConfig) -> list[tuple[str, str, dict]]:
@@ -120,6 +148,8 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
         return
 
     targets = _movie_targets(successful_trials, search_config, render_config)
+    existing_manifest = _load_movie_manifest(paths)
+    updated_manifest: dict[str, str] = {}
 
     rendered_slugs = {slug for slug, _title, _trial in targets}
     for asset_name in ["initial-condition", "leaderboard-rank-1", "leaderboard-rank-2"]:
@@ -136,8 +166,28 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
             continue
         trial_key = str(trial.get("trial_id") or trial["trial_dir"])
         mp4_path = paths.readme_assets_dir / f"{slug}.mp4"
+        existing_asset_path = paths.readme_assets_dir / f"{slug}.mp4"
+        if existing_manifest.get(slug) == trial_key and existing_asset_path.exists():
+            updated_manifest[slug] = trial_key
+            rendered_movies[trial_key] = existing_asset_path
+            continue
         if trial_key in rendered_movies:
             shutil.copyfile(rendered_movies[trial_key], mp4_path)
+            updated_manifest[slug] = trial_key
+            continue
+        copied_from_existing = False
+        for existing_slug, existing_trial_key in existing_manifest.items():
+            if existing_trial_key != trial_key:
+                continue
+            existing_mp4_path = paths.readme_assets_dir / f"{existing_slug}.mp4"
+            if not existing_mp4_path.exists():
+                continue
+            shutil.copyfile(existing_mp4_path, mp4_path)
+            rendered_movies[trial_key] = mp4_path
+            updated_manifest[slug] = trial_key
+            copied_from_existing = True
+            break
+        if copied_from_existing:
             continue
         trial_dir = paths.root / trial["trial_dir"]
         frozen_case = _load_frozen_case(trial_dir)
@@ -146,3 +196,6 @@ def render_readme_movies(paths: CampaignPaths, trials: list[dict], search_config
         input_parameters, solver_parameters = frozen_case
         _render_mp4(input_parameters, solver_parameters, mp4_path, render_config)
         rendered_movies[trial_key] = mp4_path
+        updated_manifest[slug] = trial_key
+
+    _save_movie_manifest(paths, updated_manifest)

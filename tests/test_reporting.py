@@ -45,4 +45,5 @@ def test_write_readme_leaderboard_emphasizes_exact_plots_over_preview_movies(tmp
     assert "Use them for quantitative electric-field-energy comparisons" in content
     assert "### Full-Simulation Movies" in content
     assert "They use frame skipping only" in content
-    assert "<video src=\"reports/readme_assets/leaderboard-rank-1.mp4\" controls" in content
+    assert "GitHub renders them as direct MP4 links" in content
+    assert "[Open Leaderboard rank 1 MP4](reports/readme_assets/leaderboard-rank-1.mp4)" in content

@@ -61,16 +61,13 @@ These PNGs come from the exact saved trial timeseries used for scoring. Use them
 ### Full-Simulation Movies
 
 These MP4 movies are rerun from the full saved trial configurations with no solver caps. They use frame skipping only, so the movie duration stays short while still covering the full simulation window.
+GitHub renders them as direct MP4 links on the README page rather than inline video players.
 
 #### Leaderboard rank 1
-
-<video src="reports/readme_assets/leaderboard-rank-1.mp4" controls preload="metadata" width="720"></video>
 
 [Open Leaderboard rank 1 MP4](reports/readme_assets/leaderboard-rank-1.mp4)
 
 #### Leaderboard rank 2
-
-<video src="reports/readme_assets/leaderboard-rank-2.mp4" controls preload="metadata" width="720"></video>
 
 [Open Leaderboard rank 2 MP4](reports/readme_assets/leaderboard-rank-2.mp4)
 
@@ -132,7 +129,7 @@ The first April restart raised fidelity substantially and produced an 11-trial i
 - `total_steps`: `5000 -> 6500` to extend the nonlinear evolution window.
 - `number_of_particle_substeps_implicit_CN = 2` unchanged.
 
-The README movie pipeline now reruns the published rank movies from the full saved trial configurations with no solver caps. `configs/rendering.yaml` only controls frame skipping and encoding, so the public MP4s still cover the full simulation window while remaining short enough to inspect quickly.
+The README movie pipeline now reruns the published rank movies from the full saved trial configurations with no solver caps. `configs/rendering.yaml` only controls frame skipping and encoding, so the public MP4s still cover the full simulation window while remaining short enough to inspect quickly. GitHub renders those movie entries as direct MP4 links on the README page rather than inline players.
 
 These changes live in [configs/base_input.toml](configs/base_input.toml). The search space in [configs/search.yaml](configs/search.yaml) is unchanged, so the restart isolates the runtime-window change rather than mixing it with a new optimizer geometry.
 

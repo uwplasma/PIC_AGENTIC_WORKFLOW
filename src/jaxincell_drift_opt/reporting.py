@@ -352,6 +352,7 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
                 "### Full-Simulation Movies",
                 "",
                 "These MP4 movies are rerun from the full saved trial configurations with no solver caps. They use frame skipping only, so the movie duration stays short while still covering the full simulation window.",
+                "GitHub renders them as direct MP4 links on the README page rather than inline video players.",
                 "",
             ]
         )
@@ -359,8 +360,6 @@ def write_readme_leaderboard(path: Path, trials: list[dict], search_config: Sear
         section_lines.extend(
             [
                 f"#### {title}",
-                "",
-                f"<video src=\"{asset_path.as_posix()}\" controls preload=\"metadata\" width=\"720\"></video>",
                 "",
                 f"[Open {title} MP4]({asset_path.as_posix()})",
                 "",
