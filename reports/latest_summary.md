@@ -2,7 +2,7 @@
 
 ## Campaign
 
-- Trials completed: 4
+- Trials completed: 5
 - Drift range: [0.01, 2.5]
 - Ion temperature ratio range: [0.001, 100.0]
 - Ion mass range: [0.01, 4.0]
@@ -13,24 +13,25 @@
 
 ## Best Result
 
-- Trial: trial_0002
-- Drift multiplier: 1.913983
-- Candidate drift: 3.827965e+07
-- Ion temperature ratio: 2.371407e-01
-- Ion mass over proton mass: 2.962437e+00
-- Optimizer score: -0.268038
-- Optimizer objective: 0.268038
-- Tail mean E: 5.394634e-01
-- Final E: 6.141308e-01
+- Trial: trial_0004
+- Drift multiplier: 2.473555
+- Candidate drift: 4.947111e+07
+- Ion temperature ratio: 6.356750e+00
+- Ion mass over proton mass: 3.397872e+00
+- Optimizer score: 0.036721
+- Optimizer objective: -0.036721
+- Tail mean E: 1.088230e+00
+- Final E: 1.006805e+00
 
 ## Leaderboard
 
 | Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | trial_0002 | 2026-04-09 14:52 UTC | 1.913983 | 2.371407e-01 | 2.962437e+00 | 5.394634e-01 | -0.268038 |
-| 2 | trial_0003 | 2026-04-09 16:01 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 4.837480e-02 | -1.315381 |
-| 3 | trial_0001 | 2026-04-09 14:50 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 4.571948e-02 | -1.339899 |
-| 4 | trial_0000 | 2026-04-09 14:48 UTC | 1.000000 | 1.000000e-02 | 1.000000e+00 | 1.867578e-02 | -1.728721 |
+| 1 | trial_0004 | 2026-04-09 17:37 UTC | 2.473555 | 6.356750e+00 | 3.397872e+00 | 1.088230e+00 | 0.036721 |
+| 2 | trial_0002 | 2026-04-09 14:52 UTC | 1.913983 | 2.371407e-01 | 2.962437e+00 | 5.394634e-01 | -0.268038 |
+| 3 | trial_0003 | 2026-04-09 16:01 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 4.837480e-02 | -1.315381 |
+| 4 | trial_0001 | 2026-04-09 14:50 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 4.571948e-02 | -1.339899 |
+| 5 | trial_0000 | 2026-04-09 14:48 UTC | 1.000000 | 1.000000e-02 | 1.000000e+00 | 1.867578e-02 | -1.728721 |
 
 ## Recent Trials
 
@@ -38,6 +39,7 @@
 - trial_0001 at 2026-04-09 14:50 UTC: drift=1.301660, temp_ratio=1.079942e+01, mass_ratio=2.420796e-01, score=-1.339899, failed=False
 - trial_0002 at 2026-04-09 14:52 UTC: drift=1.913983, temp_ratio=2.371407e-01, mass_ratio=2.962437e+00, score=-0.268038, failed=False
 - trial_0003 at 2026-04-09 16:01 UTC: drift=1.301660, temp_ratio=1.079942e+01, mass_ratio=2.420796e-01, score=-1.315381, failed=False
+- trial_0004 at 2026-04-09 17:37 UTC: drift=2.473555, temp_ratio=6.356750e+00, mass_ratio=3.397872e+00, score=0.036721, failed=False
 
 ## Notes
 
