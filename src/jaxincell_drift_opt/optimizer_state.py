@@ -58,6 +58,8 @@ def build_optimizer(search_config: SearchConfig, random_state: int | None = None
         ],
         base_estimator=search_config.base_estimator,
         acq_func=search_config.acq_func,
+        initial_point_generator=search_config.initial_point_generator,
+        acq_optimizer=search_config.acq_optimizer,
         random_state=search_config.optimizer_random_state if random_state is None else int(random_state),
         n_initial_points=search_config.n_initial_points,
     )
@@ -75,6 +77,8 @@ def default_state(search_config: SearchConfig) -> dict:
             "base_estimator": search_config.base_estimator,
             "acq_func": search_config.acq_func,
             "n_initial_points": search_config.n_initial_points,
+            "initial_point_generator": search_config.initial_point_generator,
+            "acq_optimizer": search_config.acq_optimizer,
             "dimensions": {
                 "drift_multiplier": [search_config.drift_multiplier_min, search_config.drift_multiplier_max],
                 "ion_temperature_ratio": [search_config.ion_temperature_ratio_min, search_config.ion_temperature_ratio_max],
@@ -107,6 +111,8 @@ def load_state(path: Path, search_config: SearchConfig) -> dict:
     state["optimizer"].setdefault("base_estimator", search_config.base_estimator)
     state["optimizer"].setdefault("acq_func", search_config.acq_func)
     state["optimizer"].setdefault("n_initial_points", search_config.n_initial_points)
+    state["optimizer"].setdefault("initial_point_generator", search_config.initial_point_generator)
+    state["optimizer"].setdefault("acq_optimizer", search_config.acq_optimizer)
     state["optimizer"].setdefault(
         "dimensions",
         {
@@ -157,7 +163,8 @@ def save_state(path: Path, state: dict) -> None:
 
 
 def replay_optimizer(state: dict, search_config: SearchConfig) -> Optimizer:
-    optimizer = build_optimizer(search_config, random_state=state["optimizer"]["random_state"])
+    base_random_state = int(state["optimizer"]["random_state"])
+    optimizer = build_optimizer(search_config, random_state=base_random_state + len(state.get("trials", [])))
     xs = state["observations"].get("x", [])
     ys = state["observations"].get("y", [])
     if xs and ys:

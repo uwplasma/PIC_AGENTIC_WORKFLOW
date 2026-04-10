@@ -14,32 +14,19 @@ Search ranges: drift=[0.01, 2.5], ion temperature ratio=[0.001, 100.0], ion mass
 
 | Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | trial_0008 | 2026-04-09 23:06 UTC | 2.500000 | 1.000000e-03 | 4.000000e+00 | 1.158855e+00 | 0.064029 |
-| 2 | trial_0004 | 2026-04-09 17:37 UTC | 2.473555 | 6.356750e+00 | 3.397872e+00 | 1.088230e+00 | 0.036721 |
-| 3 | trial_0005 | 2026-04-09 19:44 UTC | 2.500000 | 1.000000e+02 | 4.000000e+00 | 9.433231e-01 | -0.025340 |
-| 4 | trial_0007 | 2026-04-09 22:03 UTC | 2.337084 | 1.000000e-03 | 2.595988e+00 | 7.957262e-01 | -0.099236 |
+| 1 | trial_0005 | 2026-04-10 20:57 UTC | 2.477981 | 3.372570e-02 | 3.801734e+00 | 1.103520e+00 | 0.042780 |
+| 2 | trial_0004 | 2026-04-10 20:51 UTC | 2.499108 | 4.819857e+00 | 6.003403e-01 | 1.051772e+00 | 0.021922 |
+| 3 | trial_0006 | 2026-04-10 21:07 UTC | 2.495020 | 6.263080e-03 | 3.344370e+00 | 7.399855e-01 | -0.130777 |
+| 4 | trial_0002 | 2026-04-10 20:04 UTC | 2.173129 | 8.068861e-03 | 3.652143e-01 | 7.317231e-01 | -0.135653 |
 
 <details>
 <summary>Show ranks 5-20</summary>
 
 | Rank | Trial | Started | Drift x Base | Ion Temp Ratio | Ion Mass / Proton | Tail Mean E | Score |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 5 | trial_0002 | 2026-04-09 14:52 UTC | 1.913983 | 2.371407e-01 | 2.962437e+00 | 5.394634e-01 | -0.268038 |
-| 6 | trial_0006 | 2026-04-09 21:08 UTC | 2.461772 | 1.000000e-03 | 1.000000e-02 | 1.951065e-01 | -0.709728 |
-| 7 | trial_0003 | 2026-04-09 16:01 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 4.837480e-02 | -1.315381 |
-| 8 | trial_0001 | 2026-04-09 14:50 UTC | 1.301660 | 1.079942e+01 | 2.420796e-01 | 4.571948e-02 | -1.339899 |
-| 9 | trial_0000 | 2026-04-09 14:48 UTC | 1.000000 | 1.000000e-02 | 1.000000e+00 | 1.867578e-02 | -1.728721 |
-| 10 | trial_0020 | 2026-04-10 18:07 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 8.955460e-04 | -3.047912 |
-| 11 | trial_0019 | 2026-04-10 17:13 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 8.463287e-04 | -3.072461 |
-| 12 | trial_0013 | 2026-04-10 09:43 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 8.290741e-04 | -3.081407 |
-| 13 | trial_0018 | 2026-04-10 16:14 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 8.045909e-04 | -3.094425 |
-| 14 | trial_0014 | 2026-04-10 11:17 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 7.810345e-04 | -3.107330 |
-| 15 | trial_0016 | 2026-04-10 13:58 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 7.316268e-04 | -3.135710 |
-| 16 | trial_0012 | 2026-04-10 08:04 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 7.279218e-04 | -3.137915 |
-| 17 | trial_0010 | 2026-04-10 03:46 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 7.259495e-04 | -3.139094 |
-| 18 | trial_0015 | 2026-04-10 12:05 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 7.072480e-04 | -3.150428 |
-| 19 | trial_0017 | 2026-04-10 15:13 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 7.055289e-04 | -3.151485 |
-| 20 | trial_0021 | 2026-04-10 19:21 UTC | 0.417255 | 4.578978e+00 | 1.764390e-01 | 6.931363e-04 | -3.159181 |
+| 5 | trial_0003 | 2026-04-10 20:14 UTC | 1.474236 | 5.784718e-01 | 1.037382e+00 | 1.935047e-01 | -0.713309 |
+| 6 | trial_0000 | 2026-04-10 19:47 UTC | 1.000000 | 1.000000e-02 | 1.000000e+00 | 1.867578e-02 | -1.728721 |
+| 7 | trial_0001 | 2026-04-10 19:54 UTC | 0.222720 | 3.885929e-01 | 4.429115e-01 | 6.986131e-04 | -3.155763 |
 
 </details>
 
@@ -91,6 +78,7 @@ These GIFs are rendered from the full saved trial configurations with no solver 
 
 - The leaderboard above is the live public state of the current optimization campaign.
 - The static plots use inverse plasma-frequency units, so the time axis is shown in $\omega_{pe}^{-1}$ instead of seconds.
+- This leaderboard is a fresh post-fix campaign: the resumed Bayesian optimizer now rejects duplicate suggestions and falls back to novelty-seeking candidates, so scheduled runs do not get stuck replaying one point.
 - The GIFs are rendered from the full saved simulations for the initial baseline and the current top two leaderboard entries.
 - The live solver baseline lives in [configs/base_input.toml](configs/base_input.toml), and the smaller CI smoke case lives in [configs/base_input_smoke.toml](configs/base_input_smoke.toml).
 

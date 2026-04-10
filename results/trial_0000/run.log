@@ -5,4 +5,4 @@ candidate_ion_temperature_ratio=0.01
 candidate_ion_mass_over_proton_mass=1.0
 optimizer_score=-1.7287213477805072
 optimizer_objective=1.7287213477805072
-wall_time_seconds=118.14910891599993
+wall_time_seconds=295.6816122089949

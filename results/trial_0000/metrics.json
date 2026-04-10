@@ -20,12 +20,12 @@
   "plot_path": "results/trial_0000/electric_field_energy.png",
   "score_version": "tail_mean_electric_field_energy_max_v2",
   "seed": 1701,
-  "started_at": "2026-04-09T14:48:13+00:00",
+  "started_at": "2026-04-10T19:47:22+00:00",
   "tail_max_E": 0.02623617174533776,
   "tail_mean_E": 0.018675775824604626,
   "time_of_peak_E": 8.577252464846773e-10,
   "timeseries_path": "results/trial_0000/timeseries.npz",
   "trial_dir": "results/trial_0000",
   "trial_id": "trial_0000",
-  "wall_time_seconds": 118.14910891599993
+  "wall_time_seconds": 295.6816122089949
 }

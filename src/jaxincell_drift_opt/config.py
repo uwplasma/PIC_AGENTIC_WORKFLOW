@@ -30,6 +30,11 @@ class SearchConfig:
     leaderboard_size: int
     trusted_runner_label: str
     self_hosted_runner_label: tuple[str, ...]
+    initial_point_generator: str = "sobol"
+    acq_optimizer: str = "sampling"
+    suggestion_batch_size: int = 8
+    duplicate_distance_threshold: float = 1.0e-6
+    fallback_random_candidates: int = 64
 
 
 @dataclass(frozen=True)
@@ -146,6 +151,11 @@ def load_search_config(path: Path) -> SearchConfig:
         n_initial_points=int(data.get("n_initial_points", 4)),
         acq_func=str(data.get("acq_func", "EI")),
         base_estimator=str(data.get("base_estimator", "GP")),
+        initial_point_generator=str(data.get("initial_point_generator", "sobol")),
+        acq_optimizer=str(data.get("acq_optimizer", "sampling")),
+        suggestion_batch_size=max(1, int(data.get("suggestion_batch_size", 8))),
+        duplicate_distance_threshold=float(data.get("duplicate_distance_threshold", 1.0e-6)),
+        fallback_random_candidates=max(1, int(data.get("fallback_random_candidates", 64))),
         state_branch=str(data.get("state_branch", "main")),
         trials_per_run_default=int(data.get("trials_per_run_default", 2)),
         leaderboard_size=int(data.get("leaderboard_size", 10)),
