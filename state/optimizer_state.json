@@ -4,31 +4,31 @@
     "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
     "base_ion_mass_over_proton_mass": 1.0,
     "base_ion_temperature_ratio": 0.01,
-    "candidate_drift": 49891169.201271445,
-    "candidate_ion_mass_over_proton_mass": 1.0729939310503724,
-    "candidate_ion_temperature_ratio": 0.003152023346850476,
+    "candidate_drift": 49633371.3407096,
+    "candidate_ion_mass_over_proton_mass": 3.9511470931379,
+    "candidate_ion_temperature_ratio": 0.00780351013713153,
     "drift_key": "electron_drift_speed_x",
-    "drift_multiplier": 2.494558460063572,
+    "drift_multiplier": 2.48166856703548,
     "failed": false,
     "failure_reason": null,
-    "final_E": 1.4867479502912009,
+    "final_E": 1.1394111148892754,
     "ion_mass_key": "ion_mass_over_proton_mass",
-    "ion_mass_over_proton_mass": 1.0729939310503724,
-    "ion_temperature_ratio": 0.003152023346850476,
+    "ion_mass_over_proton_mass": 3.9511470931379,
+    "ion_temperature_ratio": 0.00780351013713153,
     "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
-    "optimizer_objective": -0.0963637463701984,
-    "optimizer_score": 0.0963637463701984,
-    "plot_path": "results/trial_0027/electric_field_energy.png",
+    "optimizer_objective": -0.11316810527485309,
+    "optimizer_score": 0.11316810527485309,
+    "plot_path": "results/trial_0033/electric_field_energy.png",
     "score_version": "tail_mean_electric_field_energy_max_v2",
-    "seed": 1728,
-    "started_at": "2026-04-13T19:45:07+00:00",
-    "tail_max_E": 1.8520785929804209,
-    "tail_mean_E": 1.248428706642112,
-    "time_of_peak_E": 3.2337342723360473e-09,
-    "timeseries_path": "results/trial_0027/timeseries.npz",
-    "trial_dir": "results/trial_0027",
-    "trial_id": "trial_0027",
-    "wall_time_seconds": 99.62813662499684
+    "seed": 1734,
+    "started_at": "2026-04-14T06:16:33+00:00",
+    "tail_max_E": 1.7085093692901616,
+    "tail_mean_E": 1.297681476045055,
+    "time_of_peak_E": 5.920005639389576e-10,
+    "timeseries_path": "results/trial_0033/timeseries.npz",
+    "trial_dir": "results/trial_0033",
+    "trial_id": "trial_0033",
+    "wall_time_seconds": 102.65692129200033
   },
   "campaign_id": "932b5f9728afcb44",
   "created_at": "2026-04-10T19:37:04+00:00",
@@ -198,6 +198,11 @@
         2.4918660613873667,
         0.052069923020019365,
         0.010402190113767133
+      ],
+      [
+        2.48166856703548,
+        0.00780351013713153,
+        3.9511470931379
       ]
     ],
     "y": [
@@ -233,7 +238,8 @@
       0.13107213001853246,
       0.019086959035570134,
       -0.024638961479551552,
-      0.3930389277200059
+      0.3930389277200059,
+      -0.11316810527485309
     ]
   },
   "optimizer": {
@@ -1282,7 +1288,38 @@
       "trial_dir": "results/trial_0032",
       "trial_id": "trial_0032",
       "wall_time_seconds": 114.79592512499948
+    },
+    {
+      "base_drift": 20000000.0,
+      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_ion_mass_over_proton_mass": 1.0,
+      "base_ion_temperature_ratio": 0.01,
+      "candidate_drift": 49633371.3407096,
+      "candidate_ion_mass_over_proton_mass": 3.9511470931379,
+      "candidate_ion_temperature_ratio": 0.00780351013713153,
+      "drift_key": "electron_drift_speed_x",
+      "drift_multiplier": 2.48166856703548,
+      "failed": false,
+      "failure_reason": null,
+      "final_E": 1.1394111148892754,
+      "ion_mass_key": "ion_mass_over_proton_mass",
+      "ion_mass_over_proton_mass": 3.9511470931379,
+      "ion_temperature_ratio": 0.00780351013713153,
+      "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
+      "optimizer_objective": -0.11316810527485309,
+      "optimizer_score": 0.11316810527485309,
+      "plot_path": "results/trial_0033/electric_field_energy.png",
+      "score_version": "tail_mean_electric_field_energy_max_v2",
+      "seed": 1734,
+      "started_at": "2026-04-14T06:16:33+00:00",
+      "tail_max_E": 1.7085093692901616,
+      "tail_mean_E": 1.297681476045055,
+      "time_of_peak_E": 5.920005639389576e-10,
+      "timeseries_path": "results/trial_0033/timeseries.npz",
+      "trial_dir": "results/trial_0033",
+      "trial_id": "trial_0033",
+      "wall_time_seconds": 102.65692129200033
     }
   ],
-  "updated_at": "2026-04-14T03:49:22+00:00"
+  "updated_at": "2026-04-14T06:19:11+00:00"
 }
