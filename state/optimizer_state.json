@@ -623,6 +623,11 @@
         2.0945377570156536,
         0.001263081700496545,
         3.727695091892851
+      ],
+      [
+        2.4992929034191547,
+        0.011163320196963391,
+        3.8823454081727493
       ]
     ],
     "y": [
@@ -743,7 +748,8 @@
       0.06970954968499699,
       -0.023134568173190814,
       0.09652400169244187,
-      0.1241656792171627
+      0.1241656792171627,
+      -0.08608942778956478
     ]
   },
   "optimizer": {
@@ -4427,7 +4433,38 @@
       "trial_dir": "results/trial_0117",
       "trial_id": "trial_0117",
       "wall_time_seconds": 102.40473275
+    },
+    {
+      "base_drift": 20000000.0,
+      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_ion_mass_over_proton_mass": 1.0,
+      "base_ion_temperature_ratio": 0.01,
+      "candidate_drift": 49985858.06838309,
+      "candidate_ion_mass_over_proton_mass": 3.8823454081727493,
+      "candidate_ion_temperature_ratio": 0.011163320196963391,
+      "drift_key": "electron_drift_speed_x",
+      "drift_multiplier": 2.4992929034191547,
+      "failed": false,
+      "failure_reason": null,
+      "final_E": 1.2751936698597899,
+      "ion_mass_key": "ion_mass_over_proton_mass",
+      "ion_mass_over_proton_mass": 3.8823454081727493,
+      "ion_temperature_ratio": 0.011163320196963391,
+      "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
+      "optimizer_objective": -0.08608942778956478,
+      "optimizer_score": 0.08608942778956478,
+      "plot_path": "results/trial_0118/electric_field_energy.png",
+      "score_version": "tail_mean_electric_field_energy_max_v2",
+      "seed": 1819,
+      "started_at": "2026-04-20T14:17:07+00:00",
+      "tail_max_E": 1.6437042473811205,
+      "tail_mean_E": 1.2192406331290966,
+      "time_of_peak_E": 6.160208742255763e-10,
+      "timeseries_path": "results/trial_0118/timeseries.npz",
+      "trial_dir": "results/trial_0118",
+      "trial_id": "trial_0118",
+      "wall_time_seconds": 94.82394599999952
     }
   ],
-  "updated_at": "2026-04-20T13:16:03+00:00"
+  "updated_at": "2026-04-20T14:17:20+00:00"
 }
