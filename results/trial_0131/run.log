@@ -1,0 +1,8 @@
+trial_id=trial_0131
+drift_multiplier=2.3592105408139936
+candidate_drift=47184210.81627987
+candidate_ion_temperature_ratio=89.07209271245326
+candidate_ion_mass_over_proton_mass=1.6425158897286667
+optimizer_score=-0.04543904796412553
+optimizer_objective=0.04543904796412553
+wall_time_seconds=95.80225612499635
