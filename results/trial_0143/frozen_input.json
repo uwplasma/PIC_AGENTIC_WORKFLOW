@@ -1,0 +1,40 @@
+{
+  "input_parameters": {
+    "amplitude_perturbation_x": 5e-07,
+    "electron_charge_over_elementary_charge": -1,
+    "electron_drift_speed_x": 45939383.79927882,
+    "external_electric_field_amplitude": 0,
+    "external_electric_field_wavenumber": 0,
+    "filter_alpha": 0.5,
+    "filter_passes": 3,
+    "filter_strides": [
+      1,
+      2,
+      4
+    ],
+    "grid_points_per_Debye_length": 0.6,
+    "ion_charge_over_elementary_charge": 1,
+    "ion_mass_over_proton_mass": 3.999999154135237,
+    "ion_temperature_over_electron_temperature_x": 0.0012101800788082394,
+    "length": 0.01,
+    "print_info": false,
+    "relativistic": false,
+    "seed": 1844,
+    "species": [],
+    "timestep_over_spatialstep_times_c": 1.5,
+    "tolerance_Picard_iterations_implicit_CN": 1e-10,
+    "velocity_plus_minus_electrons_x": true,
+    "vth_electrons_over_c_x": 0.05,
+    "wavenumber_electrons_x": 1
+  },
+  "solver_parameters": {
+    "field_solver": 0,
+    "max_number_of_Picard_iterations_implicit_CN": 12,
+    "number_grid_points": 100,
+    "number_of_particle_substeps_implicit_CN": 2,
+    "number_pseudoelectrons": 10000,
+    "number_pseudoparticles_species": [],
+    "time_evolution_algorithm": 0,
+    "total_steps": 6500
+  }
+}
