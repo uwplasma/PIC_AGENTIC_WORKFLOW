@@ -1088,6 +1088,11 @@
         2.4952047243431066,
         0.0031496395072534407,
         3.7924171936070756
+      ],
+      [
+        2.4781596320074777,
+        59.81066622790257,
+        3.986822726360953
       ]
     ],
     "y": [
@@ -1301,7 +1306,8 @@
       0.0671288361838613,
       0.4187169969797877,
       -0.08070958326512366,
-      -0.07509587332536122
+      -0.07509587332536122,
+      -0.06122503189250423
     ]
   },
   "optimizer": {
@@ -7868,7 +7874,38 @@
       "trial_dir": "results/trial_0210",
       "trial_id": "trial_0210",
       "wall_time_seconds": 92.43979483301518
+    },
+    {
+      "base_drift": 20000000.0,
+      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_ion_mass_over_proton_mass": 1.0,
+      "base_ion_temperature_ratio": 0.01,
+      "candidate_drift": 49563192.640149556,
+      "candidate_ion_mass_over_proton_mass": 3.986822726360953,
+      "candidate_ion_temperature_ratio": 59.81066622790257,
+      "drift_key": "electron_drift_speed_x",
+      "drift_multiplier": 2.4781596320074777,
+      "failed": false,
+      "failure_reason": null,
+      "final_E": 1.0850024696889047,
+      "ion_mass_key": "ion_mass_over_proton_mass",
+      "ion_mass_over_proton_mass": 3.986822726360953,
+      "ion_temperature_ratio": 59.81066622790257,
+      "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
+      "optimizer_objective": -0.06122503189250423,
+      "optimizer_score": 0.06122503189250423,
+      "plot_path": "results/trial_0211/electric_field_energy.png",
+      "score_version": "tail_mean_electric_field_energy_max_v2",
+      "seed": 1912,
+      "started_at": "2026-04-27T00:01:46+00:00",
+      "tail_max_E": 1.4443317575823553,
+      "tail_mean_E": 1.1513968365261598,
+      "time_of_peak_E": 1.1824998584850015e-09,
+      "timeseries_path": "results/trial_0211/timeseries.npz",
+      "trial_dir": "results/trial_0211",
+      "trial_id": "trial_0211",
+      "wall_time_seconds": 90.76368779200129
     }
   ],
-  "updated_at": "2026-04-26T23:04:39+00:00"
+  "updated_at": "2026-04-27T00:02:08+00:00"
 }
