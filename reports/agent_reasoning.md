@@ -293,13 +293,14 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 - trial_0245: score=0.126089, objective=-0.126089, tail_mean_E=1.336869e+00, drift=2.499309, temp_ratio=1.785734e-01, mass_ratio=8.283820e-01, failed=False.
 - trial_0246: score=-1.183534, objective=1.183534, tail_mean_E=6.553395e-02, drift=2.499988, temp_ratio=7.261927e+01, mass_ratio=1.136839e-02, failed=False.
 - trial_0247: score=-0.526725, objective=0.526725, tail_mean_E=2.973550e-01, drift=2.497044, temp_ratio=5.887906e-01, mass_ratio=1.275098e-01, failed=False.
+- trial_0248: score=-0.056321, objective=0.056321, tail_mean_E=8.783724e-01, drift=2.473073, temp_ratio=3.365297e-02, mass_ratio=1.614500e+00, failed=False.
 
 ## Next Suggested Experiment
 
-- Drift multiplier: 2.473073
-- Ion temperature ratio: 3.365297e-02
-- Ion mass over proton mass: 1.614500e+00
-- Observations available to the optimizer: 248
+- Drift multiplier: 2.494580
+- Ion temperature ratio: 8.646729e-01
+- Ion mass over proton mass: 1.445515e+00
+- Observations available to the optimizer: 249
 
 ## Public Copilot Research Trail
 
