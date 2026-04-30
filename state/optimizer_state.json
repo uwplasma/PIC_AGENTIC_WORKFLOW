@@ -1258,6 +1258,11 @@
         2.1247102686838995,
         0.5305706090256085,
         0.6865585693709191
+      ],
+      [
+        2.4993091985645877,
+        0.1785734212553375,
+        0.8283819577430368
       ]
     ],
     "y": [
@@ -1505,7 +1510,8 @@
       -0.06116453169801416,
       -0.06342464877094232,
       -0.04882277481274785,
-      0.1927747531619071
+      0.1927747531619071,
+      -0.12608873457618233
     ]
   },
   "optimizer": {
@@ -9126,7 +9132,38 @@
       "trial_dir": "results/trial_0244",
       "trial_id": "trial_0244",
       "wall_time_seconds": 112.894186874968
+    },
+    {
+      "base_drift": 20000000.0,
+      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_ion_mass_over_proton_mass": 1.0,
+      "base_ion_temperature_ratio": 0.01,
+      "candidate_drift": 49986183.97129175,
+      "candidate_ion_mass_over_proton_mass": 0.8283819577430368,
+      "candidate_ion_temperature_ratio": 0.1785734212553375,
+      "drift_key": "electron_drift_speed_x",
+      "drift_multiplier": 2.4993091985645877,
+      "failed": false,
+      "failure_reason": null,
+      "final_E": 1.3998048866880717,
+      "ion_mass_key": "ion_mass_over_proton_mass",
+      "ion_mass_over_proton_mass": 0.8283819577430368,
+      "ion_temperature_ratio": 0.1785734212553375,
+      "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
+      "optimizer_objective": -0.12608873457618233,
+      "optimizer_score": 0.12608873457618233,
+      "plot_path": "results/trial_0245/electric_field_energy.png",
+      "score_version": "tail_mean_electric_field_energy_max_v2",
+      "seed": 1946,
+      "started_at": "2026-04-30T04:11:05+00:00",
+      "tail_max_E": 1.8303166483771718,
+      "tail_mean_E": 1.3368686361894397,
+      "time_of_peak_E": 6.60058109751044e-10,
+      "timeseries_path": "results/trial_0245/timeseries.npz",
+      "trial_dir": "results/trial_0245",
+      "trial_id": "trial_0245",
+      "wall_time_seconds": 110.06426450004801
     }
   ],
-  "updated_at": "2026-04-30T00:15:07+00:00"
+  "updated_at": "2026-04-30T04:11:35+00:00"
 }
