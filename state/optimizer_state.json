@@ -1368,6 +1368,11 @@
         2.4892226117869742,
         4.162618736368937,
         1.7198610302708195
+      ],
+      [
+        2.494436072992345,
+        0.27921148644626737,
+        3.844018072697073
       ]
     ],
     "y": [
@@ -1637,7 +1642,8 @@
       -0.025565295440983616,
       -0.07379572539865843,
       0.28450254307700834,
-      0.013316725321839305
+      0.013316725321839305,
+      -0.03294291048466559
     ]
   },
   "optimizer": {
@@ -9940,7 +9946,38 @@
       "trial_dir": "results/trial_0266",
       "trial_id": "trial_0266",
       "wall_time_seconds": 118.23640504200011
+    },
+    {
+      "base_drift": 20000000.0,
+      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_ion_mass_over_proton_mass": 1.0,
+      "base_ion_temperature_ratio": 0.01,
+      "candidate_drift": 49888721.4598469,
+      "candidate_ion_mass_over_proton_mass": 3.844018072697073,
+      "candidate_ion_temperature_ratio": 0.27921148644626737,
+      "drift_key": "electron_drift_speed_x",
+      "drift_multiplier": 2.494436072992345,
+      "failed": false,
+      "failure_reason": null,
+      "final_E": 1.238530355936703,
+      "ion_mass_key": "ion_mass_over_proton_mass",
+      "ion_mass_over_proton_mass": 3.844018072697073,
+      "ion_temperature_ratio": 0.27921148644626737,
+      "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
+      "optimizer_objective": -0.03294291048466559,
+      "optimizer_score": 0.03294291048466559,
+      "plot_path": "results/trial_0267/electric_field_energy.png",
+      "score_version": "tail_mean_electric_field_energy_max_v2",
+      "seed": 1968,
+      "started_at": "2026-05-01T23:13:44+00:00",
+      "tail_max_E": 1.6956898855535605,
+      "tail_mean_E": 1.0788049002642088,
+      "time_of_peak_E": 6.005077571654684e-10,
+      "timeseries_path": "results/trial_0267/timeseries.npz",
+      "trial_dir": "results/trial_0267",
+      "trial_id": "trial_0267",
+      "wall_time_seconds": 91.67615895799827
     }
   ],
-  "updated_at": "2026-05-01T22:13:43+00:00"
+  "updated_at": "2026-05-01T23:14:16+00:00"
 }
