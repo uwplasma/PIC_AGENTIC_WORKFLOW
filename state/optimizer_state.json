@@ -1328,6 +1328,11 @@
         2.492094881699379,
         0.03837104690624268,
         1.6216617608525203
+      ],
+      [
+        2.4916429845129398,
+        0.044693535151814755,
+        3.9968786191003183
       ]
     ],
     "y": [
@@ -1589,7 +1594,8 @@
       -0.09489817841826184,
       -0.09080692661634435,
       -0.06418908066660559,
-      -0.0038258421633744592
+      -0.0038258421633744592,
+      -0.037977544292143915
     ]
   },
   "optimizer": {
@@ -9644,7 +9650,38 @@
       "trial_dir": "results/trial_0258",
       "trial_id": "trial_0258",
       "wall_time_seconds": 91.54942220903467
+    },
+    {
+      "base_drift": 20000000.0,
+      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_ion_mass_over_proton_mass": 1.0,
+      "base_ion_temperature_ratio": 0.01,
+      "candidate_drift": 49832859.69025879,
+      "candidate_ion_mass_over_proton_mass": 3.9968786191003183,
+      "candidate_ion_temperature_ratio": 0.044693535151814755,
+      "drift_key": "electron_drift_speed_x",
+      "drift_multiplier": 2.4916429845129398,
+      "failed": false,
+      "failure_reason": null,
+      "final_E": 0.9114370110398377,
+      "ion_mass_key": "ion_mass_over_proton_mass",
+      "ion_mass_over_proton_mass": 3.9968786191003183,
+      "ion_temperature_ratio": 0.044693535151814755,
+      "ion_temperature_ratio_key": "ion_temperature_over_electron_temperature_x",
+      "optimizer_objective": -0.037977544292143915,
+      "optimizer_score": 0.037977544292143915,
+      "plot_path": "results/trial_0259/electric_field_energy.png",
+      "score_version": "tail_mean_electric_field_energy_max_v2",
+      "seed": 1960,
+      "started_at": "2026-05-01T11:38:05+00:00",
+      "tail_max_E": 1.5609690524367117,
+      "tail_mean_E": 1.0913839036992403,
+      "time_of_peak_E": 6.220259517972311e-10,
+      "timeseries_path": "results/trial_0259/timeseries.npz",
+      "trial_dir": "results/trial_0259",
+      "trial_id": "trial_0259",
+      "wall_time_seconds": 90.29230770794675
     }
   ],
-  "updated_at": "2026-05-01T10:03:17+00:00"
+  "updated_at": "2026-05-01T11:38:34+00:00"
 }
