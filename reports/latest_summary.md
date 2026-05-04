@@ -2,7 +2,7 @@
 
 ## Campaign
 
-- Trials completed: 305
+- Trials completed: 306
 - Drift range: [0.01, 2.5]
 - Ion temperature ratio range: [0.001, 100.0]
 - Ion mass range: [0.01, 4.0]
@@ -45,12 +45,11 @@
 | 16 | trial_0212 | 2026-04-27 04:06 UTC | 2.499784 | 4.237159e-02 | 3.986939e+00 | 1.279404e+00 | 0.107008 |
 | 17 | trial_0163 | 2026-04-24 06:25 UTC | 2.498117 | 9.387809e+01 | 3.579149e+00 | 1.275798e+00 | 0.105782 |
 | 18 | trial_0281 | 2026-05-02 21:07 UTC | 2.497795 | 2.380615e+00 | 1.577063e+00 | 1.271054e+00 | 0.104164 |
-| 19 | trial_0107 | 2026-04-19 09:12 UTC | 2.357523 | 1.732976e-03 | 1.640210e+00 | 1.267020e+00 | 0.102783 |
-| 20 | trial_0220 | 2026-04-27 22:13 UTC | 2.498104 | 2.823687e+00 | 3.991038e+00 | 1.266182e+00 | 0.102496 |
+| 19 | trial_0305 | 2026-05-04 15:28 UTC | 2.488049 | 8.341048e-02 | 3.636525e+00 | 1.267213e+00 | 0.102850 |
+| 20 | trial_0107 | 2026-04-19 09:12 UTC | 2.357523 | 1.732976e-03 | 1.640210e+00 | 1.267020e+00 | 0.102783 |
 
 ## Recent Trials
 
-- trial_0295 at 2026-05-03 18:09 UTC: drift=2.497282, temp_ratio=1.975458e-02, mass_ratio=1.344089e+00, score=-0.098951, failed=False
 - trial_0296 at 2026-05-03 19:33 UTC: drift=2.492759, temp_ratio=4.083532e-01, mass_ratio=3.925347e+00, score=0.099496, failed=False
 - trial_0297 at 2026-05-03 21:09 UTC: drift=2.474861, temp_ratio=8.692430e+01, mass_ratio=3.810794e+00, score=-0.034484, failed=False
 - trial_0298 at 2026-05-03 22:08 UTC: drift=2.332775, temp_ratio=1.731368e-01, mass_ratio=3.978251e+00, score=0.051719, failed=False
@@ -60,6 +59,7 @@
 - trial_0302 at 2026-05-04 07:30 UTC: drift=2.157960, temp_ratio=1.933878e-01, mass_ratio=4.563626e-02, score=-0.347223, failed=False
 - trial_0303 at 2026-05-04 10:30 UTC: drift=2.224371, temp_ratio=1.735976e+00, mass_ratio=4.306305e-01, score=-0.221635, failed=False
 - trial_0304 at 2026-05-04 13:01 UTC: drift=2.475922, temp_ratio=1.645830e+00, mass_ratio=3.968767e+00, score=0.063548, failed=False
+- trial_0305 at 2026-05-04 15:28 UTC: drift=2.488049, temp_ratio=8.341048e-02, mass_ratio=3.636525e+00, score=0.102850, failed=False
 
 ## Notes
 
