@@ -5,7 +5,7 @@ It is not a hidden chain-of-thought dump. It is a structured decision log coveri
 
 ## Active Competition Configuration
 
-- Base input: /Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml
+- Base input: configs/base_input.toml
 - Number of grid points: 100
 - Number of pseudoelectrons: 5000
 - Total steps: 1500
