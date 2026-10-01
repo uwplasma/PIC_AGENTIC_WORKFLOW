@@ -113,7 +113,7 @@ If you have a local sibling checkout of JAX-in-Cell:
 
 ```bash
 python -m pip install --upgrade pip
-python -m pip install -e /Users/rogerio/local/JAX-in-Cell
+python -m pip install -e ../JAX-in-Cell
 python -m pip install -r requirements.txt
 python -m pip install -e .
 ```

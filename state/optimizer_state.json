@@ -1,7 +1,7 @@
 {
   "best_result": {
     "base_drift": 20000000.0,
-    "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+    "base_input_path": "configs/base_input.toml",
     "base_ion_mass_over_proton_mass": 1.0,
     "base_ion_temperature_ratio": 0.01,
     "candidate_drift": 49993268.03129626,
@@ -2074,7 +2074,7 @@
   "trials": [
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 20000000.0,
@@ -2105,7 +2105,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 4454400.983598503,
@@ -2136,7 +2136,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43462579.61931764,
@@ -2167,7 +2167,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 29484716.38366004,
@@ -2198,7 +2198,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49982159.804802716,
@@ -2229,7 +2229,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49559627.360903494,
@@ -2260,7 +2260,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/local/PIC_agentic_workflow/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49900409.4121013,
@@ -2291,7 +2291,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49763256.986688554,
@@ -2322,7 +2322,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49999546.68474659,
@@ -2353,7 +2353,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 42500752.55208926,
@@ -2384,7 +2384,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49949430.38316588,
@@ -2415,7 +2415,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46159915.45244615,
@@ -2446,7 +2446,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 33984266.22757116,
@@ -2477,7 +2477,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49844013.707952105,
@@ -2508,7 +2508,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49527040.9671067,
@@ -2539,7 +2539,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49942385.11912486,
@@ -2570,7 +2570,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49857878.67505298,
@@ -2601,7 +2601,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45374735.33141747,
@@ -2632,7 +2632,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49965807.50799582,
@@ -2663,7 +2663,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49956342.58170383,
@@ -2694,7 +2694,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49895094.324945614,
@@ -2725,7 +2725,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49614448.933652826,
@@ -2756,7 +2756,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49855444.47363954,
@@ -2787,7 +2787,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49331441.00053711,
@@ -2818,7 +2818,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49916087.31171913,
@@ -2849,7 +2849,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49996170.17741856,
@@ -2880,7 +2880,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43851150.345584035,
@@ -2911,7 +2911,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49891169.201271445,
@@ -2942,7 +2942,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49978985.09005926,
@@ -2973,7 +2973,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49987088.85068305,
@@ -3004,7 +3004,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49355152.77232397,
@@ -3035,7 +3035,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49995335.9500833,
@@ -3066,7 +3066,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49837321.227747336,
@@ -3097,7 +3097,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49633371.3407096,
@@ -3128,7 +3128,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49868176.366202876,
@@ -3159,7 +3159,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49575746.345480345,
@@ -3190,7 +3190,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49660480.661553696,
@@ -3221,7 +3221,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43685231.566461936,
@@ -3252,7 +3252,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49690492.1850573,
@@ -3283,7 +3283,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 37951031.36186352,
@@ -3314,7 +3314,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49978152.43604604,
@@ -3345,7 +3345,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49929360.222240895,
@@ -3376,7 +3376,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46445881.10779972,
@@ -3407,7 +3407,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49902996.92066612,
@@ -3438,7 +3438,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49978433.42469073,
@@ -3469,7 +3469,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49957618.4156461,
@@ -3500,7 +3500,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49805739.373582706,
@@ -3531,7 +3531,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49971041.11185255,
@@ -3562,7 +3562,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44189130.43378839,
@@ -3593,7 +3593,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49931033.93910361,
@@ -3624,7 +3624,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49887809.659421116,
@@ -3655,7 +3655,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49912320.81528657,
@@ -3686,7 +3686,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49951838.03671497,
@@ -3717,7 +3717,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49757338.63268541,
@@ -3748,7 +3748,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45704348.72775666,
@@ -3779,7 +3779,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47035714.09604124,
@@ -3810,7 +3810,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49852140.40459363,
@@ -3841,7 +3841,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49923910.35672269,
@@ -3872,7 +3872,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49651898.89059285,
@@ -3903,7 +3903,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49731909.56008354,
@@ -3934,7 +3934,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49901100.6651318,
@@ -3965,7 +3965,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49802466.45637094,
@@ -3996,7 +3996,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49532763.88495733,
@@ -4027,7 +4027,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49994815.24519547,
@@ -4058,7 +4058,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47183732.48948087,
@@ -4089,7 +4089,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46591651.38991355,
@@ -4120,7 +4120,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49720473.18123469,
@@ -4151,7 +4151,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49910692.33762917,
@@ -4182,7 +4182,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49472001.6699051,
@@ -4213,7 +4213,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49958773.201035395,
@@ -4244,7 +4244,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49998001.55387312,
@@ -4275,7 +4275,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49926319.15950535,
@@ -4306,7 +4306,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49955938.85260339,
@@ -4337,7 +4337,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 14484777.610329647,
@@ -4368,7 +4368,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49922807.63825107,
@@ -4399,7 +4399,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49905002.02984122,
@@ -4430,7 +4430,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44772318.6844832,
@@ -4461,7 +4461,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 38315543.02961663,
@@ -4492,7 +4492,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43188772.40288047,
@@ -4523,7 +4523,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 38789512.99872885,
@@ -4554,7 +4554,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 28165093.933515597,
@@ -4585,7 +4585,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 451646.03609300166,
@@ -4616,7 +4616,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 892753.5664758144,
@@ -4647,7 +4647,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 32332467.899806213,
@@ -4678,7 +4678,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44249622.384724684,
@@ -4709,7 +4709,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49998754.11882207,
@@ -4740,7 +4740,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49927958.01989887,
@@ -4771,7 +4771,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49882941.66087696,
@@ -4802,7 +4802,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49725589.23549476,
@@ -4833,7 +4833,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49994332.515157975,
@@ -4864,7 +4864,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49934607.19629962,
@@ -4895,7 +4895,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43452690.44032548,
@@ -4926,7 +4926,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47157905.65636064,
@@ -4957,7 +4957,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49864733.997177646,
@@ -4988,7 +4988,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47815483.08466274,
@@ -5019,7 +5019,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 37379698.96433486,
@@ -5050,7 +5050,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49744104.95099998,
@@ -5081,7 +5081,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49999353.75459747,
@@ -5112,7 +5112,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49993268.03129626,
@@ -5143,7 +5143,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49814633.28586354,
@@ -5174,7 +5174,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 36268981.213444084,
@@ -5205,7 +5205,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49751604.16192715,
@@ -5236,7 +5236,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49932460.49707459,
@@ -5267,7 +5267,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49799359.93889689,
@@ -5298,7 +5298,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49869421.68583215,
@@ -5329,7 +5329,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47581289.58245191,
@@ -5360,7 +5360,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46720536.82214094,
@@ -5391,7 +5391,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47150452.82581063,
@@ -5422,7 +5422,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49906044.96721087,
@@ -5453,7 +5453,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47510375.16794154,
@@ -5484,7 +5484,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 48024727.56495569,
@@ -5515,7 +5515,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47647646.53040695,
@@ -5546,7 +5546,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49978350.652962476,
@@ -5577,7 +5577,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 48121901.64671101,
@@ -5608,7 +5608,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45858564.20491705,
@@ -5639,7 +5639,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49751199.964214,
@@ -5670,7 +5670,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47616814.46526446,
@@ -5701,7 +5701,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 41890755.140313074,
@@ -5732,7 +5732,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49985858.06838309,
@@ -5763,7 +5763,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49694342.722108215,
@@ -5794,7 +5794,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49592427.61898028,
@@ -5825,7 +5825,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49961783.92585397,
@@ -5856,7 +5856,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49925827.81819668,
@@ -5887,7 +5887,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49954448.592165336,
@@ -5918,7 +5918,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49964253.2704947,
@@ -5949,7 +5949,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49742695.98267325,
@@ -5980,7 +5980,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49982090.5865604,
@@ -6011,7 +6011,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49783763.39402603,
@@ -6042,7 +6042,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49973623.535576,
@@ -6073,7 +6073,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47427873.346634,
@@ -6104,7 +6104,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49861062.05830174,
@@ -6135,7 +6135,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47184210.81627987,
@@ -6166,7 +6166,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49805186.34462784,
@@ -6197,7 +6197,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49879727.068940915,
@@ -6228,7 +6228,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49887547.68056293,
@@ -6259,7 +6259,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49943651.01833683,
@@ -6290,7 +6290,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49976798.916405745,
@@ -6321,7 +6321,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49892414.67189271,
@@ -6352,7 +6352,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49962365.35933545,
@@ -6383,7 +6383,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46607160.92623242,
@@ -6414,7 +6414,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47582429.475519694,
@@ -6445,7 +6445,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 41928877.53193003,
@@ -6476,7 +6476,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49934719.65073214,
@@ -6507,7 +6507,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45939383.79927882,
@@ -6538,7 +6538,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49955760.065846026,
@@ -6569,7 +6569,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49768573.16842489,
@@ -6600,7 +6600,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49879084.70361663,
@@ -6631,7 +6631,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49805694.67967126,
@@ -6662,7 +6662,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49989748.78261811,
@@ -6693,7 +6693,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46771296.05719152,
@@ -6724,7 +6724,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49872236.763973266,
@@ -6755,7 +6755,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46945709.62117557,
@@ -6786,7 +6786,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49588097.81249337,
@@ -6817,7 +6817,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49759121.035078265,
@@ -6848,7 +6848,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49851502.62833432,
@@ -6879,7 +6879,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 41294665.0680359,
@@ -6910,7 +6910,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47734861.18260738,
@@ -6941,7 +6941,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49693288.35246619,
@@ -6972,7 +6972,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49942720.970128015,
@@ -7003,7 +7003,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 37063184.14398947,
@@ -7034,7 +7034,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49994638.66548364,
@@ -7065,7 +7065,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49948777.12960042,
@@ -7096,7 +7096,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45425380.92098401,
@@ -7127,7 +7127,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49962336.59639253,
@@ -7158,7 +7158,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49758015.7889048,
@@ -7189,7 +7189,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49924139.144139454,
@@ -7220,7 +7220,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49906001.20102947,
@@ -7251,7 +7251,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47617697.22959558,
@@ -7282,7 +7282,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49966359.58334812,
@@ -7313,7 +7313,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49964323.2236069,
@@ -7344,7 +7344,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46837574.45400988,
@@ -7375,7 +7375,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49956900.23768086,
@@ -7406,7 +7406,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49965899.63571078,
@@ -7437,7 +7437,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49878768.81940415,
@@ -7468,7 +7468,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47449736.220552355,
@@ -7499,7 +7499,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49464589.404104464,
@@ -7530,7 +7530,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49990199.74636115,
@@ -7561,7 +7561,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49991582.875754744,
@@ -7592,7 +7592,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49402383.52866241,
@@ -7623,7 +7623,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49991712.54954972,
@@ -7654,7 +7654,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49966415.74955501,
@@ -7685,7 +7685,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49821330.443172246,
@@ -7716,7 +7716,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49998942.9164045,
@@ -7747,7 +7747,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 40034122.74324394,
@@ -7778,7 +7778,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 42398620.23196488,
@@ -7809,7 +7809,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 35778367.44260457,
@@ -7840,7 +7840,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49824236.23444188,
@@ -7871,7 +7871,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 48130706.49220635,
@@ -7902,7 +7902,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47351600.51099198,
@@ -7933,7 +7933,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49996097.13342878,
@@ -7964,7 +7964,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 26840946.901130266,
@@ -7995,7 +7995,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49767510.62668029,
@@ -8026,7 +8026,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49808855.92343654,
@@ -8057,7 +8057,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49964564.03444482,
@@ -8088,7 +8088,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49957386.85375191,
@@ -8119,7 +8119,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45463146.91955043,
@@ -8150,7 +8150,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49981218.62270303,
@@ -8181,7 +8181,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49770732.23798798,
@@ -8212,7 +8212,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49775206.42850842,
@@ -8243,7 +8243,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46994152.2206389,
@@ -8274,7 +8274,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49989929.65622718,
@@ -8305,7 +8305,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49961063.982264064,
@@ -8336,7 +8336,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43994859.320412315,
@@ -8367,7 +8367,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46786357.28824722,
@@ -8398,7 +8398,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47221535.5463395,
@@ -8429,7 +8429,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49998342.53861322,
@@ -8460,7 +8460,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49893357.29932715,
@@ -8491,7 +8491,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49968826.625713356,
@@ -8522,7 +8522,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49902077.24630638,
@@ -8553,7 +8553,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49966511.37837648,
@@ -8584,7 +8584,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49904094.48686213,
@@ -8615,7 +8615,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49563192.640149556,
@@ -8646,7 +8646,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49995687.298215695,
@@ -8677,7 +8677,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49938724.64060892,
@@ -8708,7 +8708,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49982762.2443908,
@@ -8739,7 +8739,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49915428.791840546,
@@ -8770,7 +8770,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49919688.65567361,
@@ -8801,7 +8801,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49946293.30833579,
@@ -8832,7 +8832,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44600386.988713786,
@@ -8863,7 +8863,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49990194.26490155,
@@ -8894,7 +8894,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49962088.92690064,
@@ -8925,7 +8925,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49946763.44356837,
@@ -8956,7 +8956,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49997830.47934735,
@@ -8987,7 +8987,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 38407689.601229355,
@@ -9018,7 +9018,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49998722.52336717,
@@ -9049,7 +9049,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49991105.140929796,
@@ -9080,7 +9080,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49676461.31944545,
@@ -9111,7 +9111,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49793503.63846888,
@@ -9142,7 +9142,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 258833.9476639654,
@@ -9173,7 +9173,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44961901.59168715,
@@ -9204,7 +9204,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49738378.75500338,
@@ -9235,7 +9235,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49907306.19213914,
@@ -9266,7 +9266,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49454009.384839654,
@@ -9297,7 +9297,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44742693.79995448,
@@ -9328,7 +9328,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49720358.74924933,
@@ -9359,7 +9359,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49674864.95775969,
@@ -9390,7 +9390,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 23454002.73380958,
@@ -9421,7 +9421,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49935188.87424868,
@@ -9452,7 +9452,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49929880.43493555,
@@ -9483,7 +9483,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49813957.38452516,
@@ -9514,7 +9514,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 41271990.32366265,
@@ -9545,7 +9545,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49936715.69353022,
@@ -9576,7 +9576,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49860810.453991055,
@@ -9607,7 +9607,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49934137.54659751,
@@ -9638,7 +9638,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 42494205.37367799,
@@ -9669,7 +9669,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49986183.97129175,
@@ -9700,7 +9700,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49999768.857909374,
@@ -9731,7 +9731,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49940874.445675105,
@@ -9762,7 +9762,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49461459.56180965,
@@ -9793,7 +9793,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49891594.3803242,
@@ -9824,7 +9824,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 34299151.34124329,
@@ -9855,7 +9855,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49848276.616725825,
@@ -9886,7 +9886,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49567402.13819442,
@@ -9917,7 +9917,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46012675.60386094,
@@ -9948,7 +9948,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49880954.97289196,
@@ -9979,7 +9979,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49848305.47286244,
@@ -10010,7 +10010,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49811323.718175136,
@@ -10041,7 +10041,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49905627.9775437,
@@ -10072,7 +10072,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49841897.63398758,
@@ -10103,7 +10103,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49832859.69025879,
@@ -10134,7 +10134,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 38782781.174061045,
@@ -10165,7 +10165,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49866701.88109538,
@@ -10196,7 +10196,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49992326.97314607,
@@ -10227,7 +10227,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49736776.3993536,
@@ -10258,7 +10258,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49920744.98838745,
@@ -10289,7 +10289,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 37482609.7300985,
@@ -10320,7 +10320,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49784452.235739484,
@@ -10351,7 +10351,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49888721.4598469,
@@ -10382,7 +10382,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43903897.74996643,
@@ -10413,7 +10413,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49670106.56046666,
@@ -10444,7 +10444,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49706992.76732248,
@@ -10475,7 +10475,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49993217.7962817,
@@ -10506,7 +10506,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49944112.452180326,
@@ -10537,7 +10537,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49984129.28621778,
@@ -10568,7 +10568,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49824549.38290054,
@@ -10599,7 +10599,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49813762.817140594,
@@ -10630,7 +10630,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49861054.83764934,
@@ -10661,7 +10661,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49487131.76097943,
@@ -10692,7 +10692,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49986011.52253362,
@@ -10723,7 +10723,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49943559.83276466,
@@ -10754,7 +10754,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49803168.23796179,
@@ -10785,7 +10785,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49955896.270443775,
@@ -10816,7 +10816,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49823957.7790364,
@@ -10847,7 +10847,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44846839.754341364,
@@ -10878,7 +10878,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49832571.53886348,
@@ -10909,7 +10909,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49892553.22008578,
@@ -10940,7 +10940,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49976807.89463302,
@@ -10971,7 +10971,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49952392.87823069,
@@ -11002,7 +11002,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49972713.413224615,
@@ -11033,7 +11033,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49997843.72132897,
@@ -11064,7 +11064,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 42227871.40753503,
@@ -11095,7 +11095,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44315361.6923116,
@@ -11126,7 +11126,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49882829.334634006,
@@ -11157,7 +11157,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49981778.166428275,
@@ -11188,7 +11188,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49846274.82273824,
@@ -11219,7 +11219,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49945649.795390226,
@@ -11250,7 +11250,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49855181.55621392,
@@ -11281,7 +11281,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49497227.959024645,
@@ -11312,7 +11312,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46655499.84787787,
@@ -11343,7 +11343,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49986920.06112298,
@@ -11374,7 +11374,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45220205.01220854,
@@ -11405,7 +11405,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49981465.22532965,
@@ -11436,7 +11436,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 43159192.61807634,
@@ -11467,7 +11467,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 44487411.77450868,
@@ -11498,7 +11498,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49518443.560771,
@@ -11529,7 +11529,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49760987.80300041,
@@ -11560,7 +11560,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49983314.03598304,
@@ -11591,7 +11591,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49557592.798878156,
@@ -11622,7 +11622,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49989351.47525813,
@@ -11653,7 +11653,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49754493.4545767,
@@ -11684,7 +11684,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49899650.72587716,
@@ -11715,7 +11715,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49674042.381700024,
@@ -11746,7 +11746,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49872746.25100081,
@@ -11777,7 +11777,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49851953.24514713,
@@ -11808,7 +11808,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49871907.29810817,
@@ -11839,7 +11839,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49973026.33338059,
@@ -11870,7 +11870,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49562912.42473353,
@@ -11901,7 +11901,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49547606.63294836,
@@ -11932,7 +11932,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 46786968.222502045,
@@ -11963,7 +11963,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49920403.61822501,
@@ -11994,7 +11994,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 40382759.44944566,
@@ -12025,7 +12025,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49957981.8393094,
@@ -12056,7 +12056,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49919991.95080242,
@@ -12087,7 +12087,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49890004.37638332,
@@ -12118,7 +12118,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49940964.481358655,
@@ -12149,7 +12149,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 47145566.25539918,
@@ -12180,7 +12180,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49949543.624156885,
@@ -12211,7 +12211,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49912352.96869553,
@@ -12242,7 +12242,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49913957.15647842,
@@ -12273,7 +12273,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49931439.44873812,
@@ -12304,7 +12304,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 45609553.29629309,
@@ -12335,7 +12335,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 38105248.22094385,
@@ -12366,7 +12366,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49960523.20987707,
@@ -12397,7 +12397,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49884058.51032997,
@@ -12428,7 +12428,7 @@
     },
     {
       "base_drift": 20000000.0,
-      "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+      "base_input_path": "configs/base_input.toml",
       "base_ion_mass_over_proton_mass": 1.0,
       "base_ion_temperature_ratio": 0.01,
       "candidate_drift": 49793090.05607139,

@@ -1,6 +1,6 @@
 {
   "base_drift": 20000000.0,
-  "base_input_path": "/Users/rogerio/actions-runner-uwplasma/_work/PIC_AGENTIC_WORKFLOW/PIC_AGENTIC_WORKFLOW/configs/base_input.toml",
+  "base_input_path": "configs/base_input.toml",
   "base_ion_mass_over_proton_mass": 1.0,
   "base_ion_temperature_ratio": 0.01,
   "candidate_drift": 49982090.5865604,
