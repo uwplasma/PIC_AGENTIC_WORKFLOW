@@ -43,3 +43,7 @@ Recommended organization Actions settings:
 ## Threat Model
 
 The main malware risk for a public repository with a self-hosted runner is untrusted code execution on that runner. This repository reduces that risk by keeping PR and issue-comment execution off the self-hosted runner. The remaining critical control is GitHub settings: branch protection, limited write access, and a narrowly scoped runner group.
+
+## Supported versions and reporting
+
+Only the latest release receives security fixes. Report vulnerabilities privately through GitHub private vulnerability reporting (the **Security** tab, then **Report a vulnerability**); do not open a public issue.
