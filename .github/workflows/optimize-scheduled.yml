@@ -35,16 +35,17 @@ jobs:
       - name: Set up local virtual environment
         run: |
           python3 --version
-          python3 -m venv .venv
-          .venv/bin/python -m pip install --upgrade pip
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP"/venv/bin/python -m pip install --upgrade pip
 
       - name: Install dependencies
         run: |
-          .venv/bin/python -m pip install -r requirements.txt
-          .venv/bin/python -m pip install -e .
+          "$RUNNER_TEMP"/venv/bin/python -m pip install -r requirements.txt
+          "$RUNNER_TEMP"/venv/bin/python -m pip install -e .
 
       - name: Run bounded scheduled campaign
-        run: .venv/bin/python scripts/run_campaign.py --num-trials 1 --seed 1701
+        run: |
+          "$RUNNER_TEMP"/venv/bin/python scripts/run_campaign.py --num-trials 1 --seed 1701
 
       - name: Upload optimization artifacts
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
@@ -63,7 +64,7 @@ jobs:
           git fetch origin main
           git worktree add --detach "$publish_root" origin/main
           trap 'git worktree remove --force "$publish_root" || true' EXIT
-          PYTHONPATH="$publish_root/src" .venv/bin/python scripts/merge_publish_state.py \
+          PYTHONPATH="$publish_root/src" "$RUNNER_TEMP"/venv/bin/python scripts/merge_publish_state.py \
             --source-root "$source_root" \
             --target-root "$publish_root"
           cd "$publish_root"

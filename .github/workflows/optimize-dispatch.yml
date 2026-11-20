@@ -89,17 +89,17 @@ jobs:
       - name: Set up local virtual environment
         run: |
           python3 --version
-          python3 -m venv .venv
-          .venv/bin/python -m pip install --upgrade pip
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP"/venv/bin/python -m pip install --upgrade pip
 
       - name: Install dependencies
         run: |
-          .venv/bin/python -m pip install -r requirements.txt
-          .venv/bin/python -m pip install -e .
+          "$RUNNER_TEMP"/venv/bin/python -m pip install -r requirements.txt
+          "$RUNNER_TEMP"/venv/bin/python -m pip install -e .
 
       - name: Run campaign
         run: >-
-          .venv/bin/python scripts/run_campaign.py
+          "$RUNNER_TEMP"/venv/bin/python scripts/run_campaign.py
           --num-trials ${{ inputs.num_trials }}
           --seed ${{ inputs.seed }}
           ${{ inputs.drift_range != '' && format('--drift-range {0}', inputs.drift_range) || '' }}
@@ -121,7 +121,7 @@ jobs:
           git fetch origin main
           git worktree add --detach "$publish_root" origin/main
           trap 'git worktree remove --force "$publish_root" || true' EXIT
-          PYTHONPATH="$publish_root/src" .venv/bin/python scripts/merge_publish_state.py \
+          PYTHONPATH="$publish_root/src" "$RUNNER_TEMP"/venv/bin/python scripts/merge_publish_state.py \
             --source-root "$source_root" \
             --target-root "$publish_root"
           cd "$publish_root"
